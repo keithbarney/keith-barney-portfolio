@@ -5,11 +5,11 @@ include _mixins
 //- Colors, Type Scale, UI Scale, Typography, Radius
 //- ===========================================
 
-//- ===== TYPE SCALE =====
-.subsection#type-scale
+//- ===== SCALE =====
+.subsection#scale
 	.grid.grid--10.scale-grid
 		+tokenHeader('Section', 'Group', 'Visual', 'Token', 'Value')
-		+scaleRow('Type Scale', 'Base', 8, 'type.8', '8px')
+		+scaleRow('Scale', 'Type', 8, 'type.8', '8px')
 		+scaleRow('', '', 10, 'type.10', '10px')
 		+scaleRow('', '', 12, 'type.12', '12px')
 		+scaleRow('', '', 14, 'type.14', '14px')
@@ -17,10 +17,7 @@ include _mixins
 		+scaleRow('', '', 28, 'type.28', '28px')
 		+scaleRow('', '', 32, 'type.32', '32px')
 
-//- ===== UI SCALE =====
-.subsection#ui-scale
-	.grid.grid--10.scale-grid
-		+scaleRow('UI Scale', '8pt Grid', 0, 'ui.0', '0px')
+		+scaleRow('', 'UI', 0, 'ui.0', '0px')
 		+scaleRow('', '', 2, 'ui.2', '2px')
 		+scaleRow('', '', 4, 'ui.4', '4px')
 		+scaleRow('', '', 8, 'ui.8', '8px')
