@@ -1,0 +1,30 @@
+{
+  "name": "@keith/design-system",
+  "version": "1.0.0",
+  "description": "Keith Barney Design System - Swiss Grid, Design Tokens, and Base Components",
+  "type": "module",
+  "exports": {
+    ".": "./styles/index.scss",
+    "./tokens": "./tokens/dist/tokens.css",
+    "./tokens/scss": "./tokens/dist/_tokens.scss",
+    "./grid": "./grid/_grid.scss",
+    "./components": "./components/index.scss",
+    "./components/*": "./components/*/index.scss"
+  },
+  "scripts": {
+    "build": "node scripts/build-tokens.js",
+    "pull:figma": "node scripts/pull-figma.js",
+    "push:figma": "node scripts/push-figma.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "design-system",
+    "swiss-grid",
+    "design-tokens",
+    "figma"
+  ],
+  "author": "Keith Barney",
+  "license": "MIT"
+}
