@@ -1,160 +1,228 @@
-// ===========================================
+// ============================================
 // CSS CUSTOM PROPERTIES
-// Default design system variables
-// ===========================================
+// Generated from token aliases
+// ============================================
 
-@use 'tokens' as tokens
+@use "tokens" as *
+@use "alias-tokens" as *
 
-// ===== ROOT VARIABLES =====
 \:root
-  // ===== BASE COLORS (Static) =====
-  --color-white: #FFFFFF
-  --color-black: #000000
+  // ----------------------------------------
+  // COLORS - Primitives
+  // ----------------------------------------
+  --keith-color-white: #{$keith-color-white}
+  --keith-color-black: #{$keith-color-black}
+  --keith-color-gray-50: #{$keith-color-gray-50}
+  --keith-color-gray-100: #{$keith-color-gray-100}
+  --keith-color-gray-200: #{$keith-color-gray-200}
+  --keith-color-gray-300: #{$keith-color-gray-300}
+  --keith-color-gray-400: #{$keith-color-gray-400}
+  --keith-color-gray-500: #{$keith-color-gray-500}
+  --keith-color-gray-600: #{$keith-color-gray-600}
+  --keith-color-gray-700: #{$keith-color-gray-700}
+  --keith-color-gray-800: #{$keith-color-gray-800}
+  --keith-color-gray-900: #{$keith-color-gray-900}
 
-  // ===== TYPOGRAPHY =====
-  --font-primary: "Test American Grotesk", -apple-system, sans-serif
-  --font-mono: "Departure Mono", monospace
-  --font-sans: "Inter", -apple-system, sans-serif
+  // ----------------------------------------
+  // UI COLORS - Semantic
+  // ----------------------------------------
+  --keith-ui-bg-default: #{$keith-ui-bg-default}
+  --keith-ui-bg-subtle: #{$keith-ui-bg-subtle}
+  --keith-ui-bg-muted: #{$keith-ui-bg-muted}
+  --keith-ui-surface-default: #{$keith-ui-surface-default}
+  --keith-ui-surface-raised: #{$keith-ui-surface-raised}
+  --keith-ui-text-default: #{$keith-ui-text-default}
+  --keith-ui-text-strong: #{$keith-ui-text-strong}
+  --keith-ui-text-muted: #{$keith-ui-text-muted}
+  --keith-ui-text-disabled: #{$keith-ui-text-disabled}
+  --keith-ui-border-default: #{$keith-ui-border-default}
+  --keith-ui-border-strong: #{$keith-ui-border-strong}
+  --keith-ui-action-primary: #{$keith-ui-action-primary}
+  --keith-ui-action-primary-hover: #{$keith-ui-action-primary-hover}
+  --keith-ui-focus-ring: #{$keith-ui-focus-ring}
 
-  --line-height-base: 1.5
-  --line-height-tight: 1.2
-  --line-height-loose: 1.75
+  // ----------------------------------------
+  // SPACING - Gap
+  // ----------------------------------------
+  --keith-gap-none: #{$keith-gap-none}
+  --keith-gap-xs: #{$keith-gap-xs}
+  --keith-gap-sm: #{$keith-gap-sm}
+  --keith-gap-md: #{$keith-gap-md}
+  --keith-gap-lg: #{$keith-gap-lg}
+  --keith-gap-xl: #{$keith-gap-xl}
+  --keith-gap-2xl: #{$keith-gap-2xl}
+  --keith-gap-3xl: #{$keith-gap-3xl}
+  --keith-gap-4xl: #{$keith-gap-4xl}
+  --keith-gap-5xl: #{$keith-gap-5xl}
 
-  // Optimal line length: 7-10 words ≈ 45-75 characters
-  --measure: 65ch
+  // ----------------------------------------
+  // SPACING - Padding
+  // ----------------------------------------
+  --keith-padding-none: #{$keith-padding-none}
+  --keith-padding-xs: #{$keith-padding-xs}
+  --keith-padding-sm: #{$keith-padding-sm}
+  --keith-padding-md: #{$keith-padding-md}
+  --keith-padding-lg: #{$keith-padding-lg}
+  --keith-padding-xl: #{$keith-padding-xl}
+  --keith-padding-2xl: #{$keith-padding-2xl}
+  --keith-padding-3xl: #{$keith-padding-3xl}
+  --keith-padding-4xl: #{$keith-padding-4xl}
 
-  // ===== TYPE SCALE =====
-  // For font sizes - does NOT follow 8pt grid
-  // Values: 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48
-  --type-8: 8px
-  --type-10: 10px
-  --type-12: 12px
-  --type-14: 14px
-  --type-16: 16px
-  --type-18: 18px
-  --type-20: 20px
-  --type-24: 24px
-  --type-28: 28px
-  --type-32: 32px
-  --type-40: 40px
-  --type-48: 48px
+  // ----------------------------------------
+  // TYPOGRAPHY - Primitives
+  // ----------------------------------------
+  --keith-font-family-primary: #{$keith-font-family-primary}
+  --keith-font-family-mono: #{$keith-font-family-mono}
+  --keith-font-size-xs: #{$keith-font-size-xs}
+  --keith-font-size-sm: #{$keith-font-size-sm}
+  --keith-font-size-md: #{$keith-font-size-md}
+  --keith-font-size-lg: #{$keith-font-size-lg}
+  --keith-font-size-xl: #{$keith-font-size-xl}
+  --keith-font-size-2xl: #{$keith-font-size-2xl}
+  --keith-font-size-3xl: #{$keith-font-size-3xl}
+  --keith-font-size-4xl: #{$keith-font-size-4xl}
+  --keith-font-size-5xl: #{$keith-font-size-5xl}
+  --keith-font-weight-regular: #{$keith-font-weight-regular}
+  --keith-font-weight-medium: #{$keith-font-weight-medium}
+  --keith-font-weight-bold: #{$keith-font-weight-bold}
+  --keith-line-height-none: #{$keith-line-height-none}
+  --keith-line-height-tight: #{$keith-line-height-tight}
+  --keith-line-height-snug: #{$keith-line-height-snug}
+  --keith-line-height-normal: #{$keith-line-height-normal}
+  --keith-line-height-relaxed: #{$keith-line-height-relaxed}
+  --keith-line-height-loose: #{$keith-line-height-loose}
+  --keith-letter-spacing-tight: #{$keith-letter-spacing-tight}
+  --keith-letter-spacing-normal: #{$keith-letter-spacing-normal}
+  --keith-letter-spacing-wide: #{$keith-letter-spacing-wide}
+  --keith-letter-spacing-wider: #{$keith-letter-spacing-wider}
+  --keith-letter-spacing-widest: #{$keith-letter-spacing-widest}
 
-  // Font Size Aliases (reference type scale)
-  --font-size-body-xsm: var(--type-12)
-  --font-size-body-sm: var(--type-14)
-  --font-size-body: var(--type-16)
-  --font-size-h3: var(--type-24)
-  --font-size-h2: var(--type-28)
-  --font-size-h1: var(--type-32)
-  --font-size-display-sm: var(--type-40)
-  --font-size-display: var(--type-48)
+  // ----------------------------------------
+  // TYPOGRAPHY - Composite Styles
+  // ----------------------------------------
+  // Display
+  --keith-type-display-font-family: #{$keith-type-display-font-family}
+  --keith-type-display-font-size: #{$keith-type-display-font-size}
+  --keith-type-display-font-weight: #{$keith-type-display-font-weight}
+  --keith-type-display-line-height: #{$keith-type-display-line-height}
+  --keith-type-display-letter-spacing: #{$keith-type-display-letter-spacing}
 
-  // ===== UI SCALE =====
-  // For spacing, padding, margins
-  // Values: 0, 2, 4, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 60, 72
-  --ui-0: 0px
-  --ui-2: 2px
-  --ui-4: 4px
-  --ui-8: 8px
-  --ui-10: 10px
-  --ui-12: 12px
-  --ui-14: 14px
-  --ui-16: 16px
-  --ui-20: 20px
-  --ui-24: 24px
-  --ui-28: 28px
-  --ui-32: 32px
-  --ui-40: 40px
-  --ui-48: 48px
-  --ui-60: 60px
-  --ui-64: 64px
-  --ui-72: 72px
+  // Heading 1
+  --keith-type-h1-font-family: #{$keith-type-h1-font-family}
+  --keith-type-h1-font-size: #{$keith-type-h1-font-size}
+  --keith-type-h1-font-weight: #{$keith-type-h1-font-weight}
+  --keith-type-h1-line-height: #{$keith-type-h1-line-height}
+  --keith-type-h1-letter-spacing: #{$keith-type-h1-letter-spacing}
 
-  // Spacing Aliases (reference ui scale)
-  --space-0: var(--ui-0)
-  --space-2: var(--ui-2)
-  --space-4: var(--ui-4)
-  --space-8: var(--ui-8)
-  --space-10: var(--ui-10)
-  --space-12: var(--ui-12)
-  --space-14: var(--ui-14)
-  --space-16: var(--ui-16)
-  --space-20: var(--ui-20)
-  --space-24: var(--ui-24)
-  --space-28: var(--ui-28)
-  --space-32: var(--ui-32)
-  --space-40: var(--ui-40)
-  --space-48: var(--ui-48)
-  --space-60: var(--ui-60)
-  --space-72: var(--ui-72)
+  // Heading 2
+  --keith-type-h2-font-family: #{$keith-type-h2-font-family}
+  --keith-type-h2-font-size: #{$keith-type-h2-font-size}
+  --keith-type-h2-font-weight: #{$keith-type-h2-font-weight}
+  --keith-type-h2-line-height: #{$keith-type-h2-line-height}
+  --keith-type-h2-letter-spacing: #{$keith-type-h2-letter-spacing}
 
-  // Gap Aliases
-  --gap-none: var(--ui-0)
-  --gap-xxs: var(--ui-2)
-  --gap-xs: var(--ui-4)
-  --gap-sm: var(--ui-8)
-  --gap-md: var(--ui-16)
-  --gap-lg: var(--ui-24)
-  --gap-xl: var(--ui-32)
-  --gap-2xl: var(--ui-40)
-  --gap-3xl: var(--ui-48)
-  --gap-4xl: var(--ui-64)
+  // Heading 3
+  --keith-type-h3-font-family: #{$keith-type-h3-font-family}
+  --keith-type-h3-font-size: #{$keith-type-h3-font-size}
+  --keith-type-h3-font-weight: #{$keith-type-h3-font-weight}
+  --keith-type-h3-line-height: #{$keith-type-h3-line-height}
+  --keith-type-h3-letter-spacing: #{$keith-type-h3-letter-spacing}
 
-  // Padding Aliases
-  --padding-xs: var(--ui-4)
-  --padding-sm: var(--ui-8)
-  --padding-md: var(--ui-16)
-  --padding-lg: var(--ui-24)
-  --padding-xl: var(--ui-32)
-  --padding-2xl: var(--ui-48)
+  // Heading 4
+  --keith-type-h4-font-family: #{$keith-type-h4-font-family}
+  --keith-type-h4-font-size: #{$keith-type-h4-font-size}
+  --keith-type-h4-font-weight: #{$keith-type-h4-font-weight}
+  --keith-type-h4-line-height: #{$keith-type-h4-line-height}
+  --keith-type-h4-letter-spacing: #{$keith-type-h4-letter-spacing}
 
-  // ===== GRID SYSTEM =====
-  --grid-columns: 12
-  --grid-gutter: var(--ui-24)
-  --grid-margin: var(--ui-16)
+  // Body Large
+  --keith-type-body-lg-font-family: #{$keith-type-body-lg-font-family}
+  --keith-type-body-lg-font-size: #{$keith-type-body-lg-font-size}
+  --keith-type-body-lg-font-weight: #{$keith-type-body-lg-font-weight}
+  --keith-type-body-lg-line-height: #{$keith-type-body-lg-line-height}
+  --keith-type-body-lg-letter-spacing: #{$keith-type-body-lg-letter-spacing}
+
+  // Body
+  --keith-type-body-font-family: #{$keith-type-body-font-family}
+  --keith-type-body-font-size: #{$keith-type-body-font-size}
+  --keith-type-body-font-weight: #{$keith-type-body-font-weight}
+  --keith-type-body-line-height: #{$keith-type-body-line-height}
+  --keith-type-body-letter-spacing: #{$keith-type-body-letter-spacing}
+
+  // Body Small
+  --keith-type-body-sm-font-family: #{$keith-type-body-sm-font-family}
+  --keith-type-body-sm-font-size: #{$keith-type-body-sm-font-size}
+  --keith-type-body-sm-font-weight: #{$keith-type-body-sm-font-weight}
+  --keith-type-body-sm-line-height: #{$keith-type-body-sm-line-height}
+  --keith-type-body-sm-letter-spacing: #{$keith-type-body-sm-letter-spacing}
+
+  // Label
+  --keith-type-label-font-family: #{$keith-type-label-font-family}
+  --keith-type-label-font-size: #{$keith-type-label-font-size}
+  --keith-type-label-font-weight: #{$keith-type-label-font-weight}
+  --keith-type-label-line-height: #{$keith-type-label-line-height}
+  --keith-type-label-letter-spacing: #{$keith-type-label-letter-spacing}
+
+  // Label Small
+  --keith-type-label-sm-font-family: #{$keith-type-label-sm-font-family}
+  --keith-type-label-sm-font-size: #{$keith-type-label-sm-font-size}
+  --keith-type-label-sm-font-weight: #{$keith-type-label-sm-font-weight}
+  --keith-type-label-sm-line-height: #{$keith-type-label-sm-line-height}
+  --keith-type-label-sm-letter-spacing: #{$keith-type-label-sm-letter-spacing}
+
+  // Caption
+  --keith-type-caption-font-family: #{$keith-type-caption-font-family}
+  --keith-type-caption-font-size: #{$keith-type-caption-font-size}
+  --keith-type-caption-font-weight: #{$keith-type-caption-font-weight}
+  --keith-type-caption-line-height: #{$keith-type-caption-line-height}
+  --keith-type-caption-letter-spacing: #{$keith-type-caption-letter-spacing}
+
+  // Overline
+  --keith-type-overline-font-family: #{$keith-type-overline-font-family}
+  --keith-type-overline-font-size: #{$keith-type-overline-font-size}
+  --keith-type-overline-font-weight: #{$keith-type-overline-font-weight}
+  --keith-type-overline-line-height: #{$keith-type-overline-line-height}
+  --keith-type-overline-letter-spacing: #{$keith-type-overline-letter-spacing}
+
+  // ----------------------------------------
+  // LAYOUT
+  // ----------------------------------------
+  --keith-grid-columns: #{$keith-grid-columns}
+  --keith-grid-gutter: #{$keith-grid-gutter}
+  --keith-measure: #{$keith-measure}
+  --keith-container-sm: #{$keith-container-sm}
+  --keith-container-md: #{$keith-container-md}
+  --keith-container-lg: #{$keith-container-lg}
+  --keith-container-xl: #{$keith-container-xl}
+  --keith-container-2xl: #{$keith-container-2xl}
+
+  // ----------------------------------------
+  // BORDERS
+  // ----------------------------------------
+  --keith-radius-none: #{$keith-radius-none}
+  --keith-radius-sm: #{$keith-radius-sm}
+  --keith-radius-md: #{$keith-radius-md}
+  --keith-radius-lg: #{$keith-radius-lg}
+  --keith-radius-xl: #{$keith-radius-xl}
+  --keith-radius-full: #{$keith-radius-full}
+  --keith-border-width-none: #{$keith-border-width-none}
+  --keith-border-width-sm: #{$keith-border-width-sm}
+  --keith-border-width-md: #{$keith-border-width-md}
+  --keith-border-width-lg: #{$keith-border-width-lg}
 
 
-// ===== LIGHT MODE (Default) =====
-\:root
-  --ui-bg-default: #F3F3F3
-  --ui-surface-default: #E8E8E8
-  --ui-border-default: #E8E8E8
-  --ui-border-strong: #F3F3F3
-  --ui-text-default: #5E5E5E
-  --ui-text-strong: #282828
-  --ui-text-disabled: #BBBBBB
-  --ui-action-primary: #FC7F79
-  --ui-action-primary-hover: #FFB2AB
-  --ui-action-primary-active: #FFB2AB
-  --ui-feedback-success: #0E8345
-  --ui-feedback-warning: #FC823A
-  --ui-feedback-danger: #DE1135
-  --ui-feedback-info: #007F8C
-
-  // Style guide specific
-  --ui-dot-pattern: rgba(0, 0, 0, 0.08)
-
-// ===== DARK MODE =====
+// ----------------------------------------
+// DARK THEME
+// ----------------------------------------
 [data-theme="dark"]
-  --ui-bg-default: #141414
-  --ui-surface-default: #282828
-  --ui-border-default: #282828
-  --ui-border-strong: #141414
-  --ui-text-default: #DDDDDD
-  --ui-text-strong: #F3F3F3
-  --ui-text-disabled: #727272
-  --ui-action-primary: #F83446
-  --ui-action-primary-hover: #FC7F79
-  --ui-action-primary-active: #FC7F79
-  --ui-feedback-success: #06C167
-  --ui-feedback-warning: #FFB48C
-  --ui-feedback-danger: #FC7F79
-  --ui-feedback-info: #01B8CA
-
-  // Style guide specific
-  --ui-dot-pattern: rgba(255, 255, 255, 0.08)
-
-// ===== RESPONSIVE GRID MARGINS =====
-@media (min-width: 768px)
-  \:root
-    --grid-margin: var(--ui-24)
+  --keith-ui-bg-default: #{$keith-color-gray-900}
+  --keith-ui-bg-subtle: #{$keith-color-gray-800}
+  --keith-ui-bg-muted: #{$keith-color-gray-700}
+  --keith-ui-surface-default: #{$keith-color-gray-900}
+  --keith-ui-surface-raised: #{$keith-color-gray-800}
+  --keith-ui-text-default: #{$keith-color-gray-300}
+  --keith-ui-text-strong: #{$keith-color-gray-50}
+  --keith-ui-text-muted: #{$keith-color-gray-500}
+  --keith-ui-text-disabled: #{$keith-color-gray-600}
+  --keith-ui-border-default: #{$keith-color-gray-700}
+  --keith-ui-border-strong: #{$keith-color-gray-50}
