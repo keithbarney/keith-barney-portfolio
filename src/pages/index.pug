@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang="en" data-theme="dark")
   - var title = null
   - var description = "Keith Barney — Design Systems"
   include partials/_head
@@ -9,7 +9,10 @@ html(lang="en")
     header.header
       .container.flex.justify-between.items-center
         a.wordmark(href="/") Keith Barney
-        a.nav-link(href="mailto:hello@keithbarney.com") Contact
+        nav.flex.gap-3
+          a.nav-link(href="/discography.html") Discography
+          a.nav-link(href="mailto:hello@keithbarney.com") Contact
+          button#theme-toggle(aria-label="Toggle theme") Light
 
     main
       //- 2. Hero / Identity
@@ -59,6 +62,15 @@ html(lang="en")
               p.project-skills Design Tokens // Figma API // Build Tooling // Multi-platform // Automation // Style Dictionary
             .col-span-6.project-image
 
+          article.project.grid.grid--12.gap-4
+            .col-span-6.project-info
+              span.project-index 04
+              span.project-category Design Leadership
+              h2.project-name SpeakUp
+              p.project-description Co-founded a workplace collaboration platform that helped companies surface hidden problems and ideas from across their organizations. Owned all design work from the ground up — branding, product UI, and marketing site — while leading a remote development team of six engineers through daily ceremonies and sprint management. Shipped a product that real companies adopted to crowdsource solutions, vote on priorities, and turn employee insight into concrete decisions. The platform reached break-even and remains live today. The experience shaped how I think about building products from zero, leading distributed teams, and designing systems where the most important information rises to the top.
+              p.project-skills Product Design // Design Leadership // Remote Team Management // Branding // Web Applications // Startup
+            .col-span-6.project-image
+
       //- 5. Experience / Companies
       section.experience
         .container
@@ -88,3 +100,5 @@ html(lang="en")
         p.footer-name Keith Barney
         p.footer-role Design Systems
         a.footer-email(href="mailto:hello@keithbarney.com") hello@keithbarney.com
+
+    script(src="js/halftone.js" defer)

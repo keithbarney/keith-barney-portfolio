@@ -1,0 +1,1085 @@
+doctype html
+html(lang="en" data-theme="dark")
+  - var title = "Discography"
+  - var description = "Keith Barney — Complete discography across Adamantium, Throwdown, Death by Stereo, Eighteen Visions, and Duhkha"
+  include partials/_head
+
+  body
+    //- Header
+    header.header
+      .container.flex.justify-between.items-center
+        a.wordmark(href="/") Keith Barney
+        nav.flex.gap-3
+          a.nav-link.nav-link--active(href="/discography.html") Discography
+          a.nav-link(href="mailto:hello@keithbarney.com") Contact
+          button#theme-toggle(aria-label="Toggle theme") Light
+
+    main.discography
+
+      //- Hero
+      section.disco-hero
+        .container
+          .grid.grid--12
+            .col-span-8
+              h1.disco-title Discography
+              p.disco-subtitle 30 years of records across 5 bands. Every pressing, every variant.
+
+      //- Summary Stats
+      section.disco-stats.disco-stats--top
+        .container
+          .grid.grid--12
+            .col-span-full
+              .stats-grid
+                .stat
+                  span.stat-value 5
+                  span.stat-label Bands
+                .stat
+                  span.stat-value ~27
+                  span.stat-label Releases
+                .stat
+                  span.stat-value 10
+                  span.stat-label Studio Albums
+                .stat
+                  span.stat-value 3
+                  span.stat-label Re-recorded Albums
+                .stat
+                  span.stat-value 12+
+                  span.stat-label Compilations
+                .stat
+                  span.stat-value 11+
+                  span.stat-label Labels
+                .stat
+                  span.stat-value 30
+                  span.stat-label Years Active
+
+      //- Band Filters
+      section.band-filters
+        .container
+          .grid.grid--12
+            .col-span-full
+              .band-filters-row
+                button.band-filter.band-filter--active(data-filter="all") All
+                button.band-filter(data-filter="adamantium") Adamantium
+                button.band-filter(data-filter="throwdown") Throwdown
+                button.band-filter(data-filter="death-by-stereo") Death by Stereo
+                button.band-filter(data-filter="eighteen-visions") Eighteen Visions
+                button.band-filter(data-filter="duhkha") Duhkha
+
+      //- =============================================
+      //- ADAMANTIUM (1996-1999)
+      //- =============================================
+      section.band-section(data-band="adamantium")
+        .container
+          .band-header
+            h2.band-name Adamantium
+            .band-meta
+              span.band-role Guitar
+              span.band-years 1996 &ndash; 1999
+
+          //- ...Tradition 7"
+          article.release
+            .release-header
+              h3.release-title ...Tradition 7" EP
+              .release-meta
+                span.release-year 1997
+                span.release-label Prime Directive Records / Softcore
+                span.release-catalog PDR01
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 7"
+                    td Unknown
+                    td 50
+                    td Softcore initial pressing
+                  tr
+                    td 7"
+                    td Cream
+                    td &mdash;
+                    td Some tan copies numbered /269
+                  tr
+                    td 7"
+                    td Tan
+                    td &mdash;
+                    td
+                  tr
+                    td 7"
+                    td Black
+                    td &mdash;
+                    td Standard
+
+          //- From the Depths of Depression
+          article.release
+            .release-header
+              h3.release-title From the Depths of Depression
+              .release-meta
+                span.release-year 1998
+                span.release-label Indecision Records
+                span.release-catalog IND15
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td Clear
+                    td 150
+                    td Record release show pressing
+                  tr
+                    td LP
+                    td Solid Maroon
+                    td 306
+                    td Limited edition
+                  tr
+                    td LP
+                    td Black
+                    td 1,235
+                    td Standard
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td IND15CD
+                  tr.pressing-repress
+                    td LP
+                    td Transparent Sand
+                    td &mdash;
+                    td 25th Anniversary (2023). Sold out.
+              p.pressing-total Original vinyl total: 1,691 copies
+
+          //- Traditions
+          article.release
+            .release-header
+              h3.release-title Traditions
+              .release-meta
+                span.release-year 2005 / 2022
+                span.release-label Indecision Records
+                span.release-catalog IND70
+            p.release-note Compilation of all Keith-era recordings: the ...Tradition 7", 3 previously unreleased tracks, and all compilation tracks recorded with the original lineup.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td Original (2005)
+                  tr
+                    td LP
+                    td Black
+                    td 200
+                    td 25th anniversary of debut 7". First time on vinyl. (2022)
+
+          //- Compilation Appearances
+          .compilations
+            h4.compilations-heading Compilation Appearances
+            ul.compilation-list
+              li
+                span.comp-title West Coast Hardcore vs. East Coast Hardcore
+                span.comp-detail 1998 &middot; "Funeral of Silence" (alt) &middot; Black Rat Records
+              li
+                span.comp-title As the Sun Sets: A Southern California Hardcore Compilation
+                span.comp-detail 1999 &middot; "Defeat the Purpose"
+              li
+                span.comp-title Never Give In: A Tribute to Bad Brains
+                span.comp-detail 1999 &middot; "Re-Ignition" (Bad Brains cover)
+              li
+                span.comp-title Straight Edge: Rise of a New Era
+                span.comp-detail 2000 &middot; "Virus" &middot; Indecision Records
+              li
+                span.comp-title For the Kids!
+                span.comp-detail 2000 &middot; "Forgotten"
+              li
+                span.comp-title Indecision Records 30th Anniversary 2xLP
+                span.comp-detail 2023 &middot; Indecision Records
+
+      //- =============================================
+      //- THROWDOWN (1997-2004)
+      //- =============================================
+      section.band-section(data-band="throwdown")
+        .container
+          .band-header
+            h2.band-name Throwdown
+            .band-meta
+              span.band-role Vocals (1997&ndash;2002), Guitar (2002&ndash;2004)
+              span.band-years 1997 &ndash; 2004
+
+          //- Hardcore Heavyweights
+          article.release
+            .release-header
+              h3.release-title Hardcore Heavyweights
+              .release-meta
+                span.release-year 1998
+                span.release-label Self-released
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td Cassette
+                    td &mdash;
+                    td &mdash;
+                    td Demo. Keith on vocals.
+
+          //- Self-Titled 7"
+          article.release
+            .release-header
+              h3.release-title Throwdown
+              .release-meta
+                span.release-year 1998
+                span.release-label Prime Directive Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 7" (33&#8531; RPM)
+                    td &mdash;
+                    td 1,134
+                    td Debuted at The Newport Takeover
+
+          //- Beyond Repair
+          article.release
+            .release-header
+              h3.release-title Beyond Repair
+              .release-meta
+                span.release-year 1999
+                span.release-label Indecision Records
+                span.release-catalog IND18
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td Solid Green
+                    td 215
+                    td With lyric insert
+                  tr
+                    td LP
+                    td Solid Tan
+                    td 448
+                    td Some appear "tan marble"
+                  tr
+                    td LP
+                    td Black
+                    td 1,106
+                    td Standard
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td IND18CD
+                  tr.pressing-repress
+                    td LP
+                    td Opaque Orange
+                    td 300
+                    td 20th Anniversary (2019). Limited.
+                  tr.pressing-repress
+                    td LP
+                    td Clear Orange
+                    td 700
+                    td 20th Anniversary (2019)
+                  tr.pressing-repress
+                    td LP
+                    td Test Pressing
+                    td ~30
+                    td 20th Anniversary (2019). Spray-painted cover.
+              p.pressing-total Original vinyl total: 1,769 copies
+
+          //- Good Clean Fun / Throwdown Split
+          article.release
+            .release-header
+              h3.release-title Good Clean Fun / Throwdown Split 7"
+              .release-meta
+                span.release-year 2000
+                span.release-label Prime Directive Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 7"
+                    td Red
+                    td &mdash;
+                    td Christmas-themed split
+                  tr
+                    td 7"
+                    td Green
+                    td &mdash;
+                    td
+
+          //- Drive Me Dead
+          article.release
+            .release-header
+              h3.release-title Drive Me Dead
+              .release-meta
+                span.release-year 2000
+                span.release-label Indecision Records
+                span.release-catalog IND26
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 7"
+                    td Black
+                    td 1,000
+                    td With lyric insert
+                  tr
+                    td 7"
+                    td Solid Pink
+                    td 300
+                    td Limited
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td IND26CD
+              p.pressing-total Total vinyl: 1,300 copies
+
+          //- You Don't Have to Be Blood
+          article.release
+            .release-header
+              h3.release-title You Don't Have to Be Blood to Be Family
+              .release-meta
+                span.release-year 2001
+                span.release-label Indecision Records
+                span.release-catalog IND034
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td Black
+                    td 661
+                    td Limited edition
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td IND034CD
+                  tr.pressing-repress
+                    td LP
+                    td Blood Drop (Clear w/ blood splatter)
+                    td 500
+                    td 20th Anniversary (2021)
+              p.pressing-total Original vinyl: 661 copies
+
+          //- Face the Mirror
+          article.release
+            .release-header
+              h3.release-title Face the Mirror EP
+              .release-meta
+                span.release-year 2002
+                span.release-label Self-released
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td 200
+                    td Sold exclusively at summer 2002 shows (Warped Tour, east coast tour)
+
+          //- Haymaker
+          article.release
+            .release-header
+              h3.release-title Haymaker
+              .release-meta
+                span.release-year 2003
+                span.release-label Trustkill Records
+                span.release-catalog TK43
+            p.release-note Keith switched to guitar. Dave Peters on vocals.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td Original (2003)
+                  tr
+                    td LP
+                    td &mdash;
+                    td &mdash;
+                    td Original (2003)
+                  tr.pressing-repress
+                    td LP (gatefold)
+                    td 4 color variants
+                    td ~862
+                    td Haymaker XX (2023). Remastered by Zeuss. Pit Viper Records.
+                  tr.pressing-repress
+                    td CD (longbox)
+                    td &mdash;
+                    td 543
+                    td Haymaker XX (2023). Pit Viper Records.
+                  tr.pressing-repress
+                    td Cassette
+                    td &mdash;
+                    td 100
+                    td Haymaker XX (2023). Pit Viper Records.
+
+          //- Compilation Appearances
+          .compilations
+            h4.compilations-heading Compilation Appearances
+            ul.compilation-list
+              li
+                span.comp-title For the Kids!
+                span.comp-detail 2000
+              li
+                span.comp-title Blood, Sweat, and Ten Years
+                span.comp-detail 2004 &middot; "You Can't Kill Integrity," "Forever" &middot; Trustkill Records
+
+      //- =============================================
+      //- DEATH BY STEREO (1998-1999)
+      //- =============================================
+      section.band-section(data-band="death-by-stereo")
+        .container
+          .band-header
+            h2.band-name Death by Stereo
+            .band-meta
+              span.band-role Guitar
+              span.band-years 1998 &ndash; 1999
+
+          //- If Looks Could Kill
+          article.release
+            .release-header
+              h3.release-title If Looks Could Kill, I'd Watch You Die
+              .release-meta
+                span.release-year 1999
+                span.release-label Indecision Records
+                span.release-catalog IND019
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td Solid Green
+                    td 220
+                    td
+                  tr
+                    td LP
+                    td Clear Orange
+                    td 295
+                    td European tour pressing
+                  tr
+                    td LP
+                    td Black
+                    td 1,598
+                    td Standard
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td IND19CD
+                  tr.pressing-repress
+                    td LP
+                    td White
+                    td ~500
+                    td 2015 repress
+                  tr.pressing-repress
+                    td LP
+                    td Opaque Purple
+                    td 500
+                    td 20th Anniversary (2019)
+                  tr.pressing-repress
+                    td LP
+                    td Silver
+                    td 500
+                    td 25th Anniversary (2024)
+              p.pressing-total Original vinyl total: 2,113 copies
+
+      //- =============================================
+      //- EIGHTEEN VISIONS (2000-present)
+      //- =============================================
+      section.band-section(data-band="eighteen-visions")
+        .container
+          .band-header
+            h2.band-name Eighteen Visions
+            .band-meta
+              span.band-role Guitar, Bass (recordings), Production
+              span.band-years 2000 &ndash; 2007, 2017 &ndash; present
+
+          //- Until the Ink Runs Out
+          article.release
+            .release-header
+              h3.release-title Until the Ink Runs Out
+              .release-meta
+                span.release-year 2000
+                span.release-label Trustkill Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td
+                  tr
+                    td LP
+                    td Pink
+                    td &mdash;
+                    td
+
+          //- The Best of Eighteen Visions
+          article.release
+            .release-header
+              h3.release-title The Best of Eighteen Visions
+              .release-meta
+                span.release-year 2001
+                span.release-label Trustkill / Sobermind Records
+            p.release-note Not a compilation &mdash; all newly re-recorded material plus 1 new song ("Motionless and White").
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td Trustkill
+                  tr
+                    td Cassette
+                    td &mdash;
+                    td &mdash;
+                    td Trustkill
+                  tr
+                    td 12" LP
+                    td &mdash;
+                    td &mdash;
+                    td Sobermind Records (Belgium)
+
+          //- Vanity
+          article.release
+            .release-header
+              h3.release-title Vanity
+              .release-meta
+                span.release-year 2002
+                span.release-label Trustkill Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td
+                  tr
+                    td LP
+                    td Picture Disc
+                    td &mdash;
+                    td Very limited
+
+          //- Obsession
+          article.release
+            .release-header
+              h3.release-title Obsession
+              .release-meta
+                span.release-year 2004
+                span.release-label Trustkill Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td US edition
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td UK edition (includes bonus track)
+
+          //- Self-Titled
+          article.release
+            .release-header
+              h3.release-title Eighteen Visions
+              .release-meta
+                span.release-year 2006
+                span.release-label Epic Records / Sony
+            p.release-note Only major label release. "Victim" was WWE Vengeance 2006 theme.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td US (Epic Records)
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td International (bonus tracks)
+
+          //- XVIII
+          article.release
+            .release-header
+              h3.release-title XVIII
+              .release-meta
+                span.release-year 2017
+                span.release-label Rise Records
+            p.release-note Reunion album. Produced by Mick Kenney.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td CD
+                    td &mdash;
+                    td &mdash;
+                    td Rise Records
+                  tr
+                    td LP
+                    td Multiple variants
+                    td &mdash;
+                    td Rise Records
+
+          //- Inferno
+          article.release
+            .release-header
+              h3.release-title Inferno EP
+              .release-meta
+                span.release-year 2020
+                span.release-label Self-released
+            p.release-note Part 1 of Dante's Divine Comedy trilogy.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 10" vinyl
+                    td &mdash;
+                    td &mdash;
+                    td
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- 1996
+          article.release
+            .release-header
+              h3.release-title 1996
+              .release-meta
+                span.release-year 2021
+                span.release-label Self-released
+            p.release-note Covers album. 1 original track + 9 covers (5 hardcore, 5 hard rock).
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td &mdash;
+                    td &mdash;
+                    td
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- Vanity 20th Anniversary
+          article.release
+            .release-header
+              h3.release-title Vanity &mdash; 20th Anniversary Re-Recording
+              .release-meta
+                span.release-year 2022
+                span.release-label Self-released
+            p.release-note Fully re-recorded in drop A. Mastered by Will Putney.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 2xLP
+                    td &mdash;
+                    td &mdash;
+                    td Reality Records (EU), band webstore
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- Purgatorio
+          article.release
+            .release-header
+              h3.release-title Purgatorio EP
+              .release-meta
+                span.release-year 2023
+                span.release-label Self-released / Lambgoat Records
+            p.release-note Part 2 of Dante's Divine Comedy trilogy.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 10" vinyl
+                    td &mdash;
+                    td &mdash;
+                    td Lambgoat Records
+                  tr
+                    td 10" vinyl
+                    td &mdash;
+                    td &mdash;
+                    td No Echo variant
+                  tr
+                    td CD
+                    td Purple disc
+                    td &mdash;
+                    td Limited
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- Obsession 20th Anniversary
+          article.release
+            .release-header
+              h3.release-title Obsession &mdash; 20th Anniversary Re-Recording
+              .release-meta
+                span.release-year 2024
+                span.release-label Self-released
+            p.release-note Fully re-recorded + 2 newly finished songs from original 2004 sessions + 2 rare B-sides.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 2xLP
+                    td &mdash;
+                    td &mdash;
+                    td Cold Cuts Merch
+                  tr
+                    td 2xLP
+                    td &mdash;
+                    td 100
+                    td EU Edition (Deathwish Inc), hand-numbered
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- Until the Ink Runs Out 25th Anniversary
+          article.release
+            .release-header
+              h3.release-title Until the Ink Runs Out &mdash; 25th Anniversary Re-Recording
+              .release-meta
+                span.release-year 2025
+                span.release-label Self-released
+            p.release-note Fully re-recorded. LP1 = new recordings, LP2 = original recordings.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 2xLP (gatefold)
+                    td &mdash;
+                    td 250
+                    td Hologram O-Card Edition. Hand-numbered.
+                  tr
+                    td 2xLP (gatefold)
+                    td Splatter variant
+                    td 1,000
+                    td Color Splatter
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td TuneCore
+
+          //- Compilation Appearances
+          .compilations
+            h4.compilations-heading Compilation &amp; Soundtrack Appearances
+            ul.compilation-list
+              li
+                span.comp-title Bring You to Your Knees: A Tribute to Guns N' Roses
+                span.comp-detail 2004 &middot; "Paradise City" (cover)
+              li
+                span.comp-title Burnout 3: Takedown (EA Games)
+                span.comp-detail 2004 &middot; "Obsession"
+              li
+                span.comp-title Trustkill Takeover Vol. I
+                span.comp-detail 2005 &middot; "I Let Go"
+              li
+                span.comp-title The Killer in You: A Tribute to Smashing Pumpkins
+                span.comp-detail 2005 &middot; "Quiet" (cover)
+              li
+                span.comp-title Trustkill Takeover Vol. II
+                span.comp-detail ~2006 &middot; "All We" (unreleased)
+              li
+                span.comp-title Punk Goes '90s
+                span.comp-detail 2006 &middot; "The Beautiful People" (Marilyn Manson cover) &middot; Fearless Records
+              li
+                span.comp-title Saw III Soundtrack
+                span.comp-detail 2006 &middot; "Your Nightmare"
+
+      //- =============================================
+      //- DUHKHA (2020-present)
+      //- =============================================
+      section.band-section(data-band="duhkha")
+        .container
+          .band-header
+            h2.band-name Duhkha
+            .band-meta
+              span.band-role Bass
+              span.band-years 2020 &ndash; present
+
+          //- Self-Titled 7"
+          article.release
+            .release-header
+              h3.release-title Duhkha
+              .release-meta
+                span.release-year 2021
+                span.release-label Escapist Records
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 7"
+                    td &mdash;
+                    td &mdash;
+                    td Escapist Records (US), RevHQ (international)
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td Bandcamp, streaming
+
+          //- Crasher
+          article.release
+            .release-header
+              h3.release-title "Crasher"
+              .release-meta
+                span.release-year 2023
+                span.release-label Punks for Autism
+            p.release-note Charity compilation track. 19-song punk/hip-hop comp. 100% of proceeds to autistic organizations.
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td 12" vinyl
+                    td &mdash;
+                    td &mdash;
+                    td You Can't Define Me! comp
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td Bandcamp single
+
+          //- A Place You Can't Come Back From
+          article.release
+            .release-header
+              h3.release-title A Place You Can't Come Back From
+              .release-meta
+                span.release-year 2024
+                span.release-label Good Fight Music
+            p.release-note James Hart (18V) guests on "Arrows." Trevor Friedrich (ex-18V) guests on "A Crisis Area Forever."
+            .release-pressings
+              table.pressing-table
+                thead
+                  tr
+                    th Format
+                    th Color
+                    th Copies
+                    th Notes
+                tbody
+                  tr
+                    td LP
+                    td Milky Clear w/ White Splatter
+                    td 100
+                    td Limited
+                  tr
+                    td LP
+                    td Neon Green w/ Black Splatter
+                    td 300
+                    td
+                  tr
+                    td LP
+                    td Coke Bottle Clear w/ Lemon
+                    td 600
+                    td
+                  tr
+                    td Digital
+                    td &mdash;
+                    td &mdash;
+                    td Streaming, Bandcamp
+              p.pressing-total Total first press vinyl: 1,000 copies
+
+    //- Band filter script
+    script.
+      (function () {
+        var buttons = document.querySelectorAll('.band-filter');
+        var sections = document.querySelectorAll('.band-section');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var filter = btn.getAttribute('data-filter');
+            buttons.forEach(function (b) { b.classList.remove('band-filter--active'); });
+            btn.classList.add('band-filter--active');
+            sections.forEach(function (s) {
+              s.style.display = filter === 'all' || s.getAttribute('data-band') === filter ? '' : 'none';
+            });
+          });
+        });
+      })();
+
+    //- Footer
+    footer.footer
+      .container
+        .grid.grid--12
+          .col-span-8
+            p.footer-name Keith Barney
+            p.footer-role Design Systems
+            a.footer-email(href="mailto:hello@keithbarney.com") hello@keithbarney.com
+
+    script(src="js/halftone.js" defer)

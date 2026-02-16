@@ -4,13 +4,16 @@
 // Uses Swiss Grid System
 // ===========================================
 
-// Warm palette
+// Warm palette (light mode)
 \:root
   --bg: #F5F3EF
   --text: #1A1A1A
   --text-muted: #6B6B6B
   --accent: #E63B2E
   --border: #E0DDD8
+  --canvas-bg: #F5F3EF
+  --canvas-dot: rgba(26, 26, 26, 0.6)
+  --content-panel-bg: #F5F3EF
   // Override grid margins for portfolio
   --grid-margin: 24px
   --grid-gutter: 24px
@@ -22,11 +25,22 @@
     --grid-margin: 80px
     --grid-gutter: 48px
 
+// Dark mode
+[data-theme="dark"]
+  --bg: #141414
+  --text: #F3F3F3
+  --text-muted: #868686
+  --accent: #F83446
+  --border: #282828
+  --canvas-bg: #0A0A0A
+  --canvas-dot: rgba(255, 255, 255, 0.85)
+  --content-panel-bg: #141414
+
 *
   box-sizing: border-box
 
 body
-  background: var(--bg)
+  background: var(--canvas-bg)
   color: var(--text)
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
   line-height: 1.6
@@ -218,6 +232,343 @@ body
 .footer-email
   color: var(--text-muted)
   text-decoration: none
+
+  &:hover
+    color: var(--text)
+
+// ===========================================
+// 9. DISCOGRAPHY
+// ===========================================
+
+// Nav active state
+.nav-link--active
+  color: var(--text)
+
+// Gap utility for nav
+.gap-3
+  gap: 24px
+
+// Hero
+.disco-hero
+  padding: 120px 0 80px
+
+  @media (min-width: 768px)
+    padding: 160px 0 120px
+
+.disco-title
+  font-weight: 500
+  letter-spacing: -0.03em
+  line-height: 1.1
+  margin: 0 0 16px
+
+.disco-subtitle
+  color: var(--text-muted)
+  margin: 0
+  line-height: 1.5
+
+// Band filters
+.band-filters
+  padding: 0 0 16px
+
+.band-filters-row
+  display: flex
+  flex-wrap: wrap
+  gap: 8px 24px
+
+.band-filter
+  background: none
+  border: none
+  padding: 0
+  cursor: pointer
+  font-family: "JetBrains Mono", monospace
+  font-size: 13px
+  text-transform: uppercase
+  letter-spacing: 0.06em
+  color: var(--text-muted)
+  transition: color 0.15s ease
+
+  &:hover
+    color: var(--text)
+
+  &--active
+    color: var(--text)
+
+// Band sections
+.band-section
+  padding: 80px 0
+  border-top: 1px solid var(--border)
+
+  > .container
+    display: grid
+    grid-template-columns: repeat(12, 1fr)
+    column-gap: var(--grid-gutter)
+
+    > *
+      grid-column: 1 / -1
+
+    @media (min-width: 1024px)
+      > *
+        grid-column: 1 / span 9
+
+.band-header
+  margin-bottom: 48px
+
+.band-name
+  font-weight: 500
+  letter-spacing: -0.03em
+  line-height: 1.1
+  margin: 0 0 8px
+
+.band-meta
+  display: flex
+  flex-wrap: wrap
+  gap: 4px 16px
+
+.band-role,
+.band-years
+  font-family: "JetBrains Mono", monospace
+  font-size: 14px
+  color: var(--text-muted)
+  letter-spacing: 0.02em
+
+.band-years
+  &::before
+    content: "/"
+    margin-right: 16px
+    color: var(--border)
+
+  @media (max-width: 480px)
+    &::before
+      display: none
+
+// Individual releases
+.release
+  margin-bottom: 64px
+  padding-bottom: 64px
+  border-bottom: 1px solid var(--border)
+
+  &:last-child
+    margin-bottom: 0
+    padding-bottom: 0
+    border-bottom: none
+
+.release-header
+  margin-bottom: 24px
+
+.release-title
+  font-weight: 500
+  letter-spacing: -0.02em
+  margin: 0 0 8px
+
+.release-meta
+  display: flex
+  flex-wrap: wrap
+  gap: 4px 12px
+  font-family: "JetBrains Mono", monospace
+  font-size: 13px
+  color: var(--text-muted)
+  letter-spacing: 0.02em
+
+.release-meta span + span
+  &::before
+    content: "\00b7"
+    margin-right: 12px
+    color: var(--border)
+
+.release-note
+  color: var(--text-muted)
+  font-size: 15px
+  margin: 0 0 24px
+  max-width: 65ch
+  line-height: 1.6
+
+// Pressing tables
+.release-pressings
+  overflow-x: auto
+  -webkit-overflow-scrolling: touch
+
+.pressing-table
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+  font-family: "JetBrains Mono", monospace
+  font-size: 13px
+  letter-spacing: 0.01em
+
+  thead
+    th
+      text-align: left
+      text-transform: uppercase
+      letter-spacing: 0.08em
+      font-weight: 500
+      font-size: 11px
+      color: var(--text-muted)
+      padding: 8px 16px 8px 0
+      border-bottom: 1px solid var(--border)
+      white-space: nowrap
+
+  tbody
+    td
+      padding: 8px 16px 8px 0
+      border-bottom: 1px solid var(--border)
+      color: var(--text)
+      vertical-align: top
+
+    tr:last-child td
+      border-bottom: none
+
+    // Repress rows get muted treatment
+    tr.pressing-repress td
+      color: var(--text-muted)
+
+  // Column widths (table-layout: fixed — use width, not min-width)
+  th:first-child,
+  td:first-child
+    width: 120px
+    white-space: nowrap
+
+  th:nth-child(2),
+  td:nth-child(2)
+    width: 200px
+
+  th:nth-child(3),
+  td:nth-child(3)
+    width: 80px
+    white-space: nowrap
+
+.pressing-total
+  font-family: "JetBrains Mono", monospace
+  font-size: 13px
+  color: var(--text-muted)
+  margin: 12px 0 0
+  letter-spacing: 0.02em
+
+// Compilation appearances
+.compilations
+  margin-top: 48px
+  padding-top: 32px
+  border-top: 1px solid var(--border)
+
+.compilations-heading
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  font-size: 12px
+  font-weight: 500
+  color: var(--text-muted)
+  margin: 0 0 16px
+
+.compilation-list
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    padding: 8px 0
+    border-bottom: 1px solid var(--border)
+    display: flex
+    flex-direction: column
+    gap: 2px
+
+    &:last-child
+      border-bottom: none
+
+.comp-title
+  font-weight: 500
+  font-size: 15px
+  color: var(--text)
+
+.comp-detail
+  font-family: "JetBrains Mono", monospace
+  font-size: 12px
+  color: var(--text-muted)
+  letter-spacing: 0.02em
+
+// Summary stats
+.disco-stats
+  padding: 80px 0
+  border-top: 1px solid var(--border)
+
+.disco-stats--top
+  padding: 0 0 80px
+  border-top: none
+
+.stats-heading
+  text-transform: uppercase
+  letter-spacing: 0.1em
+  font-size: 12px
+  font-weight: 500
+  color: var(--text-muted)
+  margin: 0 0 32px
+
+.stats-grid
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 32px
+
+  @media (min-width: 768px)
+    grid-template-columns: repeat(4, 1fr)
+
+  @media (min-width: 1024px)
+    grid-template-columns: repeat(7, 1fr)
+
+.stat
+  display: flex
+  flex-direction: column
+
+.stat-value
+  font-weight: 500
+  letter-spacing: -0.03em
+  line-height: 1.1
+  font-size: 36px
+
+  @media (min-width: 768px)
+    font-size: 48px
+
+.stat-label
+  font-family: "JetBrains Mono", monospace
+  font-size: 12px
+  color: var(--text-muted)
+  text-transform: uppercase
+  letter-spacing: 0.08em
+  margin-top: 8px
+
+// ===========================================
+// 10. HALFTONE CANVAS
+// ===========================================
+#halftone-canvas
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  z-index: -1
+  pointer-events: none
+  max-width: none
+
+// ===========================================
+// 11. SECTION LAYERING
+// ===========================================
+
+// Opaque panels — solid bg covers canvas
+.work,
+.experience,
+.about,
+.footer,
+.band-section,
+.disco-stats:not(.disco-stats--top)
+  background: var(--content-panel-bg)
+  position: relative
+
+// Theme toggle button
+#theme-toggle
+  background: none
+  border: none
+  padding: 0
+  cursor: pointer
+  font-family: inherit
+  font-size: inherit
+  color: var(--text-muted)
+  transition: color 0.15s ease
 
   &:hover
     color: var(--text)
