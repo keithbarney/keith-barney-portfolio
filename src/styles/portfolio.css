@@ -38,12 +38,13 @@
 }
 
 /* ===== 2. CANVAS THEME ===== */
-/* These are raw values (not token refs) because halftone.js reads them
-   via getComputedStyle — CSS var() references don't resolve there. */
+/* Portfolio-specific alias tokens for the halftone canvas.
+   Base tokens from tokens.css, semantic tokens from main.css.
+   halftone.js resolves var() refs via a temp element. */
 
 :root {
-  --canvas-dot: rgba(0, 0, 0, 0.04);
-  --canvas-bg: #F3F3F3;
+  --canvas-dot: var(--gray-300);
+  --canvas-bg: var(--ui-bg-default);
   --grid-margin: var(--ui-16);
 }
 
@@ -54,8 +55,8 @@
 }
 
 [data-theme="dark"] {
-  --canvas-dot: rgba(255, 255, 255, 0.7);
-  --canvas-bg: #0A0A0A;
+  --canvas-dot: var(--gray-300);
+  --canvas-bg: var(--ui-bg-default);
 }
 
 /* ===== 3. CANVAS POSITIONING ===== */
@@ -99,14 +100,20 @@ section {
 /* ===== 5. HEADER ===== */
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   padding-block: var(--space-20);
-  border-bottom: 1px solid var(--ui-border-default);
+  background: transparent;
 }
 
 .wordmark {
   font-family: var(--font-primary);
   font-weight: 500;
   font-size: var(--font-size-body);
+  line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ui-text-strong);
@@ -116,6 +123,7 @@ section {
 .nav-link {
   font-family: var(--font-secondary);
   font-size: var(--font-size-body-xsm);
+  line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ui-text-disabled);
@@ -130,6 +138,7 @@ section {
 #theme-toggle {
   font-family: var(--font-secondary);
   font-size: var(--font-size-body-xsm);
+  line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ui-text-disabled);
@@ -149,7 +158,8 @@ section {
 /* ===== 6. HERO ===== */
 
 .hero {
-  padding-block: clamp(96px, 15vh, 200px);
+  padding-top: clamp(120px, 18vh, 240px);
+  padding-bottom: clamp(96px, 15vh, 200px);
 }
 
 .name {
@@ -166,9 +176,9 @@ section {
   font-family: var(--font-secondary);
   font-size: var(--font-size-body-lg);
   color: var(--ui-text-strong);
+  background: var(--ui-bg-default);
   margin-top: var(--space-20);
   letter-spacing: 0.02em;
-  max-width: 40ch;
 }
 
 /* ===== 7. CAPABILITIES ===== */
@@ -180,13 +190,17 @@ section {
 }
 
 .disciplines {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   gap: var(--space-32);
   list-style: none;
   padding: 0;
   margin: 0;
   counter-reset: discipline;
+}
+
+.disciplines li {
+  grid-column: span 2;
 }
 
 .disciplines li {
@@ -428,7 +442,8 @@ section {
   }
 
   .hero {
-    padding-block: clamp(48px, 10vh, 96px);
+    padding-top: clamp(80px, 14vh, 120px);
+    padding-bottom: clamp(48px, 10vh, 96px);
   }
 
   .name {
@@ -446,8 +461,12 @@ section {
   }
 
   .disciplines {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: var(--space-16);
+  }
+
+  .disciplines li {
+    grid-column: span 1;
   }
 
   .footer .container {

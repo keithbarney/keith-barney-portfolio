@@ -5,18 +5,17 @@ html(lang="en" data-theme="dark")
   include partials/_head
 
   body
-    //- 1. Header - Name left, Contact right
-    header.header
-      .container.flex.justify-between.items-center
-        a.wordmark(href="/") Keith Barney
-        nav.flex.heavy-gap-3
-          a.nav-link(href="/discography.html") Discography
-          a.nav-link(href="mailto:hello@keithbarney.com") Contact
-          button#theme-toggle(aria-label="Toggle theme") Light
-
     main
       //- 2. Hero / Identity
       section.hero
+        //- 1. Header - Name left, Contact right
+        header.header
+          .container.flex.justify-between.items-center
+            a.wordmark(href="/") Keith Barney
+            nav.flex.items-center.heavy-gap-3
+              a.nav-link(href="/discography.html") Discography
+              a.nav-link(href="mailto:hello@keithbarney.com") Contact
+              button#theme-toggle(aria-label="Toggle theme") Light
         .container
           .heavy-grid.heavy-grid--12
             .heavy-col-span-8

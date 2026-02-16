@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "npm run build && concurrently \"npm run watch:pages\" \"npm run serve\"",
-    "build": "npm run build:styles && npm run build:scripts && npm run build:pages",
+    "build": "npm run build:tokens && npm run build:styles && npm run build:scripts && npm run build:pages",
+    "build:tokens": "node src/scripts/build-tokens.js",
     "build:scripts": "mkdir -p dist/js && cp src/scripts/halftone.js dist/js/halftone.js",
     "build:styles": "mkdir -p dist/css dist/fonts dist/images && cp ~/Projects/design/heavy-design-system/dist/main.css dist/css/main.css && cp src/styles/portfolio.css dist/css/portfolio.css && cp src/assets/fonts/* dist/fonts/ && cp src/assets/images/* dist/images/",
     "build:pages": "pug src/pages/*.pug --out dist/",
     "watch:pages": "pug --watch src/pages/*.pug --out dist/",
-    "serve": "browser-sync start --server dist --files 'dist/**/*' --port 3000"
+    "serve": "browser-sync start --config bs-config.cjs"
   },
   "engines": {
     "node": ">=18.0.0"
