@@ -4,13 +4,11 @@
   "description": "Keith Barney - Design Systems Designer Portfolio",
   "type": "module",
   "scripts": {
-    "dev": "npm run build:scripts && concurrently \"npm run watch:styles\" \"npm run watch:pages\" \"npm run serve\"",
-    "build": "npm run build:tokens && npm run build:styles && npm run build:scripts && npm run build:pages",
+    "dev": "npm run build && concurrently \"npm run watch:pages\" \"npm run serve\"",
+    "build": "npm run build:styles && npm run build:scripts && npm run build:pages",
     "build:scripts": "mkdir -p dist/js && cp src/scripts/halftone.js dist/js/halftone.js",
-    "build:tokens": "node src/scripts/build-tokens.js",
-    "build:styles": "sass src/styles/main.sass:dist/css/main.css",
+    "build:styles": "mkdir -p dist/css && cp ~/Projects/heavy-design-system/dist/main.css dist/css/main.css",
     "build:pages": "pug src/pages/*.pug --out dist/",
-    "watch:styles": "sass --watch src/styles/main.sass:dist/css/main.css",
     "watch:pages": "pug --watch src/pages/*.pug --out dist/",
     "serve": "browser-sync start --server dist --files 'dist/**/*'"
   },
@@ -20,15 +18,13 @@
   "keywords": [
     "portfolio",
     "design-systems",
-    "pug",
-    "sass"
+    "pug"
   ],
   "author": "Keith Barney",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^3.0.0",
     "concurrently": "^8.0.0",
-    "pug-cli": "^1.0.0-alpha6",
-    "sass": "^1.70.0"
+    "pug-cli": "^1.0.0-alpha6"
   }
 }

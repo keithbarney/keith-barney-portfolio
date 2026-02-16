@@ -9,7 +9,7 @@ html(lang="en" data-theme="dark")
     header.header
       .container.flex.justify-between.items-center
         a.wordmark(href="/") Keith Barney
-        nav.flex.gap-3
+        nav.flex.heavy-gap-3
           a.nav-link.nav-link--active(href="/discography.html") Discography
           a.nav-link(href="mailto:hello@keithbarney.com") Contact
           button#theme-toggle(aria-label="Toggle theme") Light
@@ -19,16 +19,16 @@ html(lang="en" data-theme="dark")
       //- Hero
       section.disco-hero
         .container
-          .grid.grid--12
-            .col-span-8
+          .heavy-grid.heavy-grid--12
+            .heavy-col-span-8
               h1.disco-title Discography
               p.disco-subtitle 30 years of records across 5 bands. Every pressing, every variant.
 
       //- Summary Stats
       section.disco-stats.disco-stats--top
         .container
-          .grid.grid--12
-            .col-span-full
+          .heavy-grid.heavy-grid--12
+            .heavy-col-span-full
               .stats-grid
                 .stat
                   span.stat-value 5
@@ -55,8 +55,8 @@ html(lang="en" data-theme="dark")
       //- Band Filters
       section.band-filters
         .container
-          .grid.grid--12
-            .col-span-full
+          .heavy-grid.heavy-grid--12
+            .heavy-col-span-full
               .band-filters-row
                 button.band-filter.band-filter--active(data-filter="all") All
                 button.band-filter(data-filter="adamantium") Adamantium
@@ -1076,8 +1076,8 @@ html(lang="en" data-theme="dark")
     //- Footer
     footer.footer
       .container
-        .grid.grid--12
-          .col-span-8
+        .heavy-grid.heavy-grid--12
+          .heavy-col-span-8
             p.footer-name Keith Barney
             p.footer-role Design Systems
             a.footer-email(href="mailto:hello@keithbarney.com") hello@keithbarney.com
