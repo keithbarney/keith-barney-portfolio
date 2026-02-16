@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <g fill="#333">
+    <!-- Uniform dot grid — design systems = systematic repetition -->
+    <g id="row" transform="translate(40, 40)">
+      <circle cx="0" cy="0" r="3"/><circle cx="40" cy="0" r="3"/><circle cx="80" cy="0" r="3"/><circle cx="120" cy="0" r="3"/><circle cx="160" cy="0" r="3"/><circle cx="200" cy="0" r="3"/><circle cx="240" cy="0" r="3"/><circle cx="280" cy="0" r="3"/><circle cx="320" cy="0" r="3"/><circle cx="360" cy="0" r="3"/><circle cx="400" cy="0" r="3"/><circle cx="440" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="520" cy="0" r="3"/><circle cx="560" cy="0" r="3"/><circle cx="600" cy="0" r="3"/><circle cx="640" cy="0" r="3"/><circle cx="680" cy="0" r="3"/><circle cx="720" cy="0" r="3"/>
+    </g>
+  </g>
+  <!-- Repeat rows -->
+  <use href="#row" x="0" y="40"/>
+  <use href="#row" x="0" y="80"/>
+  <use href="#row" x="0" y="120"/>
+  <use href="#row" x="0" y="160"/>
+  <use href="#row" x="0" y="200"/>
+  <use href="#row" x="0" y="240"/>
+  <use href="#row" x="0" y="280"/>
+  <use href="#row" x="0" y="320"/>
+  <use href="#row" x="0" y="360"/>
+  <use href="#row" x="0" y="400"/>
+  <use href="#row" x="0" y="440"/>
+  <use href="#row" x="0" y="480"/>
+  <use href="#row" x="0" y="520"/>
+  <!-- Highlight cluster — a brighter zone suggesting a component -->
+  <g fill="#F3F3F3" opacity="0.9">
+    <circle cx="240" cy="200" r="5"/><circle cx="280" cy="200" r="5"/><circle cx="320" cy="200" r="5"/><circle cx="360" cy="200" r="5"/><circle cx="400" cy="200" r="5"/>
+    <circle cx="240" cy="240" r="5"/><circle cx="280" cy="240" r="5"/><circle cx="320" cy="240" r="5"/><circle cx="360" cy="240" r="5"/><circle cx="400" cy="240" r="5"/>
+    <circle cx="240" cy="280" r="5"/><circle cx="280" cy="280" r="5"/><circle cx="320" cy="280" r="5"/><circle cx="360" cy="280" r="5"/><circle cx="400" cy="280" r="5"/>
+    <circle cx="240" cy="320" r="5"/><circle cx="280" cy="320" r="5"/><circle cx="320" cy="320" r="5"/><circle cx="360" cy="320" r="5"/><circle cx="400" cy="320" r="5"/>
+  </g>
+  <g fill="#F3F3F3" opacity="0.4">
+    <circle cx="480" cy="360" r="4"/><circle cx="520" cy="360" r="4"/><circle cx="560" cy="360" r="4"/>
+    <circle cx="480" cy="400" r="4"/><circle cx="520" cy="400" r="4"/><circle cx="560" cy="400" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <!-- Node network — token infrastructure = connected pipeline -->
+  <!-- Connection lines -->
+  <line x1="120" y1="300" x2="280" y2="180" stroke="#333" stroke-width="1"/>
+  <line x1="120" y1="300" x2="280" y2="420" stroke="#333" stroke-width="1"/>
+  <line x1="280" y1="180" x2="440" y2="240" stroke="#444" stroke-width="1"/>
+  <line x1="280" y1="420" x2="440" y2="360" stroke="#444" stroke-width="1"/>
+  <line x1="280" y1="180" x2="440" y2="120" stroke="#333" stroke-width="1"/>
+  <line x1="280" y1="420" x2="440" y2="480" stroke="#333" stroke-width="1"/>
+  <line x1="440" y1="240" x2="600" y2="200" stroke="#555" stroke-width="1"/>
+  <line x1="440" y1="240" x2="600" y2="300" stroke="#555" stroke-width="1"/>
+  <line x1="440" y1="360" x2="600" y2="300" stroke="#555" stroke-width="1"/>
+  <line x1="440" y1="360" x2="600" y2="400" stroke="#555" stroke-width="1"/>
+  <line x1="440" y1="120" x2="600" y2="120" stroke="#444" stroke-width="1"/>
+  <line x1="440" y1="480" x2="600" y2="480" stroke="#444" stroke-width="1"/>
+  <line x1="600" y1="200" x2="700" y2="200" stroke="#333" stroke-width="1"/>
+  <line x1="600" y1="300" x2="700" y2="300" stroke="#333" stroke-width="1"/>
+  <line x1="600" y1="400" x2="700" y2="400" stroke="#333" stroke-width="1"/>
+  <line x1="600" y1="120" x2="700" y2="120" stroke="#282828" stroke-width="1"/>
+  <line x1="600" y1="480" x2="700" y2="480" stroke="#282828" stroke-width="1"/>
+  <!-- Source node (bright) -->
+  <circle cx="120" cy="300" r="10" fill="#F3F3F3"/>
+  <!-- Branch nodes -->
+  <circle cx="280" cy="180" r="7" fill="#888"/>
+  <circle cx="280" cy="420" r="7" fill="#888"/>
+  <!-- Transform nodes -->
+  <circle cx="440" cy="120" r="5" fill="#555"/>
+  <circle cx="440" cy="240" r="6" fill="#AAA"/>
+  <circle cx="440" cy="360" r="6" fill="#AAA"/>
+  <circle cx="440" cy="480" r="5" fill="#555"/>
+  <!-- Output nodes -->
+  <circle cx="600" cy="120" r="4" fill="#444"/>
+  <circle cx="600" cy="200" r="5" fill="#777"/>
+  <circle cx="600" cy="300" r="5" fill="#777"/>
+  <circle cx="600" cy="400" r="5" fill="#777"/>
+  <circle cx="600" cy="480" r="4" fill="#444"/>
+  <!-- Terminal dots -->
+  <circle cx="700" cy="120" r="3" fill="#333"/>
+  <circle cx="700" cy="200" r="3" fill="#555"/>
+  <circle cx="700" cy="300" r="3" fill="#555"/>
+  <circle cx="700" cy="400" r="3" fill="#555"/>
+  <circle cx="700" cy="480" r="3" fill="#333"/>
+</svg>

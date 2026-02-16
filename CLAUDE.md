@@ -77,10 +77,10 @@ Dieter Rams, Müller-Brockmann, Bauhaus, airport displays, cockpit instrumentati
 
 ## Design Tokens
 
-Base tokens live at `~/Projects/tokens/`. Created in Figma, exported as JSON following the W3C DTCG spec.
+Base tokens live at `~/Projects/design/tokens/`. Created in Figma, exported as JSON following the W3C DTCG spec.
 
 ### Token Architecture
-1. **Base tokens** — Raw values in `~/Projects/tokens/*.json`
+1. **Base tokens** — Raw values in `~/Projects/design/tokens/*.json`
 2. **Alias tokens** — Project-specific semantic references to base tokens
 3. **CSS output** — Compiled custom properties for stylesheets
 
@@ -139,7 +139,7 @@ Dots become hyphens, prefixed with `--`:
 # Technical
 
 ## Overview
-Static portfolio site built with Pug and Sass. Pulls design tokens from the shared `~/Projects/tokens/` directory. No JavaScript frameworks — pure static generation.
+Static portfolio site built with Pug and Sass. Pulls design tokens from the shared `~/Projects/design/tokens/` directory. No JavaScript frameworks — pure static generation.
 
 ## Tech Stack
 - **Templating:** Pug
@@ -199,7 +199,7 @@ index.pug
 
 ## Token Build Process
 ```
-~/Projects/tokens/*.json → build-tokens.js → _tokens.sass
+~/Projects/design/tokens/*.json → build-tokens.js → _tokens.sass
 ```
 
 **Always run `npm run build:tokens` after modifying token JSON files.**

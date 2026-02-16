@@ -35,50 +35,80 @@ html(lang="en" data-theme="dark")
       //- 4. Work / Case Studies
       section.work
         .container
-          article.project.heavy-grid.heavy-grid--12.heavy-gap-4
+          article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 01
               span.project-category Design System
               h2.project-name Enterprise Design System
               p.project-description Led the creation of a comprehensive design system serving 50+ product teams across web and mobile platforms. Established the foundational architecture including design tokens, component APIs, and documentation standards. Worked closely with engineering to ensure seamless integration with existing build systems and workflows. The system reduced design-to-development handoff time significantly while improving visual consistency across all products. Created governance processes and contribution guidelines that enabled distributed teams to extend the system independently.
-              p.project-skills Design Systems // Component Architecture // Design Tokens // Documentation // Governance // Cross-platform
+              .project-skills.heavy-cluster
+                span.skill-tag Design Systems
+                span.skill-tag Component Architecture
+                span.skill-tag Design Tokens
+                span.skill-tag Documentation
+                span.skill-tag Governance
+                span.skill-tag Cross-platform
             .heavy-col-span-6.project-image
+              img(src="images/case-study-01.svg" alt="Design system grid pattern" loading="lazy")
 
-          article.project.heavy-grid.heavy-grid--12.heavy-gap-4
+          article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 02
               span.project-category Accessibility
               h2.project-name Accessibility Framework
               p.project-description Developed accessibility standards and tooling integrated directly into the design system, achieving WCAG 2.1 AA compliance across all products. Built automated testing pipelines that caught accessibility regressions before deployment. Created component-level documentation detailing keyboard navigation patterns, screen reader behavior, and color contrast requirements. Partnered with product teams to remediate existing accessibility debt while establishing patterns that prevented future issues. Trained designers and engineers on inclusive design principles through workshops and embedded support.
-              p.project-skills Accessibility // WCAG Compliance // Automated Testing // Documentation // Training // Inclusive Design
+              .project-skills.heavy-cluster
+                span.skill-tag Accessibility
+                span.skill-tag WCAG Compliance
+                span.skill-tag Automated Testing
+                span.skill-tag Documentation
+                span.skill-tag Training
+                span.skill-tag Inclusive Design
             .heavy-col-span-6.project-image
+              img(src="images/case-study-02.svg" alt="Accessibility concentric circles" loading="lazy")
 
-          article.project.heavy-grid.heavy-grid--12.heavy-gap-4
+          article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 03
               span.project-category Infrastructure
               h2.project-name Token Infrastructure
               p.project-description Created end-to-end Figma-to-code pipelines using design tokens as the source of truth, reducing handoff friction and ensuring design-development parity. Built tooling that automatically synchronized color, typography, and spacing values between design files and production codebases. Established naming conventions and token architecture that scaled across multiple platforms including web, iOS, and Android. The infrastructure enabled designers to push changes that propagated to production without engineering intervention, dramatically accelerating iteration cycles and reducing visual inconsistencies.
-              p.project-skills Design Tokens // Figma API // Build Tooling // Multi-platform // Automation // Style Dictionary
+              .project-skills.heavy-cluster
+                span.skill-tag Design Tokens
+                span.skill-tag Figma API
+                span.skill-tag Build Tooling
+                span.skill-tag Multi-platform
+                span.skill-tag Automation
+                span.skill-tag Style Dictionary
             .heavy-col-span-6.project-image
+              img(src="images/case-study-03.svg" alt="Token infrastructure node network" loading="lazy")
 
-          article.project.heavy-grid.heavy-grid--12.heavy-gap-4
+          article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 04
               span.project-category Design Leadership
               h2.project-name SpeakUp
               p.project-description Co-founded a workplace collaboration platform that helped companies surface hidden problems and ideas from across their organizations. Owned all design work from the ground up — branding, product UI, and marketing site — while leading a remote development team of six engineers through daily ceremonies and sprint management. Shipped a product that real companies adopted to crowdsource solutions, vote on priorities, and turn employee insight into concrete decisions. The platform reached break-even and remains live today. The experience shaped how I think about building products from zero, leading distributed teams, and designing systems where the most important information rises to the top.
-              p.project-skills Product Design // Design Leadership // Remote Team Management // Branding // Web Applications // Startup
+              .project-skills.heavy-cluster
+                span.skill-tag Product Design
+                span.skill-tag Design Leadership
+                span.skill-tag Remote Team Management
+                span.skill-tag Branding
+                span.skill-tag Web Applications
+                span.skill-tag Startup
             .heavy-col-span-6.project-image
+              img(src="images/case-study-04.svg" alt="SpeakUp layered interface" loading="lazy")
 
       //- 5. Experience / Companies
       section.experience
         .container
           ul.companies
-            li Company Name
-            li Company Name
-            li Company Name
-            li Company Name
+            li
+              span.company-name Experian
+              span.company-role Design Systems Lead — 5 years
+            li
+              span.company-name SpeakUp
+              span.company-role Co-founder, Design Lead
 
       //- 6. About
       section.about
@@ -86,7 +116,7 @@ html(lang="en" data-theme="dark")
           .heavy-grid.heavy-grid--12
             .heavy-col-span-6
               p I build design systems that scale. My focus is on the infrastructure layer—tokens, components, documentation—that enables teams to ship consistent, accessible products.
-              p Previously at #[a(href="#") Company] and #[a(href="#") Company].
+              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian] and #[a(href="#") SpeakUp].
 
       //- 7. Social / Presence
       section.social

@@ -1,0 +1,461 @@
+/* ===========================================
+   PORTFOLIO — Page-specific styles
+   Keith Barney Design Systems Portfolio
+   =========================================== */
+
+/* ===== 1. @FONT-FACE ===== */
+
+@font-face {
+  font-family: "Test American Grotesk";
+  src: url("../fonts/TestAmericanGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Test American Grotesk";
+  src: url("../fonts/TestAmericanGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Test American Grotesk";
+  src: url("../fonts/TestAmericanGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 2. CANVAS THEME ===== */
+/* These are raw values (not token refs) because halftone.js reads them
+   via getComputedStyle — CSS var() references don't resolve there. */
+
+:root {
+  --canvas-dot: rgba(0, 0, 0, 0.04);
+  --canvas-bg: #F3F3F3;
+  --grid-margin: var(--ui-16);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-margin: var(--ui-24);
+  }
+}
+
+[data-theme="dark"] {
+  --canvas-dot: rgba(255, 255, 255, 0.7);
+  --canvas-bg: #0A0A0A;
+}
+
+/* ===== 3. CANVAS POSITIONING ===== */
+
+#halftone-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 4. PAGE FOUNDATIONS ===== */
+
+body {
+  background: var(--ui-bg-default);
+  color: var(--ui-text-default);
+  font-family: var(--font-primary);
+  line-height: var(--line-height-base);
+  margin: 0;
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+}
+
+section {
+  padding-block: var(--space-72);
+}
+
+/* ===== 5. HEADER ===== */
+
+.header {
+  padding-block: var(--space-20);
+  border-bottom: 1px solid var(--ui-border-default);
+}
+
+.wordmark {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ui-text-strong);
+  text-decoration: none;
+}
+
+.nav-link {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ui-text-disabled);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--ui-text-strong);
+}
+
+#theme-toggle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ui-text-disabled);
+  background: none;
+  border: 1px solid var(--ui-border-default);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  color: var(--ui-text-strong);
+  border-color: var(--ui-text-disabled);
+}
+
+/* ===== 6. HERO ===== */
+
+.hero {
+  padding-block: clamp(96px, 15vh, 200px);
+}
+
+.name {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: clamp(52px, 9vw, 128px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ui-text-strong);
+  margin: 0;
+}
+
+.role {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-lg);
+  color: var(--ui-text-strong);
+  margin-top: var(--space-20);
+  letter-spacing: 0.02em;
+  max-width: 40ch;
+}
+
+/* ===== 7. CAPABILITIES ===== */
+
+.capabilities {
+  padding-block: var(--space-48);
+  border-top: 1px solid var(--ui-border-default);
+  border-bottom: 1px solid var(--ui-border-default);
+}
+
+.disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-32);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: discipline;
+}
+
+.disciplines li {
+  counter-increment: discipline;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ui-text-default);
+}
+
+.disciplines li::before {
+  content: counter(discipline, decimal-leading-zero) "\00a0\2014\00a0";
+  color: var(--ui-text-disabled);
+}
+
+/* ===== 8. WORK / CASE STUDIES ===== */
+
+.work {
+  padding-block: var(--space-72);
+}
+
+
+.project {
+  padding-block: var(--space-48);
+  border-bottom: 1px solid var(--ui-border-default);
+  margin: 0;
+}
+
+.project:first-child {
+  border-top: 1px solid var(--ui-border-default);
+}
+
+.project-index {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h1);
+  color: var(--ui-text-disabled);
+  line-height: 1;
+  margin-bottom: var(--space-20);
+}
+
+.project-category {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ui-text-disabled);
+  margin-bottom: var(--space-8);
+}
+
+.project-name {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--font-size-h3);
+  color: var(--ui-text-strong);
+  margin: 0 0 var(--space-16) 0;
+  line-height: var(--line-height-tight);
+}
+
+.project-description {
+  font-size: var(--font-size-body);
+  color: var(--ui-text-default);
+  line-height: var(--line-height-loose);
+  max-width: var(--measure);
+  margin: 0 0 var(--space-24) 0;
+}
+
+.project-skills {
+  --cluster-space: var(--space-8);
+}
+
+.skill-tag {
+  display: inline-block;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ui-text-default);
+  border: 1px solid var(--ui-border-default);
+  padding: var(--space-2) var(--space-10);
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+}
+
+.project-image {
+  display: flex;
+  align-items: center;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== 9. EXPERIENCE ===== */
+
+.experience {
+  padding-block: var(--space-72);
+  border-top: 1px solid var(--ui-border-default);
+}
+
+.companies {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.companies li {
+  padding-block: var(--space-24);
+  border-bottom: 1px solid var(--ui-border-default);
+}
+
+.company-name {
+  display: block;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: var(--font-size-h3);
+  color: var(--ui-text-strong);
+  line-height: var(--line-height-tight);
+}
+
+.company-role {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ui-text-disabled);
+  margin-top: var(--space-4);
+}
+
+/* ===== 10. ABOUT ===== */
+
+.about {
+  padding-block: var(--space-72);
+}
+
+.about p {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-loose);
+  max-width: var(--measure);
+  color: var(--ui-text-default);
+  margin: 0;
+}
+
+.about p + p {
+  margin-top: var(--space-16);
+}
+
+.about a {
+  color: var(--ui-text-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--ui-border-default);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.about a:hover {
+  text-decoration-color: var(--ui-text-strong);
+}
+
+/* ===== 11. SOCIAL ===== */
+
+.social {
+  padding-block: var(--space-48);
+}
+
+.social .container {
+  display: flex;
+  gap: var(--space-24);
+}
+
+.social a {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ui-text-disabled);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.social a:hover {
+  color: var(--ui-text-strong);
+}
+
+/* ===== 12. FOOTER ===== */
+
+.footer {
+  padding-block: var(--space-24);
+  border-top: 1px solid var(--ui-border-default);
+}
+
+.footer .container {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-24);
+}
+
+.footer-name {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-body-sm);
+  color: var(--ui-text-strong);
+  margin: 0;
+}
+
+.footer-role {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  color: var(--ui-text-disabled);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.footer-email {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  color: var(--ui-text-disabled);
+  text-decoration: none;
+  margin-left: auto;
+  transition: color 0.2s ease;
+}
+
+.footer-email:hover {
+  color: var(--ui-text-strong);
+}
+
+
+/* ===== 14. RESPONSIVE ===== */
+
+@media (max-width: 767px) {
+  section {
+    padding-block: var(--space-48);
+  }
+
+  .hero {
+    padding-block: clamp(48px, 10vh, 96px);
+  }
+
+  .name {
+    font-size: clamp(36px, 12vw, 56px);
+  }
+
+  .hero .heavy-col-span-8,
+  .project .heavy-col-span-6,
+  .about .heavy-col-span-6 {
+    grid-column: 1 / -1;
+  }
+
+  .project-image {
+    display: none;
+  }
+
+  .disciplines {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+
+  .footer .container {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .footer-email {
+    margin-left: 0;
+  }
+}

@@ -54,19 +54,26 @@
   var rafId = null;
   var dotColor = 'rgba(255,255,255,0.85)';
   var bgColor = '#0A0A0A';
+  var heroEl = null;
 
   function createCanvas() {
     canvas = document.createElement('canvas');
     canvas.id = 'halftone-canvas';
     canvas.setAttribute('aria-hidden', 'true');
-    document.body.insertBefore(canvas, document.body.firstChild);
+    heroEl = document.querySelector('.hero');
+    if (heroEl) {
+      heroEl.insertBefore(canvas, heroEl.firstChild);
+    } else {
+      document.body.insertBefore(canvas, document.body.firstChild);
+    }
     ctx = canvas.getContext('2d');
   }
 
   function resize() {
     isMobile = window.innerWidth < 768;
-    w = window.innerWidth;
-    h = window.innerHeight;
+    var target = heroEl || document.documentElement;
+    w = target.offsetWidth;
+    h = target.offsetHeight;
     canvas.width = w * DPR;
     canvas.height = h * DPR;
     canvas.style.width = w + 'px';
@@ -160,11 +167,12 @@
 
     initToggle();
 
+    var observeTarget = heroEl || document.documentElement;
     if (typeof ResizeObserver !== 'undefined') {
       new ResizeObserver(function () {
         resize();
         if (isReducedMotion) staticRender();
-      }).observe(document.documentElement);
+      }).observe(observeTarget);
     } else {
       window.addEventListener('resize', function () {
         resize();
