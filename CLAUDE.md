@@ -145,7 +145,7 @@ Static portfolio site built with Pug and Sass. Pulls design tokens from the shar
 - **Templating:** Pug
 - **Styling:** Sass
 - **Build:** Node.js scripts, Browser-Sync
-- **Fonts:** Test American Grotesk, Departure Mono, Inter
+- **Fonts:** Test American Grotesk, JetBrains Mono, Inter
 
 ## Naming Conventions
 **Folder names:** Use lowercase with hyphens: `lorem-ipsum-dolor`

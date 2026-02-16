@@ -17,3 +17,11 @@ dist/
 # Logs
 *.log
 npm-debug.log*
+
+# Personal docs (resume, prep, notes)
+Keith-Barney-Resume.docx
+resume.html
+self-assessment.*
+case-studies-prep.md
+case-studies.html
+mentorship-log.md

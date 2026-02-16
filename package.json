@@ -4,8 +4,9 @@
   "description": "Keith Barney - Design Systems Designer Portfolio",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run watch:styles\" \"npm run watch:pages\" \"npm run serve\"",
-    "build": "npm run build:tokens && npm run build:styles && npm run build:pages",
+    "dev": "npm run build:scripts && concurrently \"npm run watch:styles\" \"npm run watch:pages\" \"npm run serve\"",
+    "build": "npm run build:tokens && npm run build:styles && npm run build:scripts && npm run build:pages",
+    "build:scripts": "mkdir -p dist/js && cp src/scripts/halftone.js dist/js/halftone.js",
     "build:tokens": "node src/scripts/build-tokens.js",
     "build:styles": "sass src/styles/main.sass:dist/css/main.css",
     "build:pages": "pug src/pages/*.pug --out dist/",
