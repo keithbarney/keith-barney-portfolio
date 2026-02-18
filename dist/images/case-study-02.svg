@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <!-- Concentric circles — accessibility = inclusive, radiating outward -->
+  <circle cx="400" cy="300" r="260" stroke="#282828" stroke-width="1"/>
+  <circle cx="400" cy="300" r="220" stroke="#282828" stroke-width="1"/>
+  <circle cx="400" cy="300" r="180" stroke="#333" stroke-width="1"/>
+  <circle cx="400" cy="300" r="140" stroke="#444" stroke-width="1"/>
+  <circle cx="400" cy="300" r="100" stroke="#555" stroke-width="1.5"/>
+  <circle cx="400" cy="300" r="60" stroke="#888" stroke-width="2"/>
+  <circle cx="400" cy="300" r="24" stroke="#F3F3F3" stroke-width="2"/>
+  <!-- Center dot -->
+  <circle cx="400" cy="300" r="4" fill="#F3F3F3"/>
+  <!-- Crosshair lines -->
+  <line x1="400" y1="30" x2="400" y2="570" stroke="#282828" stroke-width="1"/>
+  <line x1="130" y1="300" x2="670" y2="300" stroke="#282828" stroke-width="1"/>
+  <!-- Accent arcs -->
+  <path d="M 400 160 A 140 140 0 0 1 540 300" stroke="#F3F3F3" stroke-width="1.5" opacity="0.5"/>
+  <path d="M 260 300 A 140 140 0 0 1 400 440" stroke="#F3F3F3" stroke-width="1.5" opacity="0.3"/>
+</svg>

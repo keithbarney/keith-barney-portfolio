@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keith Barney — Interview Presentation</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* ===== FONTS ===== */
+    @font-face {
+      font-family: 'Test American Grotesk';
+      src: url('fonts/TestAmericanGrotesk-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Test American Grotesk';
+      src: url('fonts/TestAmericanGrotesk-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Test American Grotesk';
+      src: url('fonts/TestAmericanGrotesk-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* ===== TOKENS (presentation-specific only — DS provides the rest) ===== */
+    :root {
+      --slide-padding: clamp(48px, 4vw, 96px);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: clamp(100%, calc(0.5vw + 0.625rem), 137.5%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--ui-bg-default);
+      color: var(--ui-text-default);
+      overflow: hidden;
+    }
+
+    h1, h2 {
+      margin-bottom: 0;
+    }
+
+    /* ===== SLIDE SYSTEM ===== */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: clamp(24px, 1.5vw, 40px);
+      padding: var(--slide-padding);
+      background: var(--ui-bg-default);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .slide--title {
+      background: transparent; /* shows halftone canvas, which paints ui-bg-default */
+    }
+
+    #halftone-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .deck {
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--ui-text-disabled);
+      transition: width 0.4s ease;
+      z-index: 100;
+    }
+
+    /* ===== SLIDE COUNTER ===== */
+    .counter {
+      position: fixed;
+      bottom: 24px;
+      right: var(--slide-padding);
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      z-index: 100;
+    }
+
+    /* ===== NAV HINT ===== */
+    .nav-hint {
+      position: fixed;
+      bottom: 24px;
+      left: var(--slide-padding);
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      z-index: 100;
+      transition: opacity 1s ease;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    .display {
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ui-text-strong);
+    }
+
+    .heading {
+      font-family: var(--font-primary);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--ui-text-strong);
+    }
+
+    .subheading {
+      font-family: var(--font-primary);
+      font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--ui-text-default);
+    }
+
+    .body-text {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-body-xlg);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ui-text-default);
+      max-width: 65ch;
+    }
+
+    .label {
+      font-family: var(--font-secondary);
+      font-size: var(--font-size-body-sm);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ui-text-default);
+    }
+
+    /* ===== RULE ===== */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--ui-border-default);
+    }
+
+    .rule--strong {
+      border-top: 1px solid var(--ui-text-disabled);
+    }
+
+    /* ===== LAYOUT HELPERS ===== */
+    .span-full { grid-column: 1 / -1; }
+    .span-8 { grid-column-end: span 8; }
+    .span-7 { grid-column-end: span 7; }
+    .span-6 { grid-column-end: span 6; }
+    .span-5 { grid-column-end: span 5; }
+    .span-4 { grid-column-end: span 4; }
+    .span-3 { grid-column-end: span 3; }
+    .start-1 { grid-column-start: 1; }
+    .start-4 { grid-column-start: 4; }
+    .start-5 { grid-column-start: 5; }
+    .start-6 { grid-column-start: 6; }
+    .start-7 { grid-column-start: 7; }
+    .start-9 { grid-column-start: 9; }
+
+    .self-end { align-self: end; }
+    .self-center { align-self: center; }
+    .self-start { align-self: start; }
+
+    .flex-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gap-xs { gap: 4px; }
+    .gap-sm { gap: 8px; }
+    .gap-md { gap: 16px; }
+    .gap-lg { gap: 24px; }
+    .gap-xl { gap: 32px; }
+    .gap-2xl { gap: 48px; }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-entry {
+      display: grid;
+      grid-template-columns: 80px 24px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 12px 0;
+    }
+
+    .timeline-year {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ui-text-disabled);
+      margin-top: 5px;
+      justify-self: center;
+      position: relative;
+    }
+
+    .timeline-dot::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: calc(100% + 16px);
+      background: var(--ui-border-default);
+    }
+
+    .timeline-entry:last-child .timeline-dot::after {
+      display: none;
+    }
+
+    .timeline-dot--active {
+      background: var(--ui-text-strong);
+      width: 10px;
+      height: 10px;
+      margin-top: 4px;
+    }
+
+    .timeline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .timeline-company {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--ui-text-strong);
+    }
+
+    .timeline-role {
+      font-size: 0.875rem;
+      color: var(--ui-text-default);
+    }
+
+    /* ===== CASE STUDY HEADER ===== */
+    .cs-number {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cs-index {
+      font-family: var(--font-secondary);
+      font-size: clamp(4rem, 8vw, 8rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--ui-border-default);
+      letter-spacing: -0.02em;
+    }
+
+    .cs-section-label {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ui-text-default);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--ui-border-default);
+      margin-bottom: 12px;
+    }
+
+    /* ===== BULLET LIST ===== */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bullet-list li {
+      font-size: var(--font-size-body-xlg);
+      line-height: 1.5;
+      color: var(--ui-text-default);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--ui-text-default);
+    }
+
+    /* ===== IMPACT METRIC ===== */
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 0;
+      border-top: 1px solid var(--ui-border-default);
+    }
+
+    .metric-value {
+      font-family: var(--font-primary);
+      font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+      font-weight: 700;
+      color: var(--ui-text-strong);
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== TAG ===== */
+    .tag {
+      display: inline-block;
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--ui-border-default);
+      color: var(--ui-text-default);
+      border-radius: 2px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ===== VISUAL PLACEHOLDER ===== */
+    .visual-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      border: 1px dashed var(--ui-border-default);
+      border-radius: 4px;
+      color: var(--ui-text-disabled);
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ===== OWNERSHIP SPLIT ===== */
+    .ownership {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ownership-group-label {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--ui-text-default);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* ===== MENU ===== */
+    .menu-btn {
+      position: fixed;
+      top: 24px;
+      right: var(--slide-padding);
+      z-index: 200;
+      background: none;
+      border: 1px solid var(--ui-border-default);
+      color: var(--ui-text-default);
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      color: var(--ui-text-strong);
+      border-color: var(--ui-border-strong);
+    }
+
+    .menu-btn.open {
+      color: var(--ui-text-strong);
+      border-color: var(--ui-text-disabled);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(20, 20, 20, 0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: min(480px, 80vw);
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--ui-border-default);
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .menu-item:first-child {
+      border-top: 1px solid var(--ui-border-default);
+    }
+
+    .menu-item:hover .menu-item-label {
+      color: var(--ui-text-strong);
+    }
+
+    .menu-item-number {
+      font-family: var(--font-secondary);
+      font-size: 0.75rem;
+      color: var(--ui-text-default);
+      letter-spacing: 0.08em;
+      min-width: 28px;
+    }
+
+    .menu-item-label {
+      font-family: var(--font-primary);
+      font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+      font-weight: 500;
+      color: var(--ui-text-default);
+      transition: color 0.15s ease;
+    }
+
+    .menu-item.active .menu-item-label {
+      color: var(--ui-text-strong);
+    }
+
+    .menu-item.active .menu-item-number {
+      color: var(--ui-text-default);
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { overflow: visible; }
+      .slide {
+        position: relative;
+        opacity: 1;
+        pointer-events: auto;
+        page-break-after: always;
+        height: 100vh;
+      }
+      .progress, .counter, .nav-hint, .menu-btn, .menu-overlay { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="halftone-canvas" aria-hidden="true"></canvas>
+<!-- Halftone canvas — adapted from keith-barney-portfolio -->
+<script>
+(function () {
+  'use strict';
+
+  function hash(x, y, seed) {
+    var v = Math.sin(x * 127.1 + y * 311.7 + seed * 43758.5453) * 43758.5453;
+    return v - Math.floor(v);
+  }
+
+  function noise2d(px, py, seed) {
+    var ix = Math.floor(px);
+    var iy = Math.floor(py);
+    var fx = px - ix;
+    var fy = py - iy;
+    fx = fx * fx * (3 - 2 * fx);
+    fy = fy * fy * (3 - 2 * fy);
+    var a = hash(ix, iy, seed);
+    var b = hash(ix + 1, iy, seed);
+    var c = hash(ix, iy + 1, seed);
+    var d = hash(ix + 1, iy + 1, seed);
+    return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+  }
+
+  function fbm(px, py, seed, octaves) {
+    var val = 0, amp = 0.5, freq = 1;
+    for (var i = 0; i < octaves; i++) {
+      val += noise2d(px * freq, py * freq, seed + i * 100) * amp;
+      amp *= 0.5;
+      freq *= 2;
+    }
+    return val;
+  }
+
+  var P = {
+    grid: 5, gridMobile: 15, maxRFactor: 0.36, yFadeExp: 0.2,
+    noiseScale: 2, speedX: 1.45, speedY: 0.95, octaves: 6,
+    seed: 113, timeScale: 0.0002, minDot: 1
+  };
+
+  var DPR = window.devicePixelRatio || 1;
+  var TAU = Math.PI * 2;
+  var canvas = document.getElementById('halftone-canvas');
+  var ctx = canvas.getContext('2d');
+  var w = 0, h = 0;
+  var startTime = performance.now();
+  var isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.innerWidth < 768;
+  var DOT_COLOR = '#404040';
+  var BG_COLOR = '#141414';
+
+  function resize() {
+    isMobile = window.innerWidth < 768;
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w * DPR;
+    canvas.height = h * DPR;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function draw(t) {
+    var grid = isMobile ? P.gridMobile : P.grid;
+    var maxR = grid * P.maxRFactor;
+    ctx.fillStyle = BG_COLOR;
+    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = DOT_COLOR;
+    var cols = Math.ceil(w / grid) + 1;
+    var rows = Math.ceil(h / grid) + 1;
+    for (var row = 0; row < rows; row++) {
+      for (var col = 0; col < cols; col++) {
+        var x = col * grid;
+        var y = row * grid;
+        var yFade = Math.pow(y / h, P.yFadeExp);
+        var nx = x / w * P.noiseScale;
+        var ny = y / h * P.noiseScale;
+        var n = fbm(nx + t * P.speedX, ny + t * P.speedY, P.seed, P.octaves);
+        var r = n * maxR * yFade;
+        if (r < P.minDot) continue;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, TAU);
+        ctx.fill();
+      }
+    }
+  }
+
+  function loop() {
+    var t = (performance.now() - startTime) * P.timeScale;
+    draw(t);
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  if (isReducedMotion) { draw(0); } else { loop(); }
+})();
+</script>
+
+<div class="deck" id="deck">
+
+  <!-- ============================================ -->
+  <!-- SLIDE 01 — TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title active" data-slide="0">
+    <div class="span-full self-end flex-col gap-lg" style="padding-bottom: 80px;">
+      <h1 class="display" style="white-space: nowrap;">Keith Barney</h1>
+      <div class="flex-col gap-xs">
+        <p class="subheading">Design Systems Lead</p>
+        <p class="label">keithbarney.design · keithbarneydesign@gmail.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 02 — THE THROUGH-LINE -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="1">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="label">Framing</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <h2 class="heading">A career crafting systems</h2>
+      <p class="body-text">I've spent 12 years moving from hands-on craft toward systems-level thinking. Each role gave me something new — startup ownership, team leadership and cross-platform architecture.</p>
+      <hr class="rule" style="width: 64px;">
+      <p class="body-text">Here are three case studies showcasing my work and how I solve problems.</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 03 — CAREER TIMELINE -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="2">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="label">Career</p>
+      <p class="body-text">12+ years in design.</p>
+    </div>
+    <div class="start-5 span-7 self-center">
+      <div class="timeline">
+        <div class="timeline-entry">
+          <span class="timeline-year">2021-Present</span>
+          <span class="timeline-dot timeline-dot--active"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">Experian</span>
+            <span class="timeline-role">Global Consumer Credit & Data Analytics</span>
+            <span class="timeline-role">Design Systems</span>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-year">2020</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">Applied Systems</span>
+            <span class="timeline-role">Enterprise Insurance Software</span>
+            <span class="timeline-role">Product Design</span>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-year">2019</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">Paciolan</span>
+            <span class="timeline-role">Ticketmaster for Colleges</span>
+            <span class="timeline-role">Design Systems + Product Design</span>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-year">2015</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">Cirrus Insight</span>
+            <span class="timeline-role">Salesforce Integration for Email & Calendar</span>
+            <span class="timeline-role">Design Systems + Product Design</span>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-year">2013</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">SpeakUp</span>
+            <span class="timeline-role">Employee-sourced problem solving & idea generation</span>
+            <span class="timeline-role">Co-Founder & Designer</span>
+          </div>
+        </div>
+        <div class="timeline-entry">
+          <span class="timeline-year">2010</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <span class="timeline-company">Wunderman West</span>
+            <span class="timeline-role">Advertising Agency</span>
+            <span class="timeline-role">Disney, Southwest Airlines</span>
+            <span class="timeline-role">Senior Art Director</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 04 — CS1 TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="3">
+    <div class="span-full self-end flex-col gap-md" style="padding-bottom: 80px;">
+      <div class="flex-col gap-sm">
+        <span class="cs-index">01</span>
+        <p class="cs-number">Case Study</p>
+      </div>
+      <h2 class="display">Creating Experian's First Design System</h2>
+      <p class="subheading">Big picture · High-level expertise · Wide range</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 05 — CS1 PROBLEM -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="4">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 01</p>
+      <p class="label">Problem</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <h2 class="heading">Multiple teams,<br>no shared system</h2>
+      <p class="body-text">Multiple domain teams were independently creating UI patterns. There was a style guide, but it didn't have the structure to enforce consistency — so decisions were slow and patterns kept diverging.</p>
+      <div class="tags">
+        <span class="tag">Inconsistency</span>
+        <span class="tag">No governance</span>
+        <span class="tag">Fragmented patterns</span>
+        <span class="tag">Slow shipping</span>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 06 — CS1 WHAT I BUILT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="5">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 01</p>
+      <p class="label">What I Built</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Directly Owned</p>
+          <ul class="bullet-list">
+            <li>Buy-in communication with Design & Engineering Managers</li>
+            <li>First reusable component libraries — iOS, Android, Web</li>
+            <li>Slack support channels + intake workflows</li>
+            <li>Base/alias token system architecture</li>
+            <li>Typography scale</li>
+            <li>Design QA process for system alignment</li>
+          </ul>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Influenced</p>
+          <ul class="bullet-list">
+            <li>Designers creating domain-specific reusable components</li>
+            <li>Organization-wide shift toward systems thinking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 07 — CS1 HARD CALLS -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="6">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 01</p>
+      <p class="label">Key Decisions</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Building buy-in with engineering</p>
+          <p class="body-text">Engineering wasn't initially convinced a design system was worth the investment. I focused on showing the practical value — centralized decisions, reusable code, faster shipping, and built-in accessibility.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Knowing when to step back</p>
+          <p class="body-text">Design QA was something I started, but it couldn't scale without more resources. I transitioned ownership to domain leads — a good lesson in knowing when to hand things off.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Helping designers work with the system</p>
+          <p class="body-text">Worked with designers to show how overriding and detaching component instances created confusion downstream for developers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 08 — CS1 IMPACT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="7">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 01</p>
+      <p class="label">Impact</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">0 → 1</p>
+          <p class="body-text">Design system created from scratch — first at Experian</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">3 platforms</p>
+          <p class="body-text">iOS, Android, Web — unified component libraries</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Company-wide mandate</p>
+          <p class="body-text">Head of design mandated all new projects use Atlas</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Team formalized</p>
+          <p class="body-text">Keith + 2 native designers → first official DS team</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Less custom code, fewer bugs</p>
+          <p class="body-text">Engineering impact from centralized, reusable components</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 09 — CS2 TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="8">
+    <div class="span-full self-end flex-col gap-md" style="padding-bottom: 80px;">
+      <div class="flex-col gap-sm">
+        <span class="cs-index">02</span>
+        <p class="cs-number">Case Study</p>
+      </div>
+      <h2 class="display">Atlas Component Merge Across Platforms</h2>
+      <p class="subheading">On the ground · Change management at scale</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 10 — CS2 PROBLEM -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="9">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 02</p>
+      <p class="label">Problem</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <h2 class="heading">Same components.<br>Different everywhere.</h2>
+      <p class="body-text">Platform-specific libraries evolved independently — Web, iOS, Android. The web library had separate mobile, tablet, and desktop breakpoints. Fragmentation led to duplicated patterns, inconsistent behavior, and mounting maintenance overhead.</p>
+      <div class="tags">
+        <span class="tag">Platform fragmentation</span>
+        <span class="tag">Duplicated patterns</span>
+        <span class="tag">Maintenance burden</span>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 11 — CS2 APPROACH -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="10">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 02</p>
+      <p class="label">Approach</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-lg">
+      <p class="body-text">Caleb and I co-owned this effort. We divided the component list, created branches, and merged and released in waves over about two months.</p>
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Formal deprecation process</p>
+          <p class="body-text">Created a 4-step deprecation workflow: announce → migrate → sunset → remove.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Communication at every level</p>
+          <p class="body-text">Slack announcements, Loom walkthroughs for breaking changes, 1:1 meetings with designers for check-ins and demos.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Getting leadership aligned</p>
+          <p class="body-text">Brought Brett on board first, then Adam. Gave Adam a clear process and timeline he could use to communicate progress to leadership.</p>
+        </div>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 12 — CS2 IMPACT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="11">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 02</p>
+      <p class="label">Impact</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">1 component, all platforms</p>
+          <p class="body-text">Same component works across iOS, Android, Web — fewer Figma frames</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Centralized decisions</p>
+          <p class="body-text">One source of truth replaced platform-specific interpretations</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Team skill uplift</p>
+          <p class="body-text">Designers' Figma skills greatly increased through migration process</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Reduced switching cost</p>
+          <p class="body-text">No more context-switching between platform-specific libraries</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 13 — CS3 TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="12">
+    <div class="span-full self-end flex-col gap-md" style="padding-bottom: 80px;">
+      <div class="flex-col gap-sm">
+        <span class="cs-index">03</span>
+        <p class="cs-number">Case Study</p>
+      </div>
+      <h2 class="display">Atlas Audit</h2>
+      <p class="subheading">Solving quality · Measurable outcomes · Autonomous initiative</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 14 — CS3 PROBLEM -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="13">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 03</p>
+      <p class="label">Problem</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <h2 class="heading">No way to measure adoption</h2>
+      <p class="body-text">Four UI systems coexisted in production: Legacy, Next, Atlas, and SDUI. Nobody could see what was actually running. Adoption was abstract, slow, and impossible to operationalize or prioritize.</p>
+      <div class="tags">
+        <span class="tag">4 UI systems</span>
+        <span class="tag">No visibility</span>
+        <span class="tag">Abstract adoption</span>
+        <span class="tag">Tech debt hidden</span>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 15 — CS3 WHAT I BUILT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="14">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 03</p>
+      <p class="label">What I Built</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <p class="body-text">An internal tool that visualizes which UI system every element in production belongs to — turning abstract "adoption" into a concrete, prioritized backlog.</p>
+      <hr class="rule">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Directly Owned</p>
+          <ul class="bullet-list">
+            <li>Conceived and owned the idea end-to-end</li>
+            <li>Created Figma prototype for developer handoff</li>
+            <li>Collaborated with engineers for feedback loops</li>
+            <li>Ran the project autonomously with support from Brett and Adam</li>
+          </ul>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Influenced</p>
+          <ul class="bullet-list">
+            <li>Inspired team members to create their own internal tools</li>
+            <li>Shifted developer mindset — they started bringing ideas forward</li>
+            <li>Showed the value of identifying problems proactively, not just working from a backlog</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 16 — CS3 IMPACT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="15">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 03</p>
+      <p class="label">Impact</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Tech debt → visible</p>
+          <p class="body-text">Made invisible UI system debt concrete and actionable</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Saved contract spend</p>
+          <p class="body-text">Surfaced work for offshore team running low on tasks — prevented waste</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Adoption operationalized</p>
+          <p class="body-text">Abstract "adoption" became prioritized work items with clear ownership</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Culture shift</p>
+          <p class="body-text">Team started proactively building internal tools and bringing ideas forward</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 17 — CS4 TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="16">
+    <div class="span-full self-end flex-col gap-md" style="padding-bottom: 80px;">
+      <div class="flex-col gap-sm">
+        <span class="cs-index">04</span>
+        <p class="cs-number">Case Study</p>
+      </div>
+      <h2 class="display">Building SpeakUp from Zero</h2>
+      <p class="subheading">Co-founder · End-to-end design · Remote team leadership</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 18 — CS4 PROBLEM -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="17">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 04</p>
+      <p class="label">Problem</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <h2 class="heading">Good ideas with<br>no place to go</h2>
+      <p class="body-text">Important problems and ideas were scattered across organizations — buried in hallway conversations, lost in email threads, invisible to leadership. Companies had no structured way to surface what their own people already knew.</p>
+      <div class="tags">
+        <span class="tag">Hidden insights</span>
+        <span class="tag">No structure</span>
+        <span class="tag">Lost signal</span>
+        <span class="tag">Top-down only</span>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 19 — CS4 WHAT I BUILT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="18">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 04</p>
+      <p class="label">What I Built</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <p class="body-text">Co-founded a workplace platform where employees post problems, propose solutions, and vote on ideas — turning scattered insight into concrete decisions for leadership.</p>
+      <hr class="rule">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Directly Owned</p>
+          <ul class="bullet-list">
+            <li>Product brand identity from scratch</li>
+            <li>Full web application UI — the core SpeakUp platform</li>
+            <li>Marketing site design and iteration</li>
+            <li>Led daily ceremonies and sprint management for 6 remote engineers</li>
+          </ul>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Influenced</p>
+          <ul class="bullet-list">
+            <li>Product strategy and feature prioritization as co-founder</li>
+            <li>Company culture — remote-first, shipping over perfection</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 20 — CS4 IMPACT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="19">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 04</p>
+      <p class="label">Impact</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">0 → shipped product</p>
+          <p class="body-text">Designed and launched a SaaS platform from nothing — brand, UI, marketing</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">6-person remote team</p>
+          <p class="body-text">Led distributed engineers through ceremonies, sprints, and releases</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Real company adoption</p>
+          <p class="body-text">Organizations used SpeakUp to crowdsource solutions and surface priorities</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Still live today</p>
+          <p class="body-text">Platform reached break-even and remains operational at getspeakup.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 21 — CS5 TITLE -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="20">
+    <div class="span-full self-end flex-col gap-md" style="padding-bottom: 80px;">
+      <div class="flex-col gap-sm">
+        <span class="cs-index">05</span>
+        <p class="cs-number">Case Study</p>
+      </div>
+      <h2 class="display">Paciolan Design System</h2>
+      <p class="subheading">Team leadership · Process design · First DS at a new company</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 22 — CS5 PROBLEM -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="21">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 05</p>
+      <p class="label">Problem</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <h2 class="heading">A team without<br>shared standards</h2>
+      <p class="body-text">Inherited a product with no design system and a team of six designers working independently. No formal review process meant inconsistent quality, duplicated work, and misalignment between design and engineering.</p>
+      <div class="tags">
+        <span class="tag">No design system</span>
+        <span class="tag">Independent silos</span>
+        <span class="tag">No review process</span>
+        <span class="tag">Inconsistent quality</span>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 23 — CS5 WHAT I BUILT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="22">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 05</p>
+      <p class="label">What I Built</p>
+    </div>
+    <div class="start-4 span-3 self-center flex-col gap-xl">
+      <p class="body-text">Built the company's first design system while establishing a formal UX review process that created a shared quality bar across the team.</p>
+      <hr class="rule">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Directly Owned</p>
+          <ul class="bullet-list">
+            <li>First design system — patterns, components, shared language</li>
+            <li>Formal UX review process for the entire design team</li>
+            <li>Managed team of 6 through transition to systems thinking</li>
+            <li>Design-to-engineering communication standards</li>
+          </ul>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Influenced</p>
+          <ul class="bullet-list">
+            <li>Team mindset shift from ad-hoc design to shared standards</li>
+            <li>Balance between system consistency and designer autonomy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="start-7 span-6 self-center">
+      <div class="visual-placeholder">Visual</div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 24 — CS5 IMPACT -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="23">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="cs-number">Case Study 05</p>
+      <p class="label">Impact</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">0 → 1</p>
+          <p class="body-text">First design system at Paciolan — built from nothing</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Team of 6</p>
+          <p class="body-text">Managed and mentored designers through the shift to systems thinking</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">UX review process</p>
+          <p class="body-text">Shared quality bar — caught inconsistencies before engineering handoff</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-sm">
+          <p class="subheading" style="color: var(--ui-text-strong);">Reduced redundant work</p>
+          <p class="body-text">Shared patterns replaced duplicate efforts across the team</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 25 — THE ARC -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="24">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="label">The Arc</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-lg">
+      <div class="flex-col gap-sm">
+        <p class="cs-number">01 — Foundation</p>
+        <p class="heading">Built the system from zero</p>
+        <p class="body-text">Created the first component libraries, established governance, and showed how a design system creates long-term leverage.</p>
+      </div>
+      <hr class="rule">
+      <div class="flex-col gap-sm">
+        <p class="cs-number">02 — Scale</p>
+        <p class="heading">Unified across platforms</p>
+        <p class="body-text">Change management at scale. Merged fragmented libraries into a single cross-platform system.</p>
+      </div>
+      <hr class="rule">
+      <div class="flex-col gap-sm">
+        <p class="cs-number">03 — Innovation</p>
+        <p class="heading">Made adoption measurable</p>
+        <p class="body-text">Noticed adoption was hard to track, so I built a tool that turned it into something concrete and actionable.</p>
+      </div>
+      <hr class="rule">
+      <div class="flex-col gap-sm">
+        <p class="cs-number">04 — Ownership</p>
+        <p class="heading">Co-founded and shipped a product</p>
+        <p class="body-text">Designed the brand and product end-to-end, led a remote team, and launched a platform that companies actually adopted.</p>
+      </div>
+      <hr class="rule">
+      <div class="flex-col gap-sm">
+        <p class="cs-number">05 — Leadership</p>
+        <p class="heading">Built a team and a process</p>
+        <p class="body-text">Led six designers, established the first design system and UX review process at Paciolan.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 26 — WHAT I BRING -->
+  <!-- ============================================ -->
+  <div class="slide" data-slide="25">
+    <div class="span-3 self-start flex-col gap-sm" style="padding-top: 24px;">
+      <p class="label">What I Bring</p>
+    </div>
+    <div class="start-5 span-7 self-center flex-col gap-xl">
+      <div class="flex-col gap-lg">
+        <div class="flex-col gap-xs">
+          <p class="subheading" style="color: var(--ui-text-strong);">Systems thinker</p>
+          <p class="body-text">I see how pieces connect across platforms and teams. I added a Design QA column to Jira that loops work between dev and design until approved — reducing follow-up tickets significantly.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-xs">
+          <p class="subheading" style="color: var(--ui-text-strong);">Technical fluency</p>
+          <p class="body-text">I speak developer language — tokens, components, versioning, build pipelines. That fluency makes collaboration smoother and helps me ask the right questions.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-xs">
+          <p class="subheading" style="color: var(--ui-text-strong);">Business-minded</p>
+          <p class="body-text">My startup background taught me to stay focused on customer value. I'd rather ship and learn than wait for something perfect.</p>
+        </div>
+        <hr class="rule">
+        <div class="flex-col gap-xs">
+          <p class="subheading" style="color: var(--ui-text-strong);">Comfortable with healthy disagreement</p>
+          <p class="body-text">I've learned to have honest disagreements without making things personal. It took time, but it leads to better outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SLIDE 27 — CLOSING -->
+  <!-- ============================================ -->
+  <div class="slide slide--title" data-slide="26">
+    <div class="span-full self-end flex-col gap-lg" style="padding-bottom: 80px;">
+      <h2 class="display">I bring clarity to<br>complex systems.</h2>
+      <hr class="rule" style="width: 64px;">
+      <div class="flex-col gap-xs">
+        <p class="subheading">Keith Barney</p>
+        <p class="label">keithbarney.design · keithbarneydesign@gmail.com · linkedin.com/in/keithbarney</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Menu button -->
+<button class="menu-btn" id="menuBtn">Menu</button>
+
+<!-- Menu overlay -->
+<div class="menu-overlay" id="menuOverlay">
+  <nav class="menu-nav" id="menuNav">
+    <div class="menu-item" data-goto="0">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">Title</span>
+    </div>
+    <div class="menu-item" data-goto="1">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">Framing</span>
+    </div>
+    <div class="menu-item" data-goto="2">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">Career Timeline</span>
+    </div>
+    <div class="menu-item" data-goto="3">
+      <span class="menu-item-number">01</span>
+      <span class="menu-item-label">Creating Experian's First Design System</span>
+    </div>
+    <div class="menu-item" data-goto="8">
+      <span class="menu-item-number">02</span>
+      <span class="menu-item-label">Atlas Component Merge</span>
+    </div>
+    <div class="menu-item" data-goto="12">
+      <span class="menu-item-number">03</span>
+      <span class="menu-item-label">Atlas Audit</span>
+    </div>
+    <div class="menu-item" data-goto="16">
+      <span class="menu-item-number">04</span>
+      <span class="menu-item-label">Building SpeakUp</span>
+    </div>
+    <div class="menu-item" data-goto="20">
+      <span class="menu-item-number">05</span>
+      <span class="menu-item-label">Paciolan Design System</span>
+    </div>
+    <div class="menu-item" data-goto="24">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">The Arc</span>
+    </div>
+    <div class="menu-item" data-goto="25">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">What I Bring</span>
+    </div>
+    <div class="menu-item" data-goto="26">
+      <span class="menu-item-number"></span>
+      <span class="menu-item-label">Closing</span>
+    </div>
+  </nav>
+</div>
+
+<!-- Progress bar -->
+<div class="progress" id="progress"></div>
+
+<!-- Slide counter -->
+<div class="counter" id="counter"></div>
+
+<!-- Nav hint -->
+<div class="nav-hint" id="navHint">← → Arrow keys to navigate</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = deck.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const navHint = document.getElementById('navHint');
+  const total = slides.length;
+  let current = 0;
+
+  function goTo(index) {
+    if (index < 0 || index >= total) return;
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    sessionStorage.setItem('slide', current);
+
+    // Hide nav hint after first navigation
+    if (current > 0) {
+      navHint.style.opacity = '0';
+    }
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (menuOverlay && menuOverlay.classList.contains('open')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      next();
+    } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+      e.preventDefault();
+      prev();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goTo(total - 1);
+    }
+  });
+
+  // Click navigation (left third = prev, right two-thirds = next)
+  deck.addEventListener('click', (e) => {
+    if (menuOverlay.classList.contains('open')) return;
+    const x = e.clientX / window.innerWidth;
+    if (x < 0.33) prev();
+    else next();
+  });
+
+  // Touch support
+  let touchStartX = 0;
+  deck.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+  deck.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  });
+
+  // ===== MENU =====
+  const menuBtn = document.getElementById('menuBtn');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuItems = document.querySelectorAll('.menu-item[data-goto]');
+
+  function toggleMenu() {
+    const isOpen = menuOverlay.classList.toggle('open');
+    menuBtn.classList.toggle('open', isOpen);
+    if (isOpen) updateMenuActive();
+  }
+
+  function closeMenu() {
+    menuOverlay.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }
+
+  function updateMenuActive() {
+    // Each menu item maps to a section start. Find which section we're in.
+    const sectionStarts = Array.from(menuItems).map(el => parseInt(el.dataset.goto));
+    menuItems.forEach((item, i) => {
+      const start = sectionStarts[i];
+      const end = i < sectionStarts.length - 1 ? sectionStarts[i + 1] - 1 : total - 1;
+      item.classList.toggle('active', current >= start && current <= end);
+    });
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  menuOverlay.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) closeMenu();
+  });
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      goTo(parseInt(item.dataset.goto));
+      closeMenu();
+    });
+  });
+
+  // Escape closes menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
+      e.preventDefault();
+      closeMenu();
+    }
+  });
+
+  // Init — resume from last viewed slide on reload
+  goTo(parseInt(sessionStorage.getItem('slide')) || 0);
+</script>
+
+
+</body>
+</html>

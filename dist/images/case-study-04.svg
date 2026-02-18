@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#1A1A1A"/>
+  <!-- Layered rectangles — leadership = building layers, organization -->
+  <!-- Back layers (muted) -->
+  <rect x="100" y="100" width="360" height="240" rx="2" stroke="#282828" stroke-width="1"/>
+  <rect x="140" y="140" width="360" height="240" rx="2" stroke="#333" stroke-width="1"/>
+  <rect x="180" y="180" width="360" height="240" rx="2" stroke="#444" stroke-width="1"/>
+  <!-- Primary rectangle (bright) -->
+  <rect x="220" y="220" width="360" height="240" rx="2" stroke="#F3F3F3" stroke-width="1.5" opacity="0.8"/>
+  <!-- Content lines inside primary rect -->
+  <line x1="252" y1="268" x2="420" y2="268" stroke="#F3F3F3" stroke-width="2" opacity="0.7"/>
+  <line x1="252" y1="300" x2="540" y2="300" stroke="#666" stroke-width="1"/>
+  <line x1="252" y1="324" x2="510" y2="324" stroke="#444" stroke-width="1"/>
+  <line x1="252" y1="348" x2="490" y2="348" stroke="#444" stroke-width="1"/>
+  <line x1="252" y1="372" x2="460" y2="372" stroke="#333" stroke-width="1"/>
+  <!-- Small accent block -->
+  <rect x="252" y="400" width="80" height="32" rx="2" fill="#F3F3F3" opacity="0.15"/>
+  <!-- Floating elements suggesting distributed parts -->
+  <rect x="620" y="160" width="80" height="48" rx="2" stroke="#333" stroke-width="1"/>
+  <rect x="640" y="320" width="60" height="36" rx="2" stroke="#444" stroke-width="1"/>
+  <rect x="620" y="440" width="100" height="56" rx="2" stroke="#282828" stroke-width="1"/>
+  <!-- Connection hints -->
+  <line x1="580" y1="300" x2="620" y2="184" stroke="#282828" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="580" y1="340" x2="640" y2="338" stroke="#282828" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="580" y1="400" x2="620" y2="468" stroke="#282828" stroke-width="1" stroke-dasharray="4 4"/>
+</svg>
