@@ -11,7 +11,7 @@ Personal portfolio site.
 - **Role:** Design Systems Lead @ Experian (5 years)
 - **Work:** Design systems designer working closely with design system engineers
 - **Location:** Aliso Viejo, CA
-- **Email:** keithbarneydesign@gmail.com
+- **Email:** keithbarney@icloud.com
 - **LinkedIn:** linkedin.com/in/keithbarney
 - **Portfolio:** keithbarney.design
 

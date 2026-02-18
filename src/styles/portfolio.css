@@ -59,6 +59,55 @@
   --canvas-bg: var(--ui-bg-default);
 }
 
+/* ===== 2b. TERMINAL THEME ===== */
+/* Blue-on-black terminal aesthetic — all monospace, prompt-style labels */
+
+[data-aesthetic="terminal"] {
+  /* Semantic color overrides */
+  --ui-bg-default: var(--gray-950);
+  --ui-surface-default: var(--gray-900);
+  --ui-border-default: var(--gray-800);
+  --ui-text-default: var(--blue-400);
+  --ui-text-strong: var(--blue-300);
+  --ui-text-disabled: var(--gray-700);
+
+  /* Typography — everything monospace */
+  --font-primary: var(--font-secondary);
+
+  /* Canvas tokens */
+  --canvas-dot: var(--blue-400);
+  --canvas-bg: var(--gray-950);
+
+  /* Terminal-specific tokens */
+  --terminal-accent: var(--blue-400);
+  --terminal-accent-dim: var(--blue-700);
+}
+
+/* Terminal component overrides */
+[data-aesthetic="terminal"] .name {
+  font-size: clamp(44px, 7.5vw, 108px);
+}
+
+[data-aesthetic="terminal"] .project-category::before {
+  content: "> ";
+  color: var(--terminal-accent);
+}
+
+[data-aesthetic="terminal"] .disciplines li::before {
+  content: "$ " counter(discipline, decimal-leading-zero) " ";
+  color: var(--terminal-accent-dim);
+}
+
+[data-aesthetic="terminal"] .project-skills .heavy-badge {
+  border: 1px dotted var(--terminal-accent-dim);
+  background: transparent;
+  color: var(--terminal-accent);
+}
+
+[data-aesthetic="terminal"] .role {
+  background: transparent;
+}
+
 /* ===== 3. CANVAS POSITIONING ===== */
 
 #halftone-canvas {
@@ -155,6 +204,37 @@ section {
   border-color: var(--ui-text-disabled);
 }
 
+#aesthetic-select {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-body-xsm);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ui-text-disabled);
+  background: none;
+  border: 1px solid var(--ui-border-default);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23727272'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: var(--space-24);
+}
+
+#aesthetic-select:hover {
+  color: var(--ui-text-strong);
+  border-color: var(--ui-text-disabled);
+}
+
+#aesthetic-select option {
+  background: var(--ui-bg-default);
+  color: var(--ui-text-default);
+}
+
 /* ===== 6. HERO ===== */
 
 .hero {
@@ -170,6 +250,7 @@ section {
   letter-spacing: -0.02em;
   color: var(--ui-text-strong);
   margin: 0;
+  white-space: nowrap;
 }
 
 .role {
@@ -274,17 +355,9 @@ section {
   --cluster-space: var(--space-8);
 }
 
-.skill-tag {
-  display: inline-block;
-  font-family: var(--font-secondary);
-  font-size: var(--font-size-body-xsm);
+.project-skills .heavy-badge {
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ui-text-default);
-  border: 1px solid var(--ui-border-default);
-  padding: var(--space-2) var(--space-10);
-  border-radius: var(--radius-sm);
-  line-height: 1.6;
 }
 
 .project-image {
@@ -476,5 +549,9 @@ section {
 
   .footer-email {
     margin-left: 0;
+  }
+
+  [data-aesthetic="terminal"] .name {
+    font-size: clamp(30px, 10vw, 48px);
   }
 }

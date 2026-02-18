@@ -14,7 +14,10 @@ html(lang="en" data-theme="dark")
             a.wordmark(href="/") Keith Barney
             nav.flex.items-center.heavy-gap-3
               a.nav-link(href="/discography.html") Discography
-              a.nav-link(href="mailto:hello@keithbarney.com") Contact
+              a.nav-link(href="mailto:keithbarney@icloud.com") Contact
+              select#aesthetic-select(aria-label="Select theme")
+                option(value="default") Default
+                option(value="terminal") Terminal
               button#theme-toggle(aria-label="Toggle theme") Light
         .container
           .heavy-grid.heavy-grid--12
@@ -38,65 +41,66 @@ html(lang="en" data-theme="dark")
             .heavy-col-span-6.project-info
               span.project-index 01
               span.project-category Design System
-              h2.project-name Enterprise Design System
-              p.project-description Led the creation of a comprehensive design system serving 50+ product teams across web and mobile platforms. Established the foundational architecture including design tokens, component APIs, and documentation standards. Worked closely with engineering to ensure seamless integration with existing build systems and workflows. The system reduced design-to-development handoff time significantly while improving visual consistency across all products. Created governance processes and contribution guidelines that enabled distributed teams to extend the system independently.
+              h2.project-name Creating Experian's First Design System
+              p.project-description No formal design system existed — multiple domain teams independently created UI patterns with only a style guide for loose guidance, leading to inconsistency, ongoing debate, and slow decision-making. Led the creation of the first reusable component libraries across iOS, Android, and Web. Established the foundational token architecture, typography scale, and a design QA process for reviewing projects against system standards. Built Slack support channels and intake workflows to operationalize the system. Pushed back on skeptical engineering by demonstrating the value of centralized decisions, reusable code, and faster shipping with baked-in accessibility. The effort formalized into Experian's first official design systems team, and design leadership mandated all new projects use the system.
               .project-skills.heavy-cluster
-                span.skill-tag Design Systems
-                span.skill-tag Component Architecture
-                span.skill-tag Design Tokens
-                span.skill-tag Documentation
-                span.skill-tag Governance
-                span.skill-tag Cross-platform
+                span.heavy-badge Design Systems
+                span.heavy-badge Token Architecture
+                span.heavy-badge Governance
             .heavy-col-span-6.project-image
               img(src="images/case-study-01.svg" alt="Design system grid pattern" loading="lazy")
 
           article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 02
-              span.project-category Accessibility
-              h2.project-name Accessibility Framework
-              p.project-description Developed accessibility standards and tooling integrated directly into the design system, achieving WCAG 2.1 AA compliance across all products. Built automated testing pipelines that caught accessibility regressions before deployment. Created component-level documentation detailing keyboard navigation patterns, screen reader behavior, and color contrast requirements. Partnered with product teams to remediate existing accessibility debt while establishing patterns that prevented future issues. Trained designers and engineers on inclusive design principles through workshops and embedded support.
+              span.project-category Platform Unification
+              h2.project-name Atlas Component Merge
+              p.project-description Platform-specific Figma libraries for web, iOS, and Android had evolved independently, with web further fragmented into separate mobile, tablet, and desktop breakpoints. Duplicated patterns, inconsistent behavior, and growing maintenance overhead demanded unification. Co-led the merge effort, dividing the component list and releasing in waves over two months. Created a formal four-step deprecation process with Slack announcements, Loom walkthroughs, and one-on-one designer check-ins to manage the transition. The merge eliminated redundant Figma frames, centralized design decisions across platforms, and reduced platform-switching overhead. Designers' Figma proficiency increased significantly as a direct result of the hands-on migration support.
               .project-skills.heavy-cluster
-                span.skill-tag Accessibility
-                span.skill-tag WCAG Compliance
-                span.skill-tag Automated Testing
-                span.skill-tag Documentation
-                span.skill-tag Training
-                span.skill-tag Inclusive Design
+                span.heavy-badge Change Management
+                span.heavy-badge Component Architecture
+                span.heavy-badge Cross-platform
             .heavy-col-span-6.project-image
-              img(src="images/case-study-02.svg" alt="Accessibility concentric circles" loading="lazy")
+              img(src="images/case-study-02.svg" alt="Component merge diagram" loading="lazy")
 
           article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 03
-              span.project-category Infrastructure
-              h2.project-name Token Infrastructure
-              p.project-description Created end-to-end Figma-to-code pipelines using design tokens as the source of truth, reducing handoff friction and ensuring design-development parity. Built tooling that automatically synchronized color, typography, and spacing values between design files and production codebases. Established naming conventions and token architecture that scaled across multiple platforms including web, iOS, and Android. The infrastructure enabled designers to push changes that propagated to production without engineering intervention, dramatically accelerating iteration cycles and reducing visual inconsistencies.
+              span.project-category Design Tooling
+              h2.project-name Atlas Audit
+              p.project-description Multiple UI systems coexisted in production — Legacy, Next, Atlas, and SDUI — with no visibility into what was actually running. Adoption remained abstract and impossible to operationalize. Autonomously conceived and prototyped a design system adoption tool that made tech debt visible and actionable. Designed the full experience in Figma and collaborated directly with engineers on feasibility and feedback. The tool surfaced work for an offshore engineering team running low on tasks, preventing wasted contract time and money. Turned abstract adoption conversations into concrete, prioritized work items for product managers. The initiative inspired other team members to start building their own internal tools — shifting the culture from ticket-taking to problem-solving.
               .project-skills.heavy-cluster
-                span.skill-tag Design Tokens
-                span.skill-tag Figma API
-                span.skill-tag Build Tooling
-                span.skill-tag Multi-platform
-                span.skill-tag Automation
-                span.skill-tag Style Dictionary
+                span.heavy-badge Design Tooling
+                span.heavy-badge Adoption Metrics
+                span.heavy-badge Prototyping
             .heavy-col-span-6.project-image
-              img(src="images/case-study-03.svg" alt="Token infrastructure node network" loading="lazy")
+              img(src="images/case-study-03.svg" alt="Audit tool interface overlay" loading="lazy")
 
           article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
               span.project-index 04
               span.project-category Design Leadership
-              h2.project-name SpeakUp
+              h2.project-name Building SpeakUp from Zero
               p.project-description Co-founded a workplace collaboration platform that helped companies surface hidden problems and ideas from across their organizations. Owned all design work from the ground up — branding, product UI, and marketing site — while leading a remote development team of six engineers through daily ceremonies and sprint management. Shipped a product that real companies adopted to crowdsource solutions, vote on priorities, and turn employee insight into concrete decisions. The platform reached break-even and remains live today. The experience shaped how I think about building products from zero, leading distributed teams, and designing systems where the most important information rises to the top.
               .project-skills.heavy-cluster
-                span.skill-tag Product Design
-                span.skill-tag Design Leadership
-                span.skill-tag Remote Team Management
-                span.skill-tag Branding
-                span.skill-tag Web Applications
-                span.skill-tag Startup
+                span.heavy-badge Product Design
+                span.heavy-badge Design Leadership
+                span.heavy-badge Remote Team Management
             .heavy-col-span-6.project-image
               img(src="images/case-study-04.svg" alt="SpeakUp layered interface" loading="lazy")
+
+          article.project.heavy-grid.heavy-grid--12
+            .heavy-col-span-6.project-info
+              span.project-index 05
+              span.project-category Design Leadership
+              h2.project-name Paciolan Design System
+              p.project-description Joined as Lead Designer and Design System Manager, inheriting a product with no shared design language and a team of six designers working independently. Built the company's first design system from scratch while establishing a formal UX review process that brought structure and accountability to design decisions across the team. The review process created a shared quality bar — designers presented work against system standards, caught inconsistencies early, and aligned on patterns before engineering handoff. Managed the team through the transition from ad-hoc design to systems thinking, balancing the need for consistency with each designer's autonomy and domain expertise. The system and review process reduced redundant work, improved design-to-engineering communication, and created a foundation the team could build on independently.
+              .project-skills.heavy-cluster
+                span.heavy-badge Design Systems
+                span.heavy-badge Team Management
+                span.heavy-badge Process Design
+            .heavy-col-span-6.project-image
+              img(src="images/case-study-05.svg" alt="Paciolan design system structure" loading="lazy")
 
       //- 5. Experience / Companies
       section.experience
@@ -105,6 +109,9 @@ html(lang="en" data-theme="dark")
             li
               span.company-name Experian
               span.company-role Design Systems Lead — 5 years
+            li
+              span.company-name Paciolan
+              span.company-role Lead Designer & DS Manager
             li
               span.company-name SpeakUp
               span.company-role Co-founder, Design Lead
@@ -115,6 +122,7 @@ html(lang="en" data-theme="dark")
           .heavy-grid.heavy-grid--12
             .heavy-col-span-6
               p I build design systems that scale. My focus is on the infrastructure layer—tokens, components, documentation—that enables teams to ship consistent, accessible products.
+              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian], #[a(href="#") Paciolan], and #[a(href="#") SpeakUp].
 
       //- 7. Social / Presence
       section.social
@@ -127,6 +135,6 @@ html(lang="en" data-theme="dark")
       .container
         p.footer-name Keith Barney
         p.footer-role Design Systems
-        a.footer-email(href="mailto:hello@keithbarney.com") hello@keithbarney.com
+        a.footer-email(href="mailto:keithbarney@icloud.com") keithbarney@icloud.com
 
     script(src="js/halftone.js" defer)

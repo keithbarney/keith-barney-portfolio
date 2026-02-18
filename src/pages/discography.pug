@@ -11,7 +11,10 @@ html(lang="en" data-theme="dark")
         a.wordmark(href="/") Keith Barney
         nav.flex.heavy-gap-3
           a.nav-link.nav-link--active(href="/discography.html") Discography
-          a.nav-link(href="mailto:hello@keithbarney.com") Contact
+          a.nav-link(href="mailto:keithbarney@icloud.com") Contact
+          select#aesthetic-select(aria-label="Select theme")
+            option(value="default") Default
+            option(value="terminal") Terminal
           button#theme-toggle(aria-label="Toggle theme") Light
 
     main.discography
@@ -1080,6 +1083,6 @@ html(lang="en" data-theme="dark")
           .heavy-col-span-8
             p.footer-name Keith Barney
             p.footer-role Design Systems
-            a.footer-email(href="mailto:hello@keithbarney.com") hello@keithbarney.com
+            a.footer-email(href="mailto:keithbarney@icloud.com") keithbarney@icloud.com
 
     script(src="js/halftone.js" defer)
