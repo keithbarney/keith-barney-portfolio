@@ -5,6 +5,7 @@ html(lang="en" data-theme="dark")
   include partials/_head
 
   body
+    a.skip-link(href="#work") Skip to work
     main
       //- 2. Hero / Identity
       section.hero
@@ -35,7 +36,7 @@ html(lang="en" data-theme="dark")
             li Documentation
 
       //- 4. Work / Case Studies
-      section.work
+      section.work#work
         .container
           article.project.heavy-grid.heavy-grid--12
             .heavy-col-span-6.project-info
@@ -122,7 +123,7 @@ html(lang="en" data-theme="dark")
           .heavy-grid.heavy-grid--12
             .heavy-col-span-6
               p I build design systems that scale. My focus is on the infrastructure layer—tokens, components, documentation—that enables teams to ship consistent, accessible products.
-              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian], #[a(href="#") Paciolan], and #[a(href="#") SpeakUp].
+              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian], #[a(href="https://www.paciolan.com" target="_blank" rel="noopener") Paciolan], and #[a(href="https://www.speakup.com" target="_blank" rel="noopener") SpeakUp].
 
       //- 7. Social / Presence
       section.social
