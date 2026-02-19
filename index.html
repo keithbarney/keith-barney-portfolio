@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keith Barney — Design Systems</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f5f0;
+    --text: #111;
+    --dim: #999;
+    --border: #ddd;
+    --dark-bg: #0a0a0a;
+    --dark-text: #e8e8e8;
+    --dark-dim: #666;
+    --dark-border: #222;
+    --font: 'JetBrains Mono', monospace;
+  }
+
+  ::selection {
+    background: #111;
+    color: #f5f5f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── 12 COLUMN GRID SYSTEM ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .col-1  { grid-column: span 1; }
+  .col-2  { grid-column: span 2; }
+  .col-3  { grid-column: span 3; }
+  .col-4  { grid-column: span 4; }
+  .col-5  { grid-column: span 5; }
+  .col-6  { grid-column: span 6; }
+  .col-7  { grid-column: span 7; }
+  .col-8  { grid-column: span 8; }
+  .col-9  { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+
+  .start-1  { grid-column-start: 1; }
+  .start-2  { grid-column-start: 2; }
+  .start-3  { grid-column-start: 3; }
+  .start-4  { grid-column-start: 4; }
+  .start-5  { grid-column-start: 5; }
+  .start-6  { grid-column-start: 6; }
+  .start-7  { grid-column-start: 7; }
+  .start-8  { grid-column-start: 8; }
+  .start-9  { grid-column-start: 9; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+    .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+      grid-column: span 4;
+    }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(245,245,240,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .logo {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+  }
+
+  nav ul li a {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero > .grid {
+    align-items: end;
+  }
+
+  .hero-number {
+    position: absolute;
+    top: 6rem;
+    left: 4rem;
+    font-size: 0.6rem;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hero-coords {
+    position: absolute;
+    top: 6rem;
+    right: 4rem;
+    text-align: right;
+    font-size: 0.6rem;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    line-height: 2.2;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 .displace {
+    display: inline-block;
+    transform: translateX(40px);
+  }
+
+  .hero h1 .indent {
+    display: inline-block;
+    margin-left: 120px;
+  }
+
+  .hero-sub {
+    font-size: 0.8rem;
+    color: var(--dim);
+    max-width: 440px;
+    line-height: 2;
+    margin-bottom: 4rem;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 1px;
+    background: var(--text);
+    margin-bottom: 2rem;
+  }
+
+  .hero-data {
+    display: flex;
+    gap: 4rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-data .label { color: var(--dim); margin-bottom: 0.4rem; }
+  .hero-data .value { color: var(--text); }
+
+  /* ── GENERATIVE CANVAS ── */
+  .gen-canvas {
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    width: 520px;
+    height: 520px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 8rem 4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  section > .grid {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    margin-bottom: 4rem;
+  }
+
+  .section-label span {
+    margin-left: 1rem;
+    color: #ccc;
+  }
+
+  /* ── ABOUT ── */
+  /* about-layout replaced by .grid */
+
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 2;
+    max-width: 480px;
+    font-weight: 400;
+  }
+
+  .about-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .about-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 3rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
+  }
+
+  .about-row:first-child { border-top: 1px solid var(--border); }
+
+  .about-row .label {
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.65rem;
+    white-space: nowrap;
+  }
+
+  .about-row span:last-child {
+    white-space: nowrap;
+  }
+
+  /* ── DARK SECTION (WORK) ── */
+  .dark-section {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+    border-top: none;
+  }
+
+  .dark-section .section-label { color: var(--dark-dim); }
+  .dark-section .section-label span { color: #444; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1px;
+    background: var(--dark-border);
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .work-item { grid-column: span 6; }
+  .work-item.featured { grid-column: span 12; }
+
+  .work-item {
+    background: var(--dark-bg);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    transition: background 0.4s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .work-item:hover { background: #0f0f0f; }
+
+  .work-num {
+    font-size: 0.6rem;
+    color: var(--dark-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: auto;
+  }
+
+  .work-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .work-desc {
+    font-size: 0.75rem;
+    color: var(--dark-dim);
+    line-height: 1.8;
+    max-width: 360px;
+    margin-bottom: 1.5rem;
+  }
+
+  .work-tags {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--dark-dim);
+  }
+
+  /* Featured project */
+  .work-item.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    min-height: 400px;
+    align-items: center;
+  }
+
+  .work-item.featured .work-visual {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── WARM SECTION (different paper stock) ── */
+  .warm-section {
+    background: #efede6;
+  }
+
+  .warm-section .section-label span { color: #c5c0b5; }
+  .warm-section .cap-item { border-color: #d8d4ca; }
+
+  /* ── RUNNING HEADER ── */
+  .running-header {
+    position: absolute;
+    top: 3rem;
+    right: 4rem;
+    font-size: 0.55rem;
+    color: var(--dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  section {
+    position: relative;
+  }
+
+  /* ── PAGE NUMBERS ── */
+  .page-num {
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+    font-size: 0.6rem;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+  }
+
+  .dark-section .page-num { color: var(--dark-dim); }
+  .dark-section .running-header { color: var(--dark-dim); }
+
+  /* ── FOLIO MARKS ── */
+  .folio-mark {
+    position: absolute;
+    bottom: 3rem;
+    left: 4rem;
+    font-size: 0.55rem;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .dark-section .folio-mark { color: var(--dark-dim); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 4rem 0;
+    padding-left: 2rem;
+    border-left: 2px solid var(--text);
+  }
+
+  .dark-section .pull-quote {
+    border-left-color: var(--dark-dim);
+  }
+
+  /* ── CAPABILITIES ── */
+  .cap-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .cap-item { grid-column: span 4; }
+
+  .cap-item {
+    padding: 3rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cap-item:nth-child(3n) { border-right: none; }
+  .cap-item:nth-child(n+4) { border-bottom: none; }
+
+  .cap-item .cap-num {
+    font-size: 0.55rem;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+  }
+
+  .cap-item h4 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .cap-item p {
+    font-size: 0.7rem;
+    color: var(--dim);
+    line-height: 1.9;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr 180px;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: baseline;
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+
+  .exp-date {
+    font-size: 0.65rem;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .exp-role { font-size: 0.85rem; }
+
+  .exp-company {
+    font-size: 0.75rem;
+    color: var(--dim);
+    text-align: right;
+  }
+
+  /* ── CONTACT (DARK) ── */
+  /* contact-layout replaced by .grid */
+
+  .contact-text {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.5;
+    color: var(--dark-text);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--dark-border);
+    font-size: 0.75rem;
+  }
+
+  .contact-row:first-child { border-top: 1px solid var(--dark-border); }
+
+  .contact-row .label {
+    color: var(--dark-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.65rem;
+  }
+
+  .contact-row a {
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .contact-row a:hover { opacity: 0.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    background: var(--dark-bg);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    color: var(--dark-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  footer span:nth-child(2) {
+    color: #333;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    mix-blend-mode: multiply;
+  }
+
+  /* ── HALFTONE SECTION DIVIDERS ── */
+  .texture-divider {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── DITHERED HOVER ON WORK ITEMS ── */
+  .work-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23ffffff' opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 4px 4px;
+    pointer-events: none;
+  }
+
+  .work-item:hover::before { opacity: 1; }
+
+  /* ── GRAIN ON DARK SECTIONS ── */
+  .dark-section {
+    position: relative;
+  }
+
+  .dark-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ── STIPPLE PATTERN ON CAPABILITIES ── */
+  .cap-item {
+    position: relative;
+  }
+
+  .cap-item::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.7' fill='%23000'/%3E%3C/svg%3E");
+    background-size: 6px 6px;
+    transition: opacity 0.3s, width 0.3s, height 0.3s;
+  }
+
+  .cap-item:hover::after {
+    opacity: 0.12;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    nav ul { gap: 1.5rem; }
+    .hero, section { padding: 4rem 2rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item, .work-item.featured { grid-column: span 1; }
+    .work-item.featured { grid-template-columns: 1fr; }
+    .cap-layout { grid-template-columns: 1fr; }
+    .cap-item { grid-column: span 1; border-right: none; border-bottom: 1px solid var(--border); }
+    .cap-item:last-child { border-bottom: none; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-company { text-align: left; }
+    .hero-coords, .gen-canvas { display: none; }
+    .hero-data { flex-wrap: wrap; gap: 2rem; }
+    footer { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Keith Barney</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-number">Nº 001</div>
+  <div class="hero-coords">
+    33.5676° N, 117.7256° W<br>
+    Aliso Viejo, California<br>
+    2026
+  </div>
+
+  <canvas class="gen-canvas" id="hero-gen"></canvas>
+
+  <h1>Designing the<br><span class="indent">systems that</span><br>design&nbsp;products.</h1>
+
+  <p class="hero-sub">
+    Building systematic design infrastructure
+    at enterprise scale. Bridging the distance between
+    intention and implementation.
+  </p>
+
+  <div class="hero-line"></div>
+
+  <div class="hero-data">
+    <div>
+      <div class="label">Currently</div>
+      <div class="value">Experian</div>
+    </div>
+    <div>
+      <div class="label">Focus</div>
+      <div class="value">Design Systems, SDUI</div>
+    </div>
+    <div>
+      <div class="label">Tools</div>
+      <div class="value">Figma, Tokens, Code</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="page-num">02</div>
+  <div class="section-label">About <span>01</span></div>
+
+  <div class="grid">
+    <div class="col-6 about-text">
+      I think in systems. For 15+ years I've worked in
+      the space where design meets engineering — building
+      the infrastructure that helps teams ship better
+      products faster. I build the tools other designers
+      use to do their best work.
+
+      <div class="pull-quote">
+        Swiss precision through
+        a&nbsp;hardcore&nbsp;lens.
+      </div>
+    </div>
+
+    <div class="col-6 about-list">
+      <div class="about-row">
+        <span class="label">Name</span>
+        <span>Keith Barney</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Role</span>
+        <span>Senior Designer, Design Systems</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Company</span>
+        <span>Experian</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Location</span>
+        <span>Aliso Viejo, California</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Focus</span>
+        <span>Figma, Tokens, SDUI, Components</span>
+      </div>
+      <div class="about-row">
+        <span class="label">Also</span>
+        <span>Guitarist — 18 Visions</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK (DARK) -->
+<section id="work" class="dark-section">
+  <div class="page-num">03 — 04</div>
+  <div class="section-label">Selected Work <span>02</span></div>
+
+  <div class="work-grid">
+
+    <div class="work-item featured">
+      <div>
+        <div class="work-num">Nº 01</div>
+        <div class="work-title">Experian Design System</div>
+        <div class="work-desc">
+          Enterprise-scale component architecture serving
+          multiple product teams. Token management, governance
+          frameworks, and documentation infrastructure built
+          for velocity and consistency.
+        </div>
+        <div class="work-tags">
+          <span>Design Systems</span>
+          <span>Figma</span>
+          <span>SDUI</span>
+          <span>Tokens</span>
+        </div>
+      </div>
+      <div class="work-visual">
+        <canvas id="work-gen" width="100%" height="100%"></canvas>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-num">Nº 02</div>
+      <div class="work-title">Token Replacer</div>
+      <div class="work-desc">
+        Figma plugin that maps hardcoded hex values
+        to design token variables. Automating hours
+        of manual work into&nbsp;seconds.
+      </div>
+      <div class="work-tags">
+        <span>Figma Plugin</span>
+        <span>Design Tokens</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-num">Nº 03</div>
+      <div class="work-title">Documentation Extractor</div>
+      <div class="work-desc">
+        Extracts structured documentation from Figma
+        sections into markdown. Preserves hierarchy,
+        handles nested&nbsp;content.
+      </div>
+      <div class="work-tags">
+        <span>Figma Plugin</span>
+        <span>Documentation</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-num">Nº 04</div>
+      <div class="work-title">SDUI Architecture</div>
+      <div class="work-desc">
+        Converting native experiences to Server-Driven UI.
+        Enabling real-time updates without app store&nbsp;releases.
+      </div>
+      <div class="work-tags">
+        <span>Architecture</span>
+        <span>SDUI</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-num">Nº 05</div>
+      <div class="work-title">Page Organizer</div>
+      <div class="work-desc">
+        Intelligent page structure management with
+        parent/child grouping and bulk operations
+        for large Figma&nbsp;files.
+      </div>
+      <div class="work-tags">
+        <span>Figma Plugin</span>
+        <span>Productivity</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="warm-section">
+  <div class="page-num">05</div>
+  <div class="section-label">Capabilities <span>03</span></div>
+
+  <div class="cap-layout">
+    <div class="cap-item">
+      <div class="cap-num">01</div>
+      <h4>Design Systems</h4>
+      <p>Component architecture, token taxonomies, governance, and documentation that scales across teams and products.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-num">02</div>
+      <h4>Figma</h4>
+      <p>Advanced components, variants, auto-layout, prototyping, and custom plugin development for workflow automation.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-num">03</div>
+      <h4>Server-Driven UI</h4>
+      <p>Converting native experiences to SDUI. Real-time updates, A/B testing, reduced release cycles.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-num">04</div>
+      <h4>Design Tokens</h4>
+      <p>Multi-brand theming, automated pipelines from Figma variables to production code.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-num">05</div>
+      <h4>Plugin Development</h4>
+      <p>Custom Figma plugins that automate tasks, enforce standards, and extend the platform.</p>
+    </div>
+    <div class="cap-item">
+      <div class="cap-num">06</div>
+      <h4>Creative Direction</h4>
+      <p>Visual identity, brand systems. Systematic thinking applied to expressive design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="page-num">06</div>
+  <div class="section-label">Experience <span>04</span></div>
+
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">2020 — Present</div>
+      <div class="exp-role">Senior Designer, Design Systems</div>
+      <div class="exp-company">Experian</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Ongoing</div>
+      <div class="exp-role">Guitarist</div>
+      <div class="exp-company">18 Visions</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (DARK) -->
+<section id="contact" class="dark-section">
+  <div class="page-num">07</div>
+  <div class="section-label">Contact <span>05</span></div>
+
+  <div class="grid">
+    <div class="col-5 contact-text">
+      Available for the<br>
+      right&nbsp;opportunity.<br>
+      <span style="font-size: 0.45em; color: var(--dark-dim); letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-top: 2rem;">Swiss Grit since '97</span>
+    </div>
+
+    <div class="col-5 start-8 contact-links">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <a href="mailto:keith@keithbarney.design">keith@keithbarney.design</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">LinkedIn</span>
+        <a href="#">linkedin.com/in/keithbarney</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/keithbarney">github.com/keithbarney</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">Location</span>
+        <a href="#">Aliso Viejo, CA — Remote OK</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<footer>
+  <span>Keith Barney — Design Systems Architect</span>
+  <span>Set in JetBrains Mono</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+  // ── HERO GENERATIVE ART ──
+  // Dot field with wave distortion
+  const heroCanvas = document.getElementById('hero-gen');
+  if (heroCanvas) {
+    const ctx = heroCanvas.getContext('2d');
+    heroCanvas.width = 520;
+    heroCanvas.height = 520;
+
+    function drawHero() {
+      ctx.clearRect(0, 0, 520, 520);
+      const t = Date.now() * 0.0004;
+      const spacing = 10;
+      const cols = Math.floor(520 / spacing);
+      const rows = Math.floor(520 / spacing);
+
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          const cx = x * spacing + spacing / 2;
+          const cy = y * spacing + spacing / 2;
+
+          const dx = (x / cols - 0.5) * 2;
+          const dy = (y / rows - 0.5) * 2;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          const wave = Math.sin(dist * 3.5 - t + Math.atan2(dy, dx) * 2);
+          const size = (wave * 0.5 + 0.5) * 4 + 0.5;
+
+          ctx.beginPath();
+          ctx.arc(cx, cy, size, 0, Math.PI * 2);
+          ctx.fillStyle = '#111';
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(drawHero);
+    }
+    drawHero();
+  }
+
+  // ── WORK SECTION GENERATIVE ──
+  // Horizontal waveform lines
+  const workCanvas = document.getElementById('work-gen');
+  if (workCanvas) {
+    const parent = workCanvas.parentElement;
+
+    function resizeWork() {
+      workCanvas.width = parent.offsetWidth;
+      workCanvas.height = parent.offsetHeight;
+    }
+    resizeWork();
+    window.addEventListener('resize', resizeWork);
+
+    const wctx = workCanvas.getContext('2d');
+
+    function drawWork() {
+      const w = workCanvas.width;
+      const h = workCanvas.height;
+      wctx.clearRect(0, 0, w, h);
+
+      const t = Date.now() * 0.0003;
+      const lines = 24;
+      const lineSpacing = h / (lines + 1);
+
+      for (let i = 0; i < lines; i++) {
+        const y = (i + 1) * lineSpacing;
+        wctx.beginPath();
+        wctx.moveTo(0, y);
+
+        for (let x = 0; x <= w; x += 3) {
+          const norm = x / w;
+          const amp = Math.sin(norm * Math.PI) * 18;
+          const freq1 = Math.sin(norm * 6 + t + i * 0.3) * amp;
+          const freq2 = Math.sin(norm * 12 + t * 1.7 + i * 0.15) * amp * 0.3;
+          wctx.lineTo(x, y + freq1 + freq2);
+        }
+
+        wctx.strokeStyle = `rgba(255,255,255,${0.08 + (i / lines) * 0.12})`;
+        wctx.lineWidth = 1;
+        wctx.stroke();
+      }
+      requestAnimationFrame(drawWork);
+    }
+    drawWork();
+  }
+
+  // ── HALFTONE DIVIDERS ──
+  function drawHalftone(canvasId, invert) {
+    const c = document.getElementById(canvasId);
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    c.width = c.parentElement.offsetWidth;
+    c.height = 80;
+
+    const bgColor = invert ? '#0a0a0a' : '#f5f5f0';
+    const dotColor = invert ? '#f5f5f0' : '#0a0a0a';
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    const spacing = 6;
+    const cols = Math.ceil(c.width / spacing);
+    const rows = Math.ceil(c.height / spacing);
+
+    for (let x = 0; x < cols; x++) {
+      for (let y = 0; y < rows; y++) {
+        const cx = x * spacing + spacing / 2;
+        const cy = y * spacing + spacing / 2;
+        const progress = invert ? (1 - y / rows) : (y / rows);
+        const noise = Math.sin(x * 0.5 + y * 0.3) * 0.3 + 0.5;
+        const threshold = progress * 1.2;
+
+        if (noise < threshold) {
+          const size = Math.min(spacing * 0.4, (threshold - noise) * spacing * 0.8);
+          ctx.beginPath();
+          ctx.arc(cx, cy, size, 0, Math.PI * 2);
+          ctx.fillStyle = dotColor;
+          ctx.fill();
+        }
+      }
+    }
+  }
+
+  drawHalftone('halftone-divider', false);
+  drawHalftone('halftone-divider-2', true);
+  window.addEventListener('resize', () => {
+    drawHalftone('halftone-divider', false);
+    drawHalftone('halftone-divider-2', true);
+  });
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('section:not(.hero)').forEach(s => {
+    s.style.opacity = '0';
+    s.style.transform = 'translateY(30px)';
+    s.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(s);
+  });
+</script>
+
+</body>
+</html>
