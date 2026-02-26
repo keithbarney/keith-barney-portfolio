@@ -115,6 +115,10 @@
         pointer-events: auto;
     }
 
+    .slide.active.no-transition {
+        transition: none;
+    }
+
     /* ===== PROGRESS BAR ===== */
     .progress {
         position: fixed;
@@ -1496,7 +1500,7 @@
         <!-- ============================================ -->
         <!-- SLIDE 01 — TITLE -->
         <!-- ============================================ -->
-        <div class="slide slide--title slide-template-intro active" data-slide="0">
+        <div class="slide slide--title slide-template-intro active no-transition" data-slide="0">
             <div class="slide-content gap-lg">
                 <h1 class="display">Designing the systems<br>that design products.</h1>
                 <div class="flex-col gap-xs">
@@ -4061,6 +4065,11 @@
     <div class="nav-hint" id="navHint">← → Arrow keys to navigate</div>
     <script>
     const deck = document.getElementById('deck');
+    // Remove no-transition class after first paint so future slides animate
+    requestAnimationFrame(function() {
+        var el = deck.querySelector('.no-transition');
+        if (el) el.classList.remove('no-transition');
+    });
     // Filter: set specific slide indices to limit deck, or leave empty to show all.
     const ACTIVE_SLIDES = [];
     const allSlides = deck.querySelectorAll('.slide');
