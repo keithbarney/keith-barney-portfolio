@@ -40,9 +40,11 @@
     return val;
   }
 
-  // --- Tunable parameters ---
+  // --- Aesthetic definitions ---
 
-  var params = {
+  var AESTHETICS = ['default', 'terminal'];
+
+  var DEFAULT_PARAMS = {
     grid: 5,
     gridMobile: 15,
     maxRFactor: 0.36,
@@ -55,6 +57,25 @@
     timeScale: 0.0002,
     minDot: 1,
   };
+
+  var THEME_PARAMS = {
+    terminal: {
+      grid: 4,
+      gridMobile: 12,
+      maxRFactor: 0.28,
+      noiseScale: 3,
+      speedX: 0.8,
+      speedY: 0.6,
+      octaves: 4,
+      timeScale: 0.00015,
+    }
+  };
+
+  // --- Tunable parameters ---
+
+  var params = {};
+  var k;
+  for (k in DEFAULT_PARAMS) params[k] = DEFAULT_PARAMS[k];
 
   // --- Canvas setup ---
 
@@ -155,6 +176,8 @@
 
   // --- Theme toggle ---
 
+  // --- Dark/light toggle ---
+
   function getInitialTheme() {
     var stored = localStorage.getItem('kb-theme');
     if (stored === 'light' || stored === 'dark') return stored;
@@ -177,6 +200,41 @@
     btn.addEventListener('click', function () {
       var current = document.documentElement.getAttribute('data-theme');
       applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  // --- Aesthetic select ---
+
+  function getInitialAesthetic() {
+    var stored = localStorage.getItem('kb-aesthetic');
+    if (stored && AESTHETICS.indexOf(stored) !== -1) return stored;
+    return 'default';
+  }
+
+  function applyAestheticParams(aesthetic) {
+    var k;
+    for (k in DEFAULT_PARAMS) params[k] = DEFAULT_PARAMS[k];
+    var overrides = THEME_PARAMS[aesthetic];
+    if (overrides) {
+      for (k in overrides) params[k] = overrides[k];
+    }
+  }
+
+  function applyAesthetic(aesthetic) {
+    document.documentElement.setAttribute('data-aesthetic', aesthetic);
+    localStorage.setItem('kb-aesthetic', aesthetic);
+    applyAestheticParams(aesthetic);
+    readThemeColors();
+    var sel = document.getElementById('aesthetic-select');
+    if (sel) sel.value = aesthetic;
+    if (isReducedMotion) staticRender();
+  }
+
+  function initAestheticSelect() {
+    var sel = document.getElementById('aesthetic-select');
+    if (!sel) return;
+    sel.addEventListener('change', function () {
+      applyAesthetic(sel.value);
     });
   }
 
@@ -231,9 +289,8 @@
     header.appendChild(closeBtn);
     panel.appendChild(header);
 
-    // Store default values for reset
-    var defaults = {};
-    for (var k in params) defaults[k] = params[k];
+    // Use module-level defaults for reset
+    var defaults = DEFAULT_PARAMS;
 
     // Build sliders
     var valueEls = {};
@@ -361,7 +418,11 @@
     var theme = getInitialTheme();
     applyTheme(theme);
 
+    var aesthetic = getInitialAesthetic();
+    applyAesthetic(aesthetic);
+
     initToggle();
+    initAestheticSelect();
     initDevButton();
 
     var observeTarget = heroEl || document.documentElement;
