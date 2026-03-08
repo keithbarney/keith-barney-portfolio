@@ -130,8 +130,8 @@
   }
 
   function readThemeColors() {
-    dotColor = resolveColor('--canvas-dot') || dotColor;
-    bgColor = resolveColor('--canvas-bg') || bgColor;
+    dotColor = resolveColor('--portfolio-canvas-dot') || dotColor;
+    bgColor = resolveColor('--portfolio-canvas-bg') || bgColor;
   }
 
   // --- Rendering ---
