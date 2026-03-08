@@ -4,26 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Keith Barney — Design Systems</title>
+<link rel="stylesheet" href="css/main.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #f5f5f0;
-    --text: #111;
-    --dim: #999;
-    --border: #ddd;
-    --dark-bg: #0a0a0a;
-    --dark-text: #e8e8e8;
-    --dark-dim: #666;
-    --dark-border: #222;
-    --font: 'JetBrains Mono', monospace;
+    --bg: var(--base-color-gold-0);
+    --text: var(--base-color-gray-80);
+    --dim: var(--base-color-gray-30);
+    --border: var(--base-color-gray-15);
+    --dark-bg: var(--base-color-gray-80);
+    --dark-text: var(--base-color-gray-10);
+    --dark-dim: var(--base-color-gray-45);
+    --dark-border: var(--base-color-gray-70);
+    --font: var(--base-font-secondary);
+    --grid-gutter: 24px;
+    --grid-margin: 48px;
   }
 
   ::selection {
-    background: #111;
-    color: #f5f5f0;
+    background: var(--text);
+    color: var(--bg);
   }
 
   html { scroll-behavior: smooth; }
@@ -38,13 +41,17 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  h1, h2, h3 {
+    font-family: var(--base-font-primary);
+    color: inherit;
+  }
+
   /* ── 12 COLUMN GRID SYSTEM ── */
   .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-    max-width: 1440px;
-    margin: 0 auto;
+    gap: var(--grid-gutter);
+    padding-inline: var(--grid-margin);
   }
 
   .col-1  { grid-column: span 1; }
@@ -85,38 +92,35 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(245,245,240,0.92);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 1.25rem 4rem;
-    display: flex;
-    justify-content: space-between;
+    padding-block: 1.25rem;
+  }
+
+  nav > .grid {
     align-items: center;
   }
 
   nav .logo {
+    grid-column: 1 / 3;
     font-size: 0.7rem;
     letter-spacing: 0;
     text-transform: uppercase;
     color: var(--text);
   }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 3rem;
-  }
-
-  nav ul li a {
+  nav a.nav-link {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0;
     color: var(--dim);
     text-decoration: none;
     transition: color 0.3s;
+    justify-self: start;
   }
 
-  nav ul li a:hover { color: var(--text); }
+  nav a.nav-link:hover { color: var(--text); }
 
   /* ── HERO ── */
   .hero {
@@ -124,19 +128,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4rem;
     position: relative;
     overflow: hidden;
   }
 
   .hero > .grid {
-    align-items: end;
+    width: 100%;
   }
 
   .hero-number {
     position: absolute;
     top: 6rem;
-    left: 4rem;
+    left: var(--grid-margin);
     font-size: 0.6rem;
     color: var(--dim);
     letter-spacing: 0;
@@ -146,7 +149,7 @@
   .hero-coords {
     position: absolute;
     top: 6rem;
-    right: 4rem;
+    right: var(--grid-margin);
     text-align: right;
     font-size: 0.6rem;
     color: var(--dim);
@@ -155,11 +158,11 @@
   }
 
   .hero h1 {
+    grid-column: 1 / 9;
     font-size: clamp(2.5rem, 6vw, 5.5rem);
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: 0;
-    max-width: 900px;
     margin-bottom: 3rem;
   }
 
@@ -172,14 +175,15 @@
   }
 
   .hero-sub {
+    grid-column: 1 / 6;
     font-size: 0.8rem;
     color: var(--dim);
-    max-width: 440px;
     line-height: 2;
     margin-bottom: 4rem;
   }
 
   .hero-line {
+    grid-column: 1 / -1;
     width: 60px;
     height: 1px;
     background: var(--text);
@@ -187,6 +191,7 @@
   }
 
   .hero-data {
+    grid-column: 1 / 9;
     display: flex;
     gap: 4rem;
     font-size: 0.65rem;
@@ -200,36 +205,33 @@
   /* ── GENERATIVE CANVAS ── */
   .gen-canvas {
     position: absolute;
-    right: -40px;
-    bottom: -40px;
-    width: 520px;
-    height: 520px;
-    opacity: 0.08;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.06;
     pointer-events: none;
   }
 
   /* ── SECTIONS ── */
   section {
-    padding: 8rem 4rem;
+    padding-block: 8rem;
     border-top: 1px solid var(--border);
   }
 
-  section > .grid {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
   .section-label {
+    grid-column: 1 / -1;
     font-size: 0.6rem;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0;
     color: var(--dim);
-    margin-bottom: 4rem;
+    margin: 0 0 4rem;
   }
 
   .section-label span {
     margin-left: 1rem;
-    color: #ccc;
+    color: var(--base-color-gray-20);
   }
 
   /* ── ABOUT ── */
@@ -242,24 +244,35 @@
     font-weight: 400;
   }
 
-  .about-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  .info-list {
+    grid-column: 7 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-content: start;
   }
 
-  .about-row {
+  .info-row {
+    grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 3rem;
+    grid-template-columns: subgrid;
     padding: 1.25rem 0;
     border-bottom: 1px solid var(--border);
     font-size: 0.75rem;
   }
 
-  .about-row:first-child { border-top: 1px solid var(--border); }
+  .info-row:first-child { border-top: 1px solid var(--border); }
 
-  .about-row .label {
+  .info-list.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .full-width .info-row .label {
+    grid-column: 1 / 3;
+  }
+
+
+  .info-row .label {
+    grid-column: 1;
     color: var(--dim);
     text-transform: uppercase;
     letter-spacing: 0;
@@ -267,9 +280,27 @@
     white-space: nowrap;
   }
 
-  .about-row span:last-child {
+  .info-row span:last-child,
+  .info-row a {
+    grid-column: 2 / -1;
     white-space: nowrap;
   }
+
+  .dark-section .info-row {
+    border-color: var(--dark-border);
+  }
+
+  .dark-section .info-row .label {
+    color: var(--dark-dim);
+  }
+
+  .dark-section .info-row a {
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .dark-section .info-row a:hover { opacity: 0.6; }
 
   /* ── DARK SECTION (WORK) ── */
   .dark-section {
@@ -279,22 +310,11 @@
   }
 
   .dark-section .section-label { color: var(--dark-dim); }
-  .dark-section .section-label span { color: #444; }
-
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1px;
-    background: var(--dark-border);
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  .work-item { grid-column: span 6; }
-  .work-item.featured { grid-column: span 12; }
+  .dark-section .section-label span { color: var(--base-color-gray-55); }
 
   .work-item {
-    background: var(--dark-bg);
+    grid-column: span 6;
+    border: 1px solid var(--dark-border);
     padding: 3rem;
     display: flex;
     flex-direction: column;
@@ -304,7 +324,7 @@
     position: relative;
   }
 
-  .work-item:hover { background: #0f0f0f; }
+  .work-item:hover { background: var(--base-color-gray-75); }
 
   .work-num {
     font-size: 0.6rem;
@@ -315,7 +335,8 @@
 
   .work-title {
     font-size: 1.3rem;
-    margin-bottom: 0.75rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem;
     line-height: 1.4;
   }
 
@@ -341,7 +362,7 @@
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: var(--grid-gutter);
     min-height: 400px;
     align-items: center;
   }
@@ -355,11 +376,11 @@
 
   /* ── WARM SECTION (different paper stock) ── */
   .warm-section {
-    background: #efede6;
+    background: var(--base-color-gold-5);
   }
 
-  .warm-section .section-label span { color: #c5c0b5; }
-  .warm-section .cap-item { border-color: #d8d4ca; }
+  .warm-section .section-label span { color: var(--base-color-gold-20); }
+  .warm-section .cap-item { border-color: var(--base-color-gold-10); }
 
   /* ── RUNNING HEADER ── */
   .running-header {
@@ -417,24 +438,11 @@
   }
 
   /* ── CAPABILITIES ── */
-  .cap-layout {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 0;
-    max-width: 1440px;
-    margin: 0 auto;
-  }
-
-  .cap-item { grid-column: span 4; }
-
   .cap-item {
+    grid-column: span 4;
     padding: 3rem 2rem;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
   }
-
-  .cap-item:nth-child(3n) { border-right: none; }
-  .cap-item:nth-child(n+4) { border-bottom: none; }
 
   .cap-item .cap-num {
     font-size: 0.55rem;
@@ -443,7 +451,7 @@
     margin-bottom: 2rem;
   }
 
-  .cap-item h4 {
+  .cap-item h3 {
     font-size: 0.85rem;
     font-weight: 400;
     text-transform: uppercase;
@@ -458,35 +466,11 @@
   }
 
   /* ── EXPERIENCE ── */
-  .exp-list {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
+  .full-width .info-row .exp-role { grid-column: 3 / 11; }
 
-  .exp-item {
-    display: grid;
-    grid-template-columns: 160px 1fr 180px;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: baseline;
-  }
-
-  .exp-item:first-child { border-top: 1px solid var(--border); }
-
-  .exp-date {
-    font-size: 0.65rem;
+  .full-width .info-row .exp-company {
+    grid-column: 11 / -1;
     color: var(--dim);
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  .exp-role { font-size: 0.85rem; }
-
-  .exp-company {
-    font-size: 0.75rem;
-    color: var(--dim);
-    text-align: right;
   }
 
   /* ── CONTACT (DARK) ── */
@@ -498,51 +482,27 @@
     color: var(--dark-text);
   }
 
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .contact-row {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 2rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--dark-border);
-    font-size: 0.75rem;
-  }
-
-  .contact-row:first-child { border-top: 1px solid var(--dark-border); }
-
-  .contact-row .label {
-    color: var(--dark-dim);
-    text-transform: uppercase;
-    letter-spacing: 0;
-    font-size: 0.65rem;
-  }
-
-  .contact-row a {
-    color: var(--dark-text);
-    text-decoration: none;
-    transition: opacity 0.3s;
-  }
-
-  .contact-row a:hover { opacity: 0.6; }
 
   /* ── FOOTER ── */
   footer {
-    padding: 2rem 4rem;
+    padding-block: 2rem;
     background: var(--dark-bg);
-    display: flex;
-    justify-content: space-between;
     font-size: 0.6rem;
     color: var(--dark-dim);
     text-transform: uppercase;
     letter-spacing: 0;
   }
 
+  footer > .grid {
+    align-items: center;
+  }
+
+  footer .footer-left { grid-column: 1 / 5; }
+  footer .footer-center { grid-column: 5 / 9; text-align: center; }
+  footer .footer-right { grid-column: 9 / -1; text-align: right; }
+
   footer span:nth-child(2) {
-    color: #333;
+    color: var(--base-color-gray-60);
   }
 
   /* ── NOISE TEXTURE OVERLAY ── */
@@ -623,20 +583,15 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 1rem 2rem; }
+    :root { --grid-margin: 2rem; }
+    nav { padding-block: 1rem; }
     nav ul { gap: 1.5rem; }
-    .hero, section { padding: 4rem 2rem; }
-    .work-grid { grid-template-columns: 1fr; }
-    .work-item, .work-item.featured { grid-column: span 1; }
+    .hero, section { padding-block: 4rem; }
+    .work-item, .work-item.featured { grid-column: 1 / -1; }
     .work-item.featured { grid-template-columns: 1fr; }
-    .cap-layout { grid-template-columns: 1fr; }
-    .cap-item { grid-column: span 1; border-right: none; border-bottom: 1px solid var(--border); }
-    .cap-item:last-child { border-bottom: none; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .exp-company { text-align: left; }
-    .hero-coords, .gen-canvas { display: none; }
+    .hero-coords { display: none; }
     .hero-data { flex-wrap: wrap; gap: 2rem; }
-    footer { padding: 2rem; }
+    footer { padding-block: 2rem; }
   }
 </style>
 </head>
@@ -644,13 +599,13 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Keith Barney</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#capabilities">Capabilities</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="grid">
+    <div class="logo">Keith Barney</div>
+    <a href="#about" class="nav-link" style="grid-column: 9;">About</a>
+    <a href="#work" class="nav-link" style="grid-column: 10;">Work</a>
+    <a href="#capabilities" class="nav-link" style="grid-column: 11;">Capabilities</a>
+    <a href="#contact" class="nav-link" style="grid-column: 12;">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -662,30 +617,33 @@
     2026
   </div>
 
-  <canvas class="gen-canvas" id="hero-gen"></canvas>
+  <canvas class="gen-canvas" id="hero-gen" aria-hidden="true"></canvas>
 
-  <h1>Designing the<br><span class="indent">systems that</span><br>design&nbsp;products.</h1>
+  <div class="grid">
+    <h1>Designing the<br><span class="indent">systems that</span><br>design&nbsp;products.</h1>
 
-  <p class="hero-sub">
-    Building systematic design infrastructure
-    at enterprise scale. Bridging the distance between
-    intention and implementation.
-  </p>
+    <p class="hero-sub">
+      A career crafting systems that scale teams,
+      products, and organizations. Each role expanded
+      the scope — from components to architecture,
+      from one product to an entire platform.
+    </p>
 
-  <div class="hero-line"></div>
+    <div class="hero-line"></div>
 
-  <div class="hero-data">
-    <div>
-      <div class="label">Currently</div>
-      <div class="value">Experian</div>
-    </div>
-    <div>
-      <div class="label">Focus</div>
-      <div class="value">Design Systems, SDUI</div>
-    </div>
-    <div>
-      <div class="label">Tools</div>
-      <div class="value">Figma, Tokens, Code</div>
+    <div class="hero-data">
+      <div>
+        <div class="label">Currently</div>
+        <div class="value">Experian</div>
+      </div>
+      <div>
+        <div class="label">Focus</div>
+        <div class="value">Design Systems, SDUI</div>
+      </div>
+      <div>
+        <div class="label">Tools</div>
+        <div class="value">Figma, Tokens, Code</div>
+      </div>
     </div>
   </div>
 </section>
@@ -693,15 +651,16 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="page-num">02</div>
-  <div class="section-label">About <span>01</span></div>
 
   <div class="grid">
+    <h2 class="section-label">About <span>01</span></h2>
     <div class="col-6 about-text">
-      I think in systems. For 15+ years I've worked in
+      I think in systems. For 12+ years I've worked in
       the space where design meets engineering — building
       the infrastructure that helps teams ship better
-      products faster. I build the tools other designers
-      use to do their best work.
+      products faster. From startup co-founder to enterprise
+      design systems lead, each role expanded my scope
+      of influence.
 
       <div class="pull-quote">
         Swiss precision through
@@ -709,30 +668,18 @@
       </div>
     </div>
 
-    <div class="col-6 about-list">
-      <div class="about-row">
-        <span class="label">Name</span>
-        <span>Keith Barney</span>
-      </div>
-      <div class="about-row">
-        <span class="label">Role</span>
-        <span>Senior Designer, Design Systems</span>
-      </div>
-      <div class="about-row">
+    <div class="info-list">
+      <div class="info-row">
         <span class="label">Company</span>
         <span>Experian</span>
       </div>
-      <div class="about-row">
-        <span class="label">Location</span>
-        <span>Aliso Viejo, California</span>
+      <div class="info-row">
+        <span class="label">Role</span>
+        <span>Design Systems Lead</span>
       </div>
-      <div class="about-row">
+      <div class="info-row">
         <span class="label">Focus</span>
         <span>Figma, Tokens, SDUI, Components</span>
-      </div>
-      <div class="about-row">
-        <span class="label">Also</span>
-        <span>Guitarist — 18 Visions</span>
       </div>
     </div>
   </div>
@@ -741,25 +688,22 @@
 <!-- WORK (DARK) -->
 <section id="work" class="dark-section">
   <div class="page-num">03 — 04</div>
-  <div class="section-label">Selected Work <span>02</span></div>
 
-  <div class="work-grid">
+  <div class="grid">
+    <h2 class="section-label">Selected Work <span>02</span></h2>
 
     <div class="work-item featured">
       <div>
-        <div class="work-num">Nº 01</div>
-        <div class="work-title">Experian Design System</div>
+        <div class="work-num">Nº 01 — Formation</div>
+        <h3 class="work-title">Creating Experian's First Design System</h3>
         <div class="work-desc">
-          Enterprise-scale component architecture serving
-          multiple product teams. Token management, governance
-          frameworks, and documentation infrastructure built
-          for velocity and consistency.
+          No formal design system existed — multiple domain teams independently created UI patterns with only a style guide for loose guidance. Led the creation of the first reusable component libraries across iOS, Android, and Web. The effort formalized into Experian's first official design systems team, and leadership mandated all new projects use the system.
         </div>
         <div class="work-tags">
           <span>Design Systems</span>
-          <span>Figma</span>
-          <span>SDUI</span>
-          <span>Tokens</span>
+          <span>Token Architecture</span>
+          <span>Governance</span>
+          <span>3 Platforms</span>
         </div>
       </div>
       <div class="work-visual">
@@ -768,97 +712,93 @@
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 02</div>
-      <div class="work-title">Token Replacer</div>
+      <div class="work-num">Nº 02 — Adoption</div>
+      <h3 class="work-title">Proving the System Works</h3>
       <div class="work-desc">
-        Figma plugin that maps hardcoded hex values
-        to design token variables. Automating hours
-        of manual work into&nbsp;seconds.
+        Building a design system is one thing — proving it actually helps is another. Multiple UI systems coexisted in production with no visibility. Conceived and prototyped an adoption tracking platform that turned 'is the design system working?' from an opinion into a dashboard.
       </div>
       <div class="work-tags">
-        <span>Figma Plugin</span>
-        <span>Design Tokens</span>
+        <span>Adoption Strategy</span>
+        <span>Design Tooling</span>
+        <span>4 UI Systems Tracked</span>
       </div>
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 03</div>
-      <div class="work-title">Documentation Extractor</div>
+      <div class="work-num">Nº 03 — Unification</div>
+      <h3 class="work-title">Atlas Component Merge</h3>
       <div class="work-desc">
-        Extracts structured documentation from Figma
-        sections into markdown. Preserves hierarchy,
-        handles nested&nbsp;content.
+        Platform-specific Figma libraries for web, iOS, and Android had evolved independently. Co-led the merge effort, releasing in waves over two months with a formal deprecation process and hands-on migration support.
       </div>
       <div class="work-tags">
-        <span>Figma Plugin</span>
-        <span>Documentation</span>
+        <span>Change Management</span>
+        <span>Cross-platform</span>
+        <span>5 Libraries → 1</span>
       </div>
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 04</div>
-      <div class="work-title">SDUI Architecture</div>
+      <div class="work-num">Nº 04 — Zero to One</div>
+      <h3 class="work-title">Building SpeakUp from Zero</h3>
       <div class="work-desc">
-        Converting native experiences to Server-Driven UI.
-        Enabling real-time updates without app store&nbsp;releases.
+        Co-founded a workplace collaboration platform. Owned all design — branding, product UI, marketing site — while leading a remote team of six engineers. The platform reached break-even and remains live today.
       </div>
       <div class="work-tags">
-        <span>Architecture</span>
-        <span>SDUI</span>
+        <span>Co-founder</span>
+        <span>Product Design</span>
+        <span>6-Person Team</span>
       </div>
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 05</div>
-      <div class="work-title">Page Organizer</div>
+      <div class="work-num">Nº 05 — Team Building</div>
+      <h3 class="work-title">Paciolan Design System</h3>
       <div class="work-desc">
-        Intelligent page structure management with
-        parent/child grouping and bulk operations
-        for large Figma&nbsp;files.
+        Inherited a product with no shared design language and a team of six designers working independently. Built the company's first design system while establishing a formal UX review process.
       </div>
       <div class="work-tags">
-        <span>Figma Plugin</span>
-        <span>Productivity</span>
+        <span>Design Systems</span>
+        <span>Team Management</span>
+        <span>6 Designers</span>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- CAPABILITIES -->
 <section id="capabilities" class="warm-section">
   <div class="page-num">05</div>
-  <div class="section-label">Capabilities <span>03</span></div>
 
-  <div class="cap-layout">
+  <div class="grid">
+    <h2 class="section-label">Capabilities <span>03</span></h2>
     <div class="cap-item">
       <div class="cap-num">01</div>
-      <h4>Design Systems</h4>
+      <h3>Design Systems</h3>
       <p>Component architecture, token taxonomies, governance, and documentation that scales across teams and products.</p>
     </div>
     <div class="cap-item">
       <div class="cap-num">02</div>
-      <h4>Figma</h4>
+      <h3>Figma</h3>
       <p>Advanced components, variants, auto-layout, prototyping, and custom plugin development for workflow automation.</p>
     </div>
     <div class="cap-item">
       <div class="cap-num">03</div>
-      <h4>Server-Driven UI</h4>
+      <h3>Server-Driven UI</h3>
       <p>Converting native experiences to SDUI. Real-time updates, A/B testing, reduced release cycles.</p>
     </div>
     <div class="cap-item">
       <div class="cap-num">04</div>
-      <h4>Design Tokens</h4>
+      <h3>Design Tokens</h3>
       <p>Multi-brand theming, automated pipelines from Figma variables to production code.</p>
     </div>
     <div class="cap-item">
       <div class="cap-num">05</div>
-      <h4>Plugin Development</h4>
+      <h3>Plugin Development</h3>
       <p>Custom Figma plugins that automate tasks, enforce standards, and extend the platform.</p>
     </div>
     <div class="cap-item">
       <div class="cap-num">06</div>
-      <h4>Creative Direction</h4>
+      <h3>Creative Direction</h3>
       <p>Visual identity, brand systems. Systematic thinking applied to expressive design.</p>
     </div>
   </div>
@@ -867,18 +807,35 @@
 <!-- EXPERIENCE -->
 <section>
   <div class="page-num">06</div>
-  <div class="section-label">Experience <span>04</span></div>
 
-  <div class="exp-list">
-    <div class="exp-item">
-      <div class="exp-date">2020 — Present</div>
-      <div class="exp-role">Senior Designer, Design Systems</div>
-      <div class="exp-company">Experian</div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-date">Ongoing</div>
-      <div class="exp-role">Guitarist</div>
-      <div class="exp-company">18 Visions</div>
+  <div class="grid">
+    <h2 class="section-label">Experience <span>04</span></h2>
+    <div class="info-list full-width">
+      <div class="info-row">
+        <span class="label">2021 — Present</span>
+        <span class="exp-role">Design Systems Lead</span>
+        <span class="exp-company">Experian</span>
+      </div>
+      <div class="info-row">
+        <span class="label">2018 — 2020</span>
+        <span class="exp-role">Lead Designer & DS Manager</span>
+        <span class="exp-company">Paciolan</span>
+      </div>
+      <div class="info-row">
+        <span class="label">2016 — 2018</span>
+        <span class="exp-role">Co-founder, Design Lead</span>
+        <span class="exp-company">SpeakUp</span>
+      </div>
+      <div class="info-row">
+        <span class="label">2014 — 2016</span>
+        <span class="exp-role">Lead Designer</span>
+        <span class="exp-company">Westcom</span>
+      </div>
+      <div class="info-row">
+        <span class="label">Ongoing</span>
+        <span class="exp-role">Guitarist</span>
+        <span class="exp-company">18 Visions</span>
+      </div>
     </div>
   </div>
 </section>
@@ -886,29 +843,29 @@
 <!-- CONTACT (DARK) -->
 <section id="contact" class="dark-section">
   <div class="page-num">07</div>
-  <div class="section-label">Contact <span>05</span></div>
 
   <div class="grid">
-    <div class="col-5 contact-text">
+    <h2 class="section-label">Contact <span>05</span></h2>
+    <div class="contact-text" style="grid-column: 1 / 7;">
       Available for the<br>
       right&nbsp;opportunity.<br>
       <span style="font-size: 0.45em; color: var(--dark-dim); letter-spacing: 0; text-transform: uppercase; display: block; margin-top: 2rem;">Swiss Grit since '97</span>
     </div>
 
-    <div class="col-5 start-8 contact-links">
-      <div class="contact-row">
+    <div class="info-list">
+      <div class="info-row">
         <span class="label">Email</span>
         <a href="mailto:keith@keithbarney.design">keith@keithbarney.design</a>
       </div>
-      <div class="contact-row">
+      <div class="info-row">
         <span class="label">LinkedIn</span>
         <a href="#">linkedin.com/in/keithbarney</a>
       </div>
-      <div class="contact-row">
+      <div class="info-row">
         <span class="label">GitHub</span>
         <a href="https://github.com/keithbarney">github.com/keithbarney</a>
       </div>
-      <div class="contact-row">
+      <div class="info-row">
         <span class="label">Location</span>
         <a href="#">Aliso Viejo, CA — Remote OK</a>
       </div>
@@ -918,49 +875,57 @@
 
 <!-- COLOPHON -->
 <footer>
-  <span>Keith Barney — Design Systems Architect</span>
-  <span>Set in JetBrains Mono</span>
-  <span>© 2026</span>
+  <div class="grid">
+    <span class="footer-left">Keith Barney — Design Systems Lead</span>
+    <span class="footer-right">© 2026</span>
+  </div>
 </footer>
 
 <script>
-  // ── HERO GENERATIVE ART ──
-  // Dot field with wave distortion
+  /* ── HERO GENERATIVE ART ── (commented out)
   const heroCanvas = document.getElementById('hero-gen');
   if (heroCanvas) {
     const ctx = heroCanvas.getContext('2d');
-    heroCanvas.width = 520;
-    heroCanvas.height = 520;
+    function sizeHero() {
+      heroCanvas.width = heroCanvas.parentElement.offsetWidth;
+      heroCanvas.height = heroCanvas.parentElement.offsetHeight;
+      drawHero();
+    }
 
     function drawHero() {
-      ctx.clearRect(0, 0, 520, 520);
-      const t = Date.now() * 0.0004;
-      const spacing = 10;
-      const cols = Math.floor(520 / spacing);
-      const rows = Math.floor(520 / spacing);
+      const w = heroCanvas.width;
+      const h = heroCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+      const spacing = 14;
+      const cols = Math.ceil(w / spacing);
+      const rows = Math.ceil(h / spacing);
 
       for (let x = 0; x < cols; x++) {
         for (let y = 0; y < rows; y++) {
           const cx = x * spacing + spacing / 2;
           const cy = y * spacing + spacing / 2;
+          const nx = x / cols;
+          const ny = y / rows;
 
-          const dx = (x / cols - 0.5) * 2;
-          const dy = (y / rows - 0.5) * 2;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const density = nx * 0.6 + ny * 0.4;
+          const noise = Math.sin(x * 0.8 + y * 0.5) * 0.3 +
+                        Math.cos(x * 0.3 - y * 0.7) * 0.2;
+          const size = (density + noise * 0.3) * spacing * 0.35;
 
-          const wave = Math.sin(dist * 3.5 - t + Math.atan2(dy, dx) * 2);
-          const size = (wave * 0.5 + 0.5) * 4 + 0.5;
-
-          ctx.beginPath();
-          ctx.arc(cx, cy, size, 0, Math.PI * 2);
-          ctx.fillStyle = '#111';
-          ctx.fill();
+          if (size > 0.3) {
+            ctx.beginPath();
+            ctx.arc(cx, cy, size, 0, Math.PI * 2);
+            ctx.fillStyle = '#111';
+            ctx.fill();
+          }
         }
       }
-      requestAnimationFrame(drawHero);
     }
-    drawHero();
+
+    sizeHero();
+    window.addEventListener('resize', sizeHero);
   }
+  */
 
   // ── WORK SECTION GENERATIVE ──
   // Horizontal waveform lines
