@@ -320,6 +320,21 @@ section {
   color: var(--hds-text-disabled);
 }
 
+/* ===== 7b. NARRATIVE THREAD ===== */
+
+.narrative {
+  padding-block: var(--hds-space-48);
+}
+
+.narrative-text {
+  font-family: var(--base-font-secondary);
+  font-size: var(--hds-font-size-body-lg);
+  color: var(--hds-text-disabled);
+  line-height: var(--hds-line-height-loose);
+  max-width: var(--hds-measure);
+  margin: 0;
+}
+
 /* ===== 8. WORK / CASE STUDIES ===== */
 
 .work {
@@ -382,6 +397,21 @@ section {
   letter-spacing: 0.06em;
 }
 
+.project-metrics {
+  --cluster-space: var(--hds-space-8);
+  margin-top: var(--hds-space-12);
+}
+
+.hds-badge--metric {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--base-font-secondary);
+  font-size: var(--hds-font-size-body-xs);
+  color: var(--hds-text-disabled);
+  letter-spacing: 0.04em;
+}
+
 .project-image {
   display: flex;
   align-items: center;
@@ -420,6 +450,14 @@ section {
   line-height: var(--hds-line-height-tight);
 }
 
+.experience-heading {
+  font-family: var(--base-font-primary);
+  font-weight: 700;
+  font-size: var(--hds-font-size-h3);
+  color: var(--hds-text-strong);
+  margin: 0 0 var(--hds-space-32) 0;
+}
+
 .company-role {
   display: block;
   font-family: var(--base-font-secondary);
@@ -428,6 +466,15 @@ section {
   letter-spacing: 0.08em;
   color: var(--hds-text-disabled);
   margin-top: var(--hds-space-4);
+}
+
+.company-scope {
+  display: block;
+  font-family: var(--base-font-secondary);
+  font-size: var(--hds-font-size-body-sm);
+  color: var(--hds-text-default);
+  margin-top: var(--hds-space-4);
+  line-height: var(--hds-line-height-base);
 }
 
 /* ===== 10. ABOUT ===== */
@@ -546,6 +593,7 @@ section {
   }
 
   .hero .hds-col-span-8,
+  .narrative .hds-col-span-8,
   .project .hds-col-span-6,
   .about .hds-col-span-6 {
     grid-column: 1 / -1;

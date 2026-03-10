@@ -219,10 +219,10 @@ node build-tokens.js --project-overrides=./overrides.json
 .gap-{1-6}         // Gap utilities
 
 // Flexbox
-.flex, .items-center, .justify-between
+.hds-flex, .hds-items-center, .hds-justify-between
 
 // Spacing utilities
-.m-{1-6}, .p-{1-6}, .my-{1-6}, .px-{1-6}
+.hds-m-{1-6}, .hds-p-{1-6}, .hds-my-{1-6}, .hds-px-{1-6}
 ```
 
 ### Column Patterns
@@ -247,7 +247,7 @@ Reverse (max-width): `@include md-down`
 Built-in utilities in `_accessibility.sass`:
 
 ```scss
-.sr-only        // Screen reader only
+.hds-sr-only    // Screen reader only
 .skip-link      // Keyboard navigation
 .focus-ring     // 2px outline + 2px offset
 .touch-target   // Min 44×44px (WCAG 2.5.5)

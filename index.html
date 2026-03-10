@@ -725,24 +725,13 @@
           <span>4 UI Systems Tracked</span>
         </div>
       </div>
-      <div class="work-visual"></div>
-    </div>
-
-    <div class="work-item">
-      <div class="work-num">Nº 03 — Unification</div>
-      <h3 class="work-title">Cross-Platform Component Merge</h3>
-      <div class="work-desc">
-        Platform-specific Figma libraries for web, iOS, and Android had evolved independently — fragmented patterns, duplicated work, growing maintenance overhead. Co-led the merge effort with a formal deprecation process, releasing in waves over two months with Loom walkthroughs, Slack announcements, and hands-on migration support.
-      </div>
-      <div class="work-tags">
-        <span>Change Management</span>
-        <span>Cross-platform</span>
-        <span>5 Libraries → 1</span>
+      <div class="work-visual">
+        <canvas id="work-gen-2" width="100%" height="100%"></canvas>
       </div>
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 04 — Zero to One</div>
+      <div class="work-num">Nº 03 — Zero to One</div>
       <h3 class="work-title">SpeakUp — Co-founded from Scratch</h3>
       <div class="work-desc">
         Co-founded a workplace collaboration platform. Owned all design — branding, product UI, marketing site — while leading a remote team of six engineers. Proved I can ship a product end-to-end, not just a system.
@@ -755,7 +744,7 @@
     </div>
 
     <div class="work-item">
-      <div class="work-num">Nº 05 — Team Building</div>
+      <div class="work-num">Nº 04 — Team Building</div>
       <h3 class="work-title">Paciolan Design System</h3>
       <div class="work-desc">
         Inherited a product with no shared design language and six designers working independently. Built the company's first design system while establishing a formal UX review process that balanced consistency with creative autonomy.
@@ -985,6 +974,71 @@
       requestAnimationFrame(drawWork);
     }
     drawWork();
+  }
+
+  // ── WORK SECTION 2: ADOPTION SCAN ──
+  // Dot grid where 4 horizontal bands pulse at different intensities
+  // Represents 4 UI systems becoming visible through measurement
+  const workCanvas2 = document.getElementById('work-gen-2');
+  if (workCanvas2) {
+    const parent2 = workCanvas2.parentElement;
+
+    function resizeWork2() {
+      workCanvas2.width = parent2.offsetWidth;
+      workCanvas2.height = parent2.offsetHeight;
+    }
+    resizeWork2();
+    window.addEventListener('resize', resizeWork2);
+
+    const wctx2 = workCanvas2.getContext('2d');
+    const spacing = 16;
+
+    function drawWork2() {
+      const w = workCanvas2.width;
+      const h = workCanvas2.height;
+      wctx2.clearRect(0, 0, w, h);
+
+      const t = Date.now() * 0.0004;
+      const cols = Math.floor(w / spacing);
+      const rows = Math.floor(h / spacing);
+
+      // 4 bands — each represents a UI system with different base brightness
+      // Atlas (bright), Next (medium), Legacy (dim, fading), SDUI (barely there)
+      const bandCount = 4;
+      const bandHeight = rows / bandCount;
+      const bandBrightness = [0.85, 0.45, 0.2, 0.08];
+
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+          const x = col * spacing + spacing / 2;
+          const y = row * spacing + spacing / 2;
+
+          // Which band
+          const band = Math.min(Math.floor(row / bandHeight), 3);
+          const base = bandBrightness[band];
+
+          // Horizontal scan wave — sweeps across like a measurement pulse
+          const normX = col / cols;
+          const scanWave = Math.sin(normX * Math.PI * 2 - t * 2 + band * 0.8) * 0.5 + 0.5;
+
+          // Noise for organic variation
+          const noise = Math.sin(col * 0.7 + row * 0.5 + t) * 0.15;
+
+          // Final opacity — base brightness modulated by scan and noise
+          const alpha = Math.max(0.03, Math.min(1, base * (0.5 + scanWave * 0.5) + noise * base));
+
+          // Dot size varies with brightness — brighter = larger
+          const r = 1.5 + alpha * 2;
+
+          wctx2.beginPath();
+          wctx2.arc(x, y, r, 0, Math.PI * 2);
+          wctx2.fillStyle = `rgba(255,255,255,${alpha})`;
+          wctx2.fill();
+        }
+      }
+      requestAnimationFrame(drawWork2);
+    }
+    drawWork2();
   }
 
   // ── HALFTONE DIVIDERS ──

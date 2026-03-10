@@ -24,7 +24,7 @@ html(lang="en" data-theme="dark")
           .hds-grid.hds-grid--12
             .hds-col-span-8
               h1.name Keith Barney
-              p.role Design systems leader building scalable foundations for product teams.
+              p.role A career crafting systems that scale teams, products, and organizations.
 
       //- 3. Services / Capabilities
       section.capabilities
@@ -34,6 +34,13 @@ html(lang="en" data-theme="dark")
             li Component Libraries
             li Design Tokens
             li Documentation
+
+      //- Narrative Thread
+      section.narrative
+        .container
+          .hds-grid.hds-grid--12
+            .hds-col-span-8
+              p.narrative-text Each role expanded my scope — from building components to building teams, from single-product systems to cross-platform architecture. Two case studies, one arc: the influence grows.
 
       //- 4. Work / Case Studies
       section.work#work
@@ -48,12 +55,31 @@ html(lang="en" data-theme="dark")
                 span.hds-badge Design Systems
                 span.hds-badge Token Architecture
                 span.hds-badge Governance
+              .project-metrics.hds-cluster
+                span.hds-badge.hds-badge--metric 3 platforms (iOS, Android, Web)
+                span.hds-badge.hds-badge--metric Company-wide mandate achieved
             .hds-col-span-6.project-image
               img(src="images/case-study-01.svg" alt="Design system grid pattern" loading="lazy")
 
           article.project.hds-grid.hds-grid--12
             .hds-col-span-6.project-info
               span.project-index 02
+              span.project-category Design System Adoption
+              h2.project-name Proving the System Works
+              p.project-description Building a design system is one thing — proving it actually helps is another. Multiple UI systems coexisted in production with no visibility into what was running where. Autonomously conceived and prototyped Atlas Tools — an adoption tracking platform that made tech debt visible and actionable. Designed the full experience and collaborated directly with engineers on feasibility. The tool surfaced prioritized work for product managers, rescued an offshore engineering team running low on tasks, and shifted the culture from ticket-taking to problem-solving. Turned "is the design system working?" from an opinion into a dashboard.
+              .project-skills.hds-cluster
+                span.hds-badge Adoption Strategy
+                span.hds-badge Design Tooling
+                span.hds-badge Culture Change
+              .project-metrics.hds-cluster
+                span.hds-badge.hds-badge--metric 4 UI systems tracked
+                span.hds-badge.hds-badge--metric Rescued offshore team capacity
+            .hds-col-span-6.project-image
+              img(src="images/case-study-03.svg" alt="Audit tool interface overlay" loading="lazy")
+
+          article.project.hds-grid.hds-grid--12
+            .hds-col-span-6.project-info
+              span.project-index 03
               span.project-category Platform Unification
               h2.project-name Atlas Component Merge
               p.project-description Platform-specific Figma libraries for web, iOS, and Android had evolved independently, with web further fragmented into separate mobile, tablet, and desktop breakpoints. Duplicated patterns, inconsistent behavior, and growing maintenance overhead demanded unification. Co-led the merge effort, dividing the component list and releasing in waves over two months. Created a formal four-step deprecation process with Slack announcements, Loom walkthroughs, and one-on-one designer check-ins to manage the transition. The merge eliminated redundant Figma frames, centralized design decisions across platforms, and reduced platform-switching overhead. Designers' Figma proficiency increased significantly as a direct result of the hands-on migration support.
@@ -61,21 +87,11 @@ html(lang="en" data-theme="dark")
                 span.hds-badge Change Management
                 span.hds-badge Component Architecture
                 span.hds-badge Cross-platform
+              .project-metrics.hds-cluster
+                span.hds-badge.hds-badge--metric 5 libraries → 1 unified system
+                span.hds-badge.hds-badge--metric 2-month phased rollout
             .hds-col-span-6.project-image
               img(src="images/case-study-02.svg" alt="Component merge diagram" loading="lazy")
-
-          article.project.hds-grid.hds-grid--12
-            .hds-col-span-6.project-info
-              span.project-index 03
-              span.project-category Design Tooling
-              h2.project-name Atlas Audit
-              p.project-description Multiple UI systems coexisted in production — Legacy, Next, Atlas, and SDUI — with no visibility into what was actually running. Adoption remained abstract and impossible to operationalize. Autonomously conceived and prototyped a design system adoption tool that made tech debt visible and actionable. Designed the full experience in Figma and collaborated directly with engineers on feasibility and feedback. The tool surfaced work for an offshore engineering team running low on tasks, preventing wasted contract time and money. Turned abstract adoption conversations into concrete, prioritized work items for product managers. The initiative inspired other team members to start building their own internal tools — shifting the culture from ticket-taking to problem-solving.
-              .project-skills.hds-cluster
-                span.hds-badge Design Tooling
-                span.hds-badge Adoption Metrics
-                span.hds-badge Prototyping
-            .hds-col-span-6.project-image
-              img(src="images/case-study-03.svg" alt="Audit tool interface overlay" loading="lazy")
 
           article.project.hds-grid.hds-grid--12
             .hds-col-span-6.project-info
@@ -87,6 +103,9 @@ html(lang="en" data-theme="dark")
                 span.hds-badge Product Design
                 span.hds-badge Design Leadership
                 span.hds-badge Remote Team Management
+              .project-metrics.hds-cluster
+                span.hds-badge.hds-badge--metric 6-person remote team
+                span.hds-badge.hds-badge--metric Product reached break-even
             .hds-col-span-6.project-image
               img(src="images/case-study-04.svg" alt="SpeakUp layered interface" loading="lazy")
 
@@ -100,22 +119,45 @@ html(lang="en" data-theme="dark")
                 span.hds-badge Design Systems
                 span.hds-badge Team Management
                 span.hds-badge Process Design
+              .project-metrics.hds-cluster
+                span.hds-badge.hds-badge--metric 6 designers managed
+                span.hds-badge.hds-badge--metric First DS built from scratch
             .hds-col-span-6.project-image
               img(src="images/case-study-05.svg" alt="Paciolan design system structure" loading="lazy")
 
-      //- 5. Experience / Companies
+      //- 5. Experience / Work History
       section.experience
         .container
+          h2.experience-heading Work History
           ul.companies
             li
               span.company-name Experian
-              span.company-role Design Systems Lead — 5 years
+              span.company-role Design Systems Lead · 2021–Present
+              span.company-scope Atlas Design System — iOS, Android, Web · Global Consumer Credit
             li
-              span.company-name Paciolan
-              span.company-role Lead Designer & DS Manager
+              span.company-name ADP
+              span.company-role UX Designer · 2019–2021
+              span.company-scope Enterprise HR platform · Design system contributions
+            li
+              span.company-name Applied Systems
+              span.company-role Lead UX Designer · 2017–2019
+              span.company-scope Insurance technology platform · UX design initiatives
+            li
+              span.company-name Cirrus Insight
+              span.company-role UX Designer · 2015–2017
+              span.company-scope Salesforce integration · Product design
             li
               span.company-name SpeakUp
-              span.company-role Co-founder, Design Lead
+              span.company-role Co-founder, Design Lead · 2013–2015
+              span.company-scope Product design, branding, remote team leadership
+            li
+              span.company-name Wunderman
+              span.company-role Designer · 2012–2013
+              span.company-scope Agency — digital campaigns, brand systems
+            li
+              span.company-name Paciolan
+              span.company-role Lead Designer & DS Manager · 2010–2012
+              span.company-scope First design system · Team of 6 designers
 
       //- 6. About
       section.about
@@ -123,7 +165,7 @@ html(lang="en" data-theme="dark")
           .hds-grid.hds-grid--12
             .hds-col-span-6
               p I build design systems that scale. My focus is on the infrastructure layer—tokens, components, documentation—that enables teams to ship consistent, accessible products.
-              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian], #[a(href="https://www.paciolan.com" target="_blank" rel="noopener") Paciolan], and #[a(href="https://www.speakup.com" target="_blank" rel="noopener") SpeakUp].
+              p Previously at #[a(href="https://www.experian.com" target="_blank" rel="noopener") Experian], #[a(href="https://www.adp.com" target="_blank" rel="noopener") ADP], #[a(href="https://www.appliedsystems.com" target="_blank" rel="noopener") Applied Systems], #[a(href="https://www.paciolan.com" target="_blank" rel="noopener") Paciolan], and #[a(href="https://www.speakup.com" target="_blank" rel="noopener") SpeakUp].
 
       //- 7. Social / Presence
       section.social

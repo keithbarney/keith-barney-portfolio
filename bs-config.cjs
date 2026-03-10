@@ -35,7 +35,7 @@ module.exports = {
       },
     ],
   },
-  files: ['dist/**/*'],
+  files: ['dist/**/*', 'index.html'],
   port: 3000,
   open: false,
 };
