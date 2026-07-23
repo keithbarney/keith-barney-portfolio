@@ -142,7 +142,7 @@
       align-self: start;
       margin: 0;
       max-width: none;
-      line-height: 1.62;
+      line-height: 1.5;
     }
 
     .experience {
@@ -180,10 +180,16 @@
     .role-title strong { font-weight: 400; }
 
     @media (max-width: 760px) {
+      body {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
       .resume {
+        --resume-row-padding: 1.5em;
         display: flex;
         flex-direction: column;
-        padding-bottom: 3rem;
+        padding-bottom: 1.5em;
       }
 
       .masthead,
@@ -214,7 +220,7 @@
 
       .contact {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.5rem;
+        gap: 0.5em;
         margin-top: var(--resume-row-padding);
       }
 
@@ -240,8 +246,8 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        min-height: 32px;
-        padding: 0.25rem 0.5rem;
+        min-height: 2.6667em;
+        padding: 0.25em 0.5em;
         color: var(--resume-ink);
         background: #f3f3f3;
         text-align: center;
