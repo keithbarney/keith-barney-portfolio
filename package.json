@@ -7,7 +7,7 @@
     "dev": "npm run build && npm run serve",
     "build": "npm run build:assets && npm run build:pages",
     "build:assets": "mkdir -p dist/css dist/fonts && cp ~/Projects/design/heavy-design-system/dist/main.css dist/css/main.css && cp src/assets/fonts/* dist/fonts/ && cd dist/css && ln -sf ../fonts fonts",
-    "build:pages": "cp index.html dist/index.html",
+    "build:pages": "cp resume.html index.html && cp index.html dist/index.html && cp resume.html dist/resume.html",
     "serve": "browser-sync start --config bs-config.cjs"
   },
   "engines": {

@@ -1,1106 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keith Barney — Design Systems</title>
-<link rel="stylesheet" href="css/main.css">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: var(--base-color-gold-0);
-    --text: var(--base-color-gray-80);
-    --dim: var(--base-color-gray-30);
-    --border: var(--base-color-gray-15);
-    --dark-bg: var(--base-color-gray-80);
-    --dark-text: var(--base-color-gray-10);
-    --dark-dim: var(--base-color-gray-45);
-    --dark-border: var(--base-color-gray-70);
-    --font: var(--base-font-secondary);
-    --grid-gutter: 24px;
-    --grid-margin: 48px;
-  }
-
-  ::selection {
-    background: var(--text);
-    color: var(--bg);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3 {
-    font-family: var(--base-font-primary);
-    color: inherit;
-  }
-
-  /* ── 12 COLUMN GRID SYSTEM ── */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--grid-gutter);
-    padding-inline: var(--grid-margin);
-  }
-
-  .col-1  { grid-column: span 1; }
-  .col-2  { grid-column: span 2; }
-  .col-3  { grid-column: span 3; }
-  .col-4  { grid-column: span 4; }
-  .col-5  { grid-column: span 5; }
-  .col-6  { grid-column: span 6; }
-  .col-7  { grid-column: span 7; }
-  .col-8  { grid-column: span 8; }
-  .col-9  { grid-column: span 9; }
-  .col-10 { grid-column: span 10; }
-  .col-11 { grid-column: span 11; }
-  .col-12 { grid-column: span 12; }
-
-  .start-1  { grid-column-start: 1; }
-  .start-2  { grid-column-start: 2; }
-  .start-3  { grid-column-start: 3; }
-  .start-4  { grid-column-start: 4; }
-  .start-5  { grid-column-start: 5; }
-  .start-6  { grid-column-start: 6; }
-  .start-7  { grid-column-start: 7; }
-  .start-8  { grid-column-start: 8; }
-  .start-9  { grid-column-start: 9; }
-
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-    .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-      grid-column: span 4;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume for Keith Barney, Design Systems Lead.">
+  <title>Keith Barney — Resume</title>
+  <style>
+    @font-face {
+      font-family: "JetBrains Mono";
+      src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
     }
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: color-mix(in srgb, var(--bg) 92%, transparent);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding-block: 1.25rem;
-  }
-
-  nav > .grid {
-    align-items: center;
-  }
-
-  nav .logo {
-    grid-column: 1 / 3;
-    font-size: 0.7rem;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: var(--text);
-  }
-
-  nav a.nav-link {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    color: var(--dim);
-    text-decoration: none;
-    transition: color 0.3s;
-    justify-self: start;
-  }
-
-  nav a.nav-link:hover { color: var(--text); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero > .grid {
-    width: 100%;
-  }
-
-  .hero-number {
-    position: absolute;
-    top: 6rem;
-    left: var(--grid-margin);
-    font-size: 0.6rem;
-    color: var(--dim);
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  .hero-coords {
-    position: absolute;
-    top: 6rem;
-    right: var(--grid-margin);
-    text-align: right;
-    font-size: 0.6rem;
-    color: var(--dim);
-    letter-spacing: 0;
-    line-height: 2.2;
-  }
-
-  .hero h1 {
-    grid-column: 1 / 9;
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: 0;
-    margin-bottom: 3rem;
-  }
-
-  .hero h1 .displace {
-    display: inline-block;
-  }
-
-  .hero h1 .indent {
-    display: inline-block;
-  }
-
-  .hero-sub {
-    grid-column: 1 / 6;
-    font-size: 0.8rem;
-    color: var(--dim);
-    line-height: 2;
-    margin-bottom: 4rem;
-  }
-
-  .hero-line {
-    grid-column: 1 / -1;
-    width: 60px;
-    height: 1px;
-    background: var(--text);
-    margin-bottom: 2rem;
-  }
-
-  .hero-data {
-    grid-column: 1 / 9;
-    display: flex;
-    gap: 4rem;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0;
-  }
-
-  .hero-data .label { color: var(--dim); margin-bottom: 0.4rem; }
-  .hero-data .value { color: var(--text); }
-
-  /* ── GENERATIVE CANVAS ── */
-  .gen-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.06;
-    pointer-events: none;
-  }
-
-  /* ── SECTIONS ── */
-  section {
-    padding-block: 8rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    grid-column: 1 / -1;
-    font-size: 0.6rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    color: var(--dim);
-    margin: 0 0 4rem;
-  }
-
-  .section-label span {
-    margin-left: 1rem;
-    color: var(--base-color-gray-20);
-  }
-
-  /* ── ABOUT ── */
-  /* about-layout replaced by .grid */
-
-  .about-text {
-    font-size: 1.1rem;
-    line-height: 2;
-    max-width: 480px;
-    font-weight: 400;
-  }
-
-  .info-list {
-    grid-column: 7 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
-    align-content: start;
-  }
-
-  .info-row {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.75rem;
-  }
-
-  .info-row:first-child { border-top: 1px solid var(--border); }
-
-  .info-list.full-width {
-    grid-column: 1 / -1;
-  }
-
-  .full-width .info-row .label {
-    grid-column: 1 / 3;
-  }
-
-
-  .info-row .label {
-    grid-column: 1;
-    color: var(--dim);
-    text-transform: uppercase;
-    letter-spacing: 0;
-    font-size: 0.65rem;
-    white-space: nowrap;
-  }
-
-  .info-row span:last-child,
-  .info-row a {
-    grid-column: 2 / -1;
-    white-space: nowrap;
-  }
-
-  .dark-section .info-row {
-    border-color: var(--dark-border);
-  }
-
-  .dark-section .info-row .label {
-    color: var(--dark-dim);
-  }
-
-  .dark-section .info-row a {
-    color: var(--dark-text);
-    text-decoration: none;
-    transition: opacity 0.3s;
-  }
-
-  .dark-section .info-row a:hover { opacity: 0.6; }
-
-  /* ── DARK SECTION (WORK) ── */
-  .dark-section {
-    background: var(--dark-bg);
-    color: var(--dark-text);
-    border-top: none;
-  }
-
-  .dark-section .section-label { color: var(--dark-dim); }
-  .dark-section .section-label span { color: var(--base-color-gray-55); }
-
-  .work-item {
-    grid-column: span 6;
-    border: 1px solid var(--dark-border);
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    transition: background 0.4s;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .work-item:hover { background: var(--base-color-gray-75); }
-
-  .work-num {
-    font-size: 0.6rem;
-    color: var(--dark-dim);
-    letter-spacing: 0;
-    margin-bottom: auto;
-  }
-
-  .work-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0 0 0.75rem;
-    line-height: 1.4;
-  }
-
-  .work-desc {
-    font-size: 0.75rem;
-    color: var(--dark-dim);
-    line-height: 1.8;
-    max-width: 360px;
-    margin-bottom: 1.5rem;
-  }
-
-  .work-tags {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.6rem;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    color: var(--dark-dim);
-  }
-
-  /* Featured project */
-  .work-item.featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--grid-gutter);
-    min-height: 400px;
-    align-items: center;
-  }
-
-  .work-item.featured .work-visual {
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ── WARM SECTION (different paper stock) ── */
-  .warm-section {
-    background: var(--base-color-gold-5);
-  }
-
-  .warm-section .section-label span { color: var(--base-color-gold-20); }
-  .warm-section .cap-item { border-color: var(--base-color-gold-10); }
-
-  /* ── RUNNING HEADER ── */
-  .running-header {
-    position: absolute;
-    top: 3rem;
-    right: 4rem;
-    font-size: 0.55rem;
-    color: var(--dim);
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  section {
-    position: relative;
-  }
-
-  /* ── PAGE NUMBERS ── */
-  .page-num {
-    position: absolute;
-    bottom: 3rem;
-    right: 4rem;
-    font-size: 0.6rem;
-    color: var(--dim);
-    letter-spacing: 0;
-  }
-
-  .dark-section .page-num { color: var(--dark-dim); }
-  .dark-section .running-header { color: var(--dark-dim); }
-
-  /* ── FOLIO MARKS ── */
-  .folio-mark {
-    position: absolute;
-    bottom: 3rem;
-    left: 4rem;
-    font-size: 0.55rem;
-    color: var(--dim);
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  .dark-section .folio-mark { color: var(--dark-dim); }
-
-  /* ── PULL QUOTE ── */
-  .pull-quote {
-    font-size: 1.6rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 4rem 0;
-    padding-left: 2rem;
-    border-left: 2px solid var(--text);
-  }
-
-  .dark-section .pull-quote {
-    border-left-color: var(--dark-dim);
-  }
-
-  /* ── CAPABILITIES ── */
-  .cap-item {
-    grid-column: span 4;
-    padding: 3rem 2rem;
-    border: 1px solid var(--border);
-  }
-
-  .cap-item .cap-num {
-    font-size: 0.55rem;
-    color: var(--dim);
-    letter-spacing: 0;
-    margin-bottom: 2rem;
-  }
-
-  .cap-item h3 {
-    font-size: 0.85rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    margin-bottom: 1rem;
-  }
-
-  .cap-item p {
-    font-size: 0.7rem;
-    color: var(--dim);
-    line-height: 1.9;
-  }
-
-  /* ── EXPERIENCE ── */
-  .full-width .info-row .exp-role { grid-column: 3 / 11; }
-
-  .full-width .info-row .exp-company {
-    grid-column: 11 / -1;
-    color: var(--dim);
-  }
-
-  /* ── CONTACT (DARK) ── */
-  /* contact-layout replaced by .grid */
-
-  .contact-text {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    line-height: 1.5;
-    color: var(--dark-text);
-  }
-
-
-  /* ── FOOTER ── */
-  footer {
-    padding-block: 2rem;
-    background: var(--dark-bg);
-    font-size: 0.6rem;
-    color: var(--dark-dim);
-    text-transform: uppercase;
-    letter-spacing: 0;
-  }
-
-  footer > .grid {
-    align-items: center;
-  }
-
-  footer .footer-left { grid-column: 1 / 5; }
-  footer .footer-center { grid-column: 5 / 9; text-align: center; }
-  footer .footer-right { grid-column: 9 / -1; text-align: right; }
-
-  footer span:nth-child(2) {
-    color: var(--base-color-gray-60);
-  }
-
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.045;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 256px 256px;
-    mix-blend-mode: multiply;
-  }
-
-  /* ── HALFTONE SECTION DIVIDERS ── */
-  .texture-divider {
-    width: 100%;
-    height: 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ── DITHERED HOVER ON WORK ITEMS ── */
-  .work-item::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    opacity: 0;
-    transition: opacity 0.5s;
-    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23ffffff' opacity='0.08'/%3E%3C/svg%3E");
-    background-size: 4px 4px;
-    pointer-events: none;
-  }
-
-  .work-item:hover::before { opacity: 1; }
-
-  /* ── GRAIN ON DARK SECTIONS ── */
-  .dark-section {
-    position: relative;
-  }
-
-  .dark-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    opacity: 0.06;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 200px 200px;
-  }
-
-  /* ── STIPPLE PATTERN ON CAPABILITIES ── */
-  .cap-item {
-    position: relative;
-  }
-
-  .cap-item::after {
-    content: '';
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 40px;
-    height: 40px;
-    opacity: 0.06;
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.7' fill='%23000'/%3E%3C/svg%3E");
-    background-size: 6px 6px;
-    transition: opacity 0.3s, width 0.3s, height 0.3s;
-  }
-
-  .cap-item:hover::after {
-    opacity: 0.12;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    :root { --grid-margin: 2rem; }
-    nav { padding-block: 1rem; }
-    nav ul { gap: 1.5rem; }
-    .hero, section { padding-block: 4rem; }
-    .work-item, .work-item.featured { grid-column: 1 / -1; }
-    .work-item.featured { grid-template-columns: 1fr; }
-    .hero-coords { display: none; }
-    .hero-data { flex-wrap: wrap; gap: 2rem; }
-    footer { padding-block: 2rem; }
-  }
-</style>
+
+    :root {
+      --resume-paper: #ffffff;
+      --resume-ink: #111111;
+      --resume-muted: #707070;
+      --resume-rule: #d8d8d8;
+      --resume-selection: #111111;
+      --resume-selection-text: #fafafa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--resume-ink);
+      background: var(--resume-paper);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      color: var(--resume-selection-text);
+      background: var(--resume-selection);
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--resume-muted);
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover { text-decoration-color: currentColor; }
+
+    a:focus-visible {
+      outline: 2px solid var(--resume-ink);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      z-index: 2;
+      padding: 0.55rem 0.75rem;
+      color: var(--resume-paper);
+      background: var(--resume-ink);
+      transform: translateY(-120%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .resume {
+      --resume-row-padding: 3rem;
+      width: min(100%, 1440px);
+      margin-inline: auto;
+      padding: clamp(1.5rem, 6vw, 6rem) clamp(1.25rem, 7vw, 6rem) 5rem;
+    }
+
+    .masthead,
+    .experience {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: clamp(1.5rem, 4.5vw, 5rem);
+    }
+
+    .masthead {
+      align-items: start;
+      padding-bottom: 0;
+    }
+
+    .identity h1,
+    .role-title {
+      margin: 0;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .identity h1 { color: var(--resume-ink); }
+
+    .contact,
+    .role-company,
+    .role-years,
+    .skills,
+    .impact,
+    .profile { color: var(--resume-muted); }
+
+    .contact {
+      display: grid;
+      gap: 0.15rem;
+      margin-top: 0.15rem;
+      font-style: normal;
+    }
+
+    .contact a {
+      width: fit-content;
+    }
+
+    .contact-label { display: none; }
+
+    .role-company,
+    .role-years,
+    .skills,
+    .impact { margin: 0; }
+
+    .role-company { margin-top: 0.15rem; }
+
+    .role-years { margin-top: 0.15rem; }
+
+    .skills,
+    .impact {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills li + li,
+    .impact li + li { margin-top: 0.05rem; }
+
+    .profile {
+      grid-column: 1;
+      align-self: start;
+      margin: 0;
+      max-width: none;
+      line-height: 1.62;
+    }
+
+    .experience {
+      row-gap: 0;
+    }
+
+    .experience-list {
+      display: grid;
+      grid-column: 2 / -1;
+      grid-template-columns: subgrid;
+      min-width: 0;
+    }
+
+    .current-experience,
+    .experience-list > article {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      min-width: 0;
+      padding-bottom: var(--resume-row-padding);
+      transition: background-color 160ms ease;
+    }
+
+    .current-experience { grid-column: 2 / -1; }
+
+    .current-experience:hover,
+    .experience-list > article:hover {
+      background-color: #f6f6f6;
+    }
+
+    .role { min-width: 0; }
+
+    .role-title { color: var(--resume-ink); }
+
+    .role-title strong { font-weight: 400; }
+
+    @media (max-width: 760px) {
+      .resume {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 3rem;
+      }
+
+      .masthead,
+      .experience {
+        display: contents;
+      }
+
+      .current-experience,
+      .experience-list,
+      .experience-list > article {
+        display: block;
+      }
+
+      .identity {
+        order: 1;
+        padding-bottom: var(--resume-row-padding);
+      }
+
+      .profile {
+        order: 2;
+        max-width: none;
+        width: 100%;
+      }
+
+      .current-experience { order: 3; }
+
+      .experience-list { order: 4; }
+
+      .contact {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin-top: var(--resume-row-padding);
+      }
+
+      .contact a {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        text-decoration: none;
+      }
+
+      .contact a:hover .contact-label { background: #e8e8e8; }
+
+      .contact-value { display: none; }
+
+      .contact-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 32px;
+        padding: 0.25rem 0.5rem;
+        color: var(--resume-ink);
+        background: #f3f3f3;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .experience > .profile {
+        margin: 0;
+        padding-block: 0 var(--resume-row-padding);
+      }
+
+      .current-experience,
+      .experience-list > article {
+        margin-top: 0;
+        padding-block: 0 var(--resume-row-padding);
+      }
+
+      .current-experience > * + *,
+      .experience-list > article > * + * { margin-top: 0; }
+
+      .current-experience .role-company,
+      .current-experience .role-years,
+      .experience-list > article .role-company,
+      .experience-list > article .role-years { margin-top: 0; }
+
+      .skills,
+      .impact {
+        display: block;
+      }
+
+      .skills li + li,
+      .impact li + li { margin-top: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      .current-experience,
+      .experience-list > article { transition: none; }
+    }
+
+    @media print {
+      @page { margin: 0.5in; }
+
+      body { font-size: 10px; }
+
+      .resume { width: 100%; padding: 0; }
+
+      .masthead { padding-bottom: 0; }
+
+      .experience { row-gap: 0; }
+
+      .current-experience,
+      .experience-list > article { break-inside: avoid; }
+
+      .skip-link { display: none; }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#experience">Skip to experience</a>
 
-<!-- NAV -->
-<nav>
-  <div class="grid">
-    <div class="logo">Keith Barney</div>
-    <a href="#about" class="nav-link" style="grid-column: 9;">About</a>
-    <a href="#work" class="nav-link" style="grid-column: 10;">Work</a>
-    <a href="#capabilities" class="nav-link" style="grid-column: 11;">Capabilities</a>
-    <a href="#contact" class="nav-link" style="grid-column: 12;">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-number">Nº 001</div>
-  <div class="hero-coords">
-    33.5676° N, 117.7256° W<br>
-    Aliso Viejo, California<br>
-    2026
-  </div>
-
-  <canvas class="gen-canvas" id="hero-gen" aria-hidden="true"></canvas>
-
-  <div class="grid">
-    <h1>Designing the<br><span class="indent">systems that</span><br>design&nbsp;products.</h1>
-
-    <p class="hero-sub">
-      15+ years crafting systems that scale teams,
-      products, and organizations. Each role expanded
-      the scope — from components to architecture,
-      from one product to an entire platform.
-    </p>
-
-    <div class="hero-line"></div>
-
-    <div class="hero-data">
-      <div>
-        <div class="label">Currently</div>
-        <div class="value">Experian</div>
+  <main class="resume">
+    <header class="masthead">
+      <div class="identity">
+        <h1>Keith Barney</h1>
+        <address class="contact">
+          <a href="tel:+17145013569" aria-label="Phone: 714-501-3569"><span class="contact-value">714-501-3569</span><span class="contact-label">Phone</span></a>
+          <a href="mailto:keith@keithbarney.design" aria-label="Email: keith@keithbarney.design"><span class="contact-value">keith@keithbarney.design</span><span class="contact-label">Email</span></a>
+        </address>
       </div>
-      <div>
-        <div class="label">Focus</div>
-        <div class="value">Design Systems, SDUI</div>
-      </div>
-      <div>
-        <div class="label">Tools</div>
-        <div class="value">Figma, Tokens, Code</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="page-num">02</div>
-
-  <div class="grid">
-    <h2 class="section-label">About <span>01</span></h2>
-    <div class="col-6 about-text">
-      I think in systems. For 15+ years I've worked in
-      the space where design meets engineering — building
-      the infrastructure that helps teams ship better
-      products faster. From startup co-founder to enterprise
-      design systems lead, each role expanded my scope
-      of influence.
-
-      <div class="pull-quote">
-        Swiss precision through
-        a&nbsp;hardcore&nbsp;lens.
-      </div>
-    </div>
-
-    <div class="info-list">
-      <div class="info-row">
-        <span class="label">Company</span>
-        <span>Experian</span>
-      </div>
-      <div class="info-row">
-        <span class="label">Role</span>
-        <span>Design Systems Lead</span>
-      </div>
-      <div class="info-row">
-        <span class="label">Focus</span>
-        <span>Figma, Tokens, SDUI, Components</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORK (DARK) -->
-<section id="work" class="dark-section">
-  <div class="page-num">03 — 04</div>
-
-  <div class="grid">
-    <h2 class="section-label">Selected Work <span>02</span></h2>
-
-    <div class="work-item featured">
-      <div>
-        <div class="work-num">Nº 01 — Formation</div>
-        <h3 class="work-title">Building a Design System from Nothing</h3>
-        <div class="work-desc">
-          Walked into an organization where multiple domain teams independently created UI patterns. No shared components, no tokens, no governance — just a style guide that offered guidance without teeth. I built the first reusable libraries across iOS, Android, and Web. Created the token architecture, support channels, and design QA process. The effort formalized into Experian's first official design systems team, and leadership mandated all new projects use it.
+      <article class="current-experience">
+        <div class="role">
+          <h2 class="role-title">Design Systems Lead</h2>
+          <p class="role-company">Experian</p>
+          <p class="role-years">2022–Present</p>
         </div>
-        <div class="work-tags">
-          <span>Design Systems</span>
-          <span>Token Architecture</span>
-          <span>Governance</span>
-          <span>3 Platforms</span>
+
+        <ul class="skills" aria-label="Skills">
+          <li>Design Systems</li>
+          <li>Product Design</li>
+          <li>Frontend Development</li>
+        </ul>
+
+        <ul class="impact" aria-label="Current achievement">
+          <li>Established Experian Consumer Services’ first design system and team across web and mobile apps, improving consistency and efficiency in the customer credit experience.</li>
+        </ul>
+      </article>
+
+    </header>
+
+    <section class="experience" id="experience" aria-label="Experience">
+      <p class="profile">I think in systems. For 15+ years I’ve worked in the space where design meets engineering — building the infrastructure that helps teams ship better products faster. From startup co-founder to enterprise design systems lead, each role expanded my scope of influence.</p>
+      <div class="experience-list">
+        <article>
+        <div class="role">
+          <h2 class="role-title">Lead Product Designer</h2>
+          <p class="role-company">Experian</p>
+          <p class="role-years">2021–2022</p>
         </div>
-      </div>
-      <div class="work-visual">
-        <canvas id="work-gen" width="100%" height="100%"></canvas>
-      </div>
-    </div>
+        <ul class="skills" aria-label="Skills"><li>Product Design</li></ul>
+        </article>
 
-    <div class="work-item featured">
-      <div>
-        <div class="work-num">Nº 02 — Adoption</div>
-        <h3 class="work-title">Proving the System Works</h3>
-        <div class="work-desc">
-          Building a design system is one thing — proving it actually helps is another. Four UI systems coexisted in production with no visibility into what was running where. I conceived and owned an internal tool that visualizes which system every element belongs to — turning abstract "adoption" into a concrete, prioritized backlog. Ran the project autonomously, from Figma prototype through engineer collaboration. It surfaced hidden tech debt, prevented wasted contract time, and shifted the team's mindset toward proactive problem-solving.
+        <article>
+        <div class="role">
+          <h2 class="role-title">Lead UX Designer</h2>
+          <p class="role-company">Applied Systems</p>
+          <p class="role-years">2020–2021</p>
         </div>
-        <div class="work-tags">
-          <span>Self-directed</span>
-          <span>Adoption Strategy</span>
-          <span>Design Tooling</span>
-          <span>4 UI Systems Tracked</span>
+        <ul class="skills" aria-label="Skills"><li>Product Design</li></ul>
+        <ul class="impact">
+          <li>Improved Applied Epic workflows through user research and customer feedback, solving usability challenges for insurance brokers.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Senior Product Designer</h2>
+          <p class="role-company">Paciolan</p>
+          <p class="role-years">2019–2020</p>
         </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Design Systems</li>
+          <li>Product Design</li>
+        </ul>
+        <ul class="impact">
+          <li>Led ticketing, dynamic pricing, and donor and alumni profile experiences while establishing Paciolan’s first design system.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Senior UX/UI Designer</h2>
+          <p class="role-company">Cirrus Insight</p>
+          <p class="role-years">2015–2019</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Design Systems</li>
+          <li>Product Design</li>
+          <li>Engineering</li>
+          <li>Branding</li>
+        </ul>
+        <ul class="impact">
+          <li>Led a rebrand, designed Gmail-integrated UX, developed an early design system, and contributed front-end code to strengthen design and engineering collaboration.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Co-Founder &amp; Design Lead</h2>
+          <p class="role-company">SpeakUp</p>
+          <p class="role-years">2013–2017</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Design Systems</li>
+          <li>Product Design</li>
+          <li>Frontend Development</li>
+          <li>Branding</li>
+        </ul>
+        <ul class="impact">
+          <li>Co-founded the company, leading design, brand, UX, and the design system while managing a distributed development team.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Sr Art Director</h2>
+          <p class="role-company">Fuse Interactive</p>
+          <p class="role-years">2013</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Art Direction</li>
+          <li>UX/UI Design</li>
+        </ul>
+        <ul class="impact">
+          <li>Designed UX/UI for in-flight entertainment systems, including Korean Air, while supporting interactive advertising for Kawasaki.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Sr Art Director</h2>
+          <p class="role-company">Wunderman</p>
+          <p class="role-years">2010–2013</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Art Direction</li>
+          <li>UX/UI Design</li>
+        </ul>
+        <ul class="impact">
+          <li>Created campaign experiences for Southwest, Virgin Atlantic, Disney Store, and other major brands, including early UX/UI work for in-flight entertainment.</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Art Director</h2>
+          <p class="role-company">The Buddy Group</p>
+          <p class="role-years">2010</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Art Direction</li>
+          <li>UI Design</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Senior Designer</h2>
+          <p class="role-company">Spohn</p>
+          <p class="role-years">2008–2010</p>
+        </div>
+        <ul class="skills" aria-label="Skills"><li>Art Direction</li></ul>
+        <ul class="impact">
+          <li>Honda</li>
+          <li>Acura</li>
+          <li>Air New Zealand</li>
+        </ul>
+        </article>
+
+        <article>
+        <div class="role">
+          <h2 class="role-title">Designer</h2>
+          <p class="role-company">Venture Commerce</p>
+          <p class="role-years">2007–2008</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Art Direction</li>
+          <li>Frontend Development</li>
+        </ul>
+        </article>
       </div>
-      <div class="work-visual">
-        <canvas id="work-gen-2" width="100%" height="100%"></canvas>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <div class="work-num">Nº 03 — Zero to One</div>
-      <h3 class="work-title">SpeakUp — Co-founded from Scratch</h3>
-      <div class="work-desc">
-        Co-founded a workplace collaboration platform. Owned all design — branding, product UI, marketing site — while leading a remote team of six engineers. Proved I can ship a product end-to-end, not just a system.
-      </div>
-      <div class="work-tags">
-        <span>Co-founder</span>
-        <span>Product Design</span>
-        <span>6-Person Team</span>
-      </div>
-    </div>
-
-    <div class="work-item">
-      <div class="work-num">Nº 04 — Team Building</div>
-      <h3 class="work-title">Paciolan Design System</h3>
-      <div class="work-desc">
-        Inherited a product with no shared design language and six designers working independently. Built the company's first design system while establishing a formal UX review process that balanced consistency with creative autonomy.
-      </div>
-      <div class="work-tags">
-        <span>Design Systems</span>
-        <span>Team Management</span>
-        <span>6 Designers</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section id="capabilities" class="warm-section">
-  <div class="page-num">05</div>
-
-  <div class="grid">
-    <h2 class="section-label">Capabilities <span>03</span></h2>
-    <div class="cap-item">
-      <div class="cap-num">01</div>
-      <h3>Design Systems</h3>
-      <p>Component architecture, token taxonomies, governance, and documentation that scales across teams and products.</p>
-    </div>
-    <div class="cap-item">
-      <div class="cap-num">02</div>
-      <h3>Figma</h3>
-      <p>Advanced components, variants, auto-layout, prototyping, and custom plugin development for workflow automation.</p>
-    </div>
-    <div class="cap-item">
-      <div class="cap-num">03</div>
-      <h3>Server-Driven UI</h3>
-      <p>Converting native experiences to SDUI. Real-time updates, A/B testing, reduced release cycles.</p>
-    </div>
-    <div class="cap-item">
-      <div class="cap-num">04</div>
-      <h3>Design Tokens</h3>
-      <p>Multi-brand theming, automated pipelines from Figma variables to production code.</p>
-    </div>
-    <div class="cap-item">
-      <div class="cap-num">05</div>
-      <h3>Plugin Development</h3>
-      <p>Custom Figma plugins that automate tasks, enforce standards, and extend the platform.</p>
-    </div>
-    <div class="cap-item">
-      <div class="cap-num">06</div>
-      <h3>Creative Direction</h3>
-      <p>Visual identity, brand systems. Systematic thinking applied to expressive design.</p>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section>
-  <div class="page-num">06</div>
-
-  <div class="grid">
-    <h2 class="section-label">Experience <span>04</span></h2>
-    <div class="info-list full-width">
-      <div class="info-row">
-        <span class="label">2021 — Present</span>
-        <span class="exp-role">Design Systems Lead</span>
-        <span class="exp-company">Experian</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2019 — 2021</span>
-        <span class="exp-role">UX Designer</span>
-        <span class="exp-company">ADP</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2017 — 2019</span>
-        <span class="exp-role">Lead UX Designer</span>
-        <span class="exp-company">Applied Systems</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2015 — 2017</span>
-        <span class="exp-role">UX Designer</span>
-        <span class="exp-company">Cirrus Insight</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2013 — 2015</span>
-        <span class="exp-role">Co-founder, Design Lead</span>
-        <span class="exp-company">SpeakUp</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2012 — 2013</span>
-        <span class="exp-role">Designer</span>
-        <span class="exp-company">Wunderman</span>
-      </div>
-      <div class="info-row">
-        <span class="label">2010 — 2012</span>
-        <span class="exp-role">Lead Designer & DS Manager</span>
-        <span class="exp-company">Paciolan</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT (DARK) -->
-<section id="contact" class="dark-section">
-  <div class="page-num">07</div>
-
-  <div class="grid">
-    <h2 class="section-label">Contact <span>05</span></h2>
-    <div class="contact-text" style="grid-column: 1 / 7;">
-      Available for the<br>
-      right&nbsp;opportunity.<br>
-      <span style="font-size: 0.45em; color: var(--dark-dim); letter-spacing: 0; text-transform: uppercase; display: block; margin-top: 2rem;">Swiss Grit since '97</span>
-    </div>
-
-    <div class="info-list">
-      <div class="info-row">
-        <span class="label">Email</span>
-        <a href="mailto:keith@keithbarney.design">keith@keithbarney.design</a>
-      </div>
-      <div class="info-row">
-        <span class="label">LinkedIn</span>
-        <a href="#">linkedin.com/in/keithbarney</a>
-      </div>
-      <div class="info-row">
-        <span class="label">GitHub</span>
-        <a href="https://github.com/keithbarney">github.com/keithbarney</a>
-      </div>
-      <div class="info-row">
-        <span class="label">Location</span>
-        <a href="#">Aliso Viejo, CA — Remote OK</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COLOPHON -->
-<footer>
-  <div class="grid">
-    <span class="footer-left">Keith Barney — Design Systems Lead</span>
-    <span class="footer-right">© 2026</span>
-  </div>
-</footer>
-
-<script>
-  /* ── HERO GENERATIVE ART ── (commented out)
-  const heroCanvas = document.getElementById('hero-gen');
-  if (heroCanvas) {
-    const ctx = heroCanvas.getContext('2d');
-    function sizeHero() {
-      heroCanvas.width = heroCanvas.parentElement.offsetWidth;
-      heroCanvas.height = heroCanvas.parentElement.offsetHeight;
-      drawHero();
-    }
-
-    function drawHero() {
-      const w = heroCanvas.width;
-      const h = heroCanvas.height;
-      ctx.clearRect(0, 0, w, h);
-      const spacing = 14;
-      const cols = Math.ceil(w / spacing);
-      const rows = Math.ceil(h / spacing);
-
-      for (let x = 0; x < cols; x++) {
-        for (let y = 0; y < rows; y++) {
-          const cx = x * spacing + spacing / 2;
-          const cy = y * spacing + spacing / 2;
-          const nx = x / cols;
-          const ny = y / rows;
-
-          const density = nx * 0.6 + ny * 0.4;
-          const noise = Math.sin(x * 0.8 + y * 0.5) * 0.3 +
-                        Math.cos(x * 0.3 - y * 0.7) * 0.2;
-          const size = (density + noise * 0.3) * spacing * 0.35;
-
-          if (size > 0.3) {
-            ctx.beginPath();
-            ctx.arc(cx, cy, size, 0, Math.PI * 2);
-            ctx.fillStyle = '#111';
-            ctx.fill();
-          }
-        }
-      }
-    }
-
-    sizeHero();
-    window.addEventListener('resize', sizeHero);
-  }
-  */
-
-  // ── WORK SECTION GENERATIVE ──
-  // Horizontal waveform lines
-  const workCanvas = document.getElementById('work-gen');
-  if (workCanvas) {
-    const parent = workCanvas.parentElement;
-
-    function resizeWork() {
-      workCanvas.width = parent.offsetWidth;
-      workCanvas.height = parent.offsetHeight;
-    }
-    resizeWork();
-    window.addEventListener('resize', resizeWork);
-
-    const wctx = workCanvas.getContext('2d');
-
-    function drawWork() {
-      const w = workCanvas.width;
-      const h = workCanvas.height;
-      wctx.clearRect(0, 0, w, h);
-
-      const t = Date.now() * 0.0003;
-      const lines = 24;
-      const lineSpacing = h / (lines + 1);
-
-      for (let i = 0; i < lines; i++) {
-        const y = (i + 1) * lineSpacing;
-        wctx.beginPath();
-        wctx.moveTo(0, y);
-
-        for (let x = 0; x <= w; x += 3) {
-          const norm = x / w;
-          const amp = Math.sin(norm * Math.PI) * 18;
-          const freq1 = Math.sin(norm * 6 + t + i * 0.3) * amp;
-          const freq2 = Math.sin(norm * 12 + t * 1.7 + i * 0.15) * amp * 0.3;
-          wctx.lineTo(x, y + freq1 + freq2);
-        }
-
-        wctx.strokeStyle = `rgba(255,255,255,${0.08 + (i / lines) * 0.12})`;
-        wctx.lineWidth = 1;
-        wctx.stroke();
-      }
-      requestAnimationFrame(drawWork);
-    }
-    drawWork();
-  }
-
-  // ── WORK SECTION 2: ADOPTION SCAN ──
-  // Dot grid where 4 horizontal bands pulse at different intensities
-  // Represents 4 UI systems becoming visible through measurement
-  const workCanvas2 = document.getElementById('work-gen-2');
-  if (workCanvas2) {
-    const parent2 = workCanvas2.parentElement;
-
-    function resizeWork2() {
-      workCanvas2.width = parent2.offsetWidth;
-      workCanvas2.height = parent2.offsetHeight;
-    }
-    resizeWork2();
-    window.addEventListener('resize', resizeWork2);
-
-    const wctx2 = workCanvas2.getContext('2d');
-    const spacing = 16;
-
-    function drawWork2() {
-      const w = workCanvas2.width;
-      const h = workCanvas2.height;
-      wctx2.clearRect(0, 0, w, h);
-
-      const t = Date.now() * 0.0004;
-      const cols = Math.floor(w / spacing);
-      const rows = Math.floor(h / spacing);
-
-      // 4 bands — each represents a UI system with different base brightness
-      // Atlas (bright), Next (medium), Legacy (dim, fading), SDUI (barely there)
-      const bandCount = 4;
-      const bandHeight = rows / bandCount;
-      const bandBrightness = [0.85, 0.45, 0.2, 0.08];
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const x = col * spacing + spacing / 2;
-          const y = row * spacing + spacing / 2;
-
-          // Which band
-          const band = Math.min(Math.floor(row / bandHeight), 3);
-          const base = bandBrightness[band];
-
-          // Horizontal scan wave — sweeps across like a measurement pulse
-          const normX = col / cols;
-          const scanWave = Math.sin(normX * Math.PI * 2 - t * 2 + band * 0.8) * 0.5 + 0.5;
-
-          // Noise for organic variation
-          const noise = Math.sin(col * 0.7 + row * 0.5 + t) * 0.15;
-
-          // Final opacity — base brightness modulated by scan and noise
-          const alpha = Math.max(0.03, Math.min(1, base * (0.5 + scanWave * 0.5) + noise * base));
-
-          // Dot size varies with brightness — brighter = larger
-          const r = 1.5 + alpha * 2;
-
-          wctx2.beginPath();
-          wctx2.arc(x, y, r, 0, Math.PI * 2);
-          wctx2.fillStyle = `rgba(255,255,255,${alpha})`;
-          wctx2.fill();
-        }
-      }
-      requestAnimationFrame(drawWork2);
-    }
-    drawWork2();
-  }
-
-  // ── HALFTONE DIVIDERS ──
-  function drawHalftone(canvasId, invert) {
-    const c = document.getElementById(canvasId);
-    if (!c) return;
-    const ctx = c.getContext('2d');
-    c.width = c.parentElement.offsetWidth;
-    c.height = 80;
-
-    const bgColor = invert ? '#0a0a0a' : '#f5f5f0';
-    const dotColor = invert ? '#f5f5f0' : '#0a0a0a';
-    ctx.fillStyle = bgColor;
-    ctx.fillRect(0, 0, c.width, c.height);
-
-    const spacing = 6;
-    const cols = Math.ceil(c.width / spacing);
-    const rows = Math.ceil(c.height / spacing);
-
-    for (let x = 0; x < cols; x++) {
-      for (let y = 0; y < rows; y++) {
-        const cx = x * spacing + spacing / 2;
-        const cy = y * spacing + spacing / 2;
-        const progress = invert ? (1 - y / rows) : (y / rows);
-        const noise = Math.sin(x * 0.5 + y * 0.3) * 0.3 + 0.5;
-        const threshold = progress * 1.2;
-
-        if (noise < threshold) {
-          const size = Math.min(spacing * 0.4, (threshold - noise) * spacing * 0.8);
-          ctx.beginPath();
-          ctx.arc(cx, cy, size, 0, Math.PI * 2);
-          ctx.fillStyle = dotColor;
-          ctx.fill();
-        }
-      }
-    }
-  }
-
-  drawHalftone('halftone-divider', false);
-  drawHalftone('halftone-divider-2', true);
-  window.addEventListener('resize', () => {
-    drawHalftone('halftone-divider', false);
-    drawHalftone('halftone-divider-2', true);
-  });
-
-  // ── SCROLL REVEAL ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('section:not(.hero)').forEach(s => {
-    s.style.opacity = '0';
-    s.style.transform = 'translateY(30px)';
-    s.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    observer.observe(s);
-  });
-</script>
-
+    </section>
+  </main>
 </body>
 </html>
