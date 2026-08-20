@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Work history for Keith Barney, Design Systems Lead.">
+  <title>Work History — Keith Barney</title>
+  <style>
+    @font-face {
+      font-family: "JetBrains Mono";
+      src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2"),
+        url("src/assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    :root {
+      --resume-paper: #ffffff;
+      --resume-ink: #111111;
+      --resume-muted: #707070;
+      --resume-selection: #111111;
+      --resume-selection-text: #fafafa;
+      --resume-font-size: 10px;
+      --resume-line-height: 1.5;
+      --resume-leading: calc(var(--resume-font-size) * var(--resume-line-height));
+      --resume-row-leading-multiple: 3;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--resume-ink);
+      background: var(--resume-paper);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: var(--resume-font-size);
+      font-weight: 400;
+      line-height: var(--resume-line-height);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    ::selection { color: var(--resume-selection-text); background: var(--resume-selection); }
+    a { color: inherit; text-decoration: none; text-underline-offset: 0.18em; }
+    a:visited { color: inherit; }
+    a:hover, a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
+    a:focus-visible { outline: 2px solid var(--resume-ink); outline-offset: 4px; }
+    .skip-link { position: absolute; top: 0; left: 1rem; z-index: 2; padding: 0.55rem 0.75rem; color: var(--resume-paper); background: var(--resume-ink); transform: translateY(-120%); }
+    .skip-link:focus { transform: translateY(0); }
+    .resume {
+      --resume-row-padding: calc(var(--resume-leading) * var(--resume-row-leading-multiple));
+      width: min(100%, 1440px);
+      margin-inline: auto;
+      padding: clamp(1.5rem, 6vw, 6rem) clamp(1.25rem, 7vw, 6rem) 5rem;
+    }
+    .masthead, .experience { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: clamp(1.5rem, 2.25vw, 2rem); }
+    .site-nav { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; min-width: 0; align-items: start; }
+    .masthead { align-items: start; row-gap: var(--resume-row-padding); padding-bottom: 0; }
+    .site-name, .role-title { margin: 0; font-size: 1em; font-weight: 400; line-height: 1.5; }
+    .site-name { color: var(--resume-ink); }
+    .history-page .site-name a { color: var(--resume-muted); }
+    .site-contact, .role-company, .role-years, .skills, .impact, .top-row-links { color: var(--resume-muted); }
+    .site-contact { display: grid; gap: 0.15rem; margin-top: 0.15rem; font-style: normal; }
+    .site-contact a { width: fit-content; }
+    .role-company, .role-years, .skills, .impact { margin: 0; }
+    .role-company, .role-years { margin-top: 0.15rem; }
+    .skills, .impact { list-style: none; padding: 0; }
+    .skills li + li, .impact li + li { margin-top: 0.05rem; }
+    .nav-work { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.5rem, 2.25vw, 2rem); min-width: 0; }
+    .nav-heading { grid-column: 1; margin: 0 0 0.15rem; font-size: 1em; font-weight: 400; line-height: 1.5; color: var(--resume-muted); }
+    .top-row-links { grid-column: 1; grid-row: 2; align-self: start; margin: 0; display: block; padding: 0; color: var(--resume-muted); list-style: none; }
+    .top-row-links li { margin: 0; }
+    .top-row-links li + li { margin-top: 0.15rem; }
+    .nav-work-history { grid-column: 2; grid-row: 1; align-self: start; margin: 0; }
+    .top-row-links a, .top-row-links span { display: block; }
+    .top-row-links a, .nav-work-history a { width: fit-content; color: var(--resume-muted); text-decoration: none; }
+    .nav-work-history a { display: block; }
+    .top-row-links a[aria-current="page"], .nav-work-history a[aria-current="page"] { color: var(--resume-ink); }
+    .top-row-links a:hover, .top-row-links a:focus-visible, .nav-work-history a:hover, .nav-work-history a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
+    .top-row-links span { color: var(--resume-muted); }
+    .experience { row-gap: 0; }
+    .experience-list { display: grid; grid-column: 2 / -1; grid-template-columns: subgrid; min-width: 0; }
+    .current-experience, .experience-list > article { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; min-width: 0; padding-bottom: var(--resume-row-padding); transition: background-color 160ms ease; }
+    .current-experience { grid-column: 2 / -1; }
+    .current-experience:hover, .experience-list > article:hover { background-color: #f6f6f6; }
+    .role { min-width: 0; }
+    .role-title { color: var(--resume-ink); }
+    .role-title strong { font-weight: 400; }
+    @media (max-width: 760px) {
+      body { --resume-font-size: 12px; --resume-leading: calc(var(--resume-font-size) * var(--resume-line-height)); }
+      .resume { display: flex; flex-direction: column; padding-bottom: 1.5em; }
+      .masthead, .experience { display: contents; }
+      .site-nav { display: flex; flex-direction: column; order: 0; width: 100%; align-items: stretch; }
+      .site-nav > [aria-hidden="true"] { display: none; }
+      .current-experience, .experience-list, .experience-list > article { display: block; }
+      .site-identity { order: 1; width: 100%; padding-bottom: var(--resume-row-padding); }
+      .nav-work { display: block; order: 2; width: 100%; margin-top: var(--resume-row-padding); padding-bottom: var(--resume-row-padding); }
+      .top-row-links { display: block; margin-top: 0.15rem; }
+      .nav-work-history { grid-column: 1; grid-row: auto; margin-top: var(--resume-row-padding); }
+      .current-experience { order: 3; }
+      .experience-list { order: 4; }
+      .current-experience, .experience-list > article { padding-block: 0 var(--resume-row-padding); }
+      .current-experience .role-company, .current-experience .role-years, .experience-list > article .role-company, .experience-list > article .role-years { margin-top: 0; }
+      .skills, .impact { display: block; }
+      .skills li + li, .impact li + li { margin-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .current-experience, .experience-list > article { transition: none; } }
+    @media print { @page { margin: 0.5in; } body { font-size: 10px; } .resume { width: 100%; padding: 0; } .masthead { padding-bottom: 0; } .experience { row-gap: 0; } .current-experience, .experience-list > article { break-inside: avoid; } .skip-link { display: none; } }
+  </style>
+  <link rel="stylesheet" href="site-nav.css">
+</head>
+<body class="history-page">
+  <a class="skip-link" href="#experience">Skip to experience</a>
+  <main class="resume">
+    <header class="masthead">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="site-identity">
+          <h1 class="site-name"><a href="index.html">Keith Barney</a></h1>
+          <address class="site-contact">
+            <a href="tel:+17145013569" aria-label="Phone: 714-501-3569">714-501-3569</a>
+            <a href="mailto:keith@keithbarney.design" aria-label="Email: keith@keithbarney.design">keith@keithbarney.design</a>
+            <a href="https://linkedin.com/in/keithbarney" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </address>
+        </div>
+        <div class="nav-work">
+          <p class="nav-heading">Selected Work</p>
+          <ul class="top-row-links" aria-label="Selected work">
+            <li><a href="project-template.html">Atlas Design System</a></li>
+            <li><a href="atlas-component-docs.html">Atlas Component Docs</a></li>
+            <li><a href="atlas-branch-manager.html">Atlas Branch Manager</a></li>
+            <li><a href="atlas-annotate.html">Atlas Annotate</a></li>
+          </ul>
+          <p class="nav-work-history"><a href="history.html" aria-current="page">Work History</a></p>
+        </div>
+        <div aria-hidden="true"></div>
+        <div aria-hidden="true"></div>
+      </nav>
+      <article class="current-experience">
+        <div class="role">
+          <h2 class="role-title">Design Systems Lead</h2>
+          <p class="role-company">Experian</p>
+          <p class="role-years">2022–Present</p>
+        </div>
+        <ul class="skills" aria-label="Skills">
+          <li>Design Systems</li>
+          <li>Product Design</li>
+          <li>Frontend Development</li>
+        </ul>
+        <ul class="impact" aria-label="Current achievement">
+          <li>Established Experian Consumer Services’ first design system and team across web and mobile apps, improving consistency and efficiency in the customer credit experience.</li>
+        </ul>
+      </article>
+    </header>
+    <section class="experience" id="experience" tabindex="-1" aria-label="Experience">
+      <div class="experience-list">
+        <article><div class="role"><h2 class="role-title">Lead Product Designer</h2><p class="role-company">Experian</p><p class="role-years">2021–2022</p></div><ul class="skills" aria-label="Skills"><li>Product Design</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Lead UX Designer</h2><p class="role-company">Applied Systems</p><p class="role-years">2020–2021</p></div><ul class="skills" aria-label="Skills"><li>Product Design</li></ul><ul class="impact"><li>Improved Applied Epic workflows through user research and customer feedback, solving usability challenges for insurance brokers.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Senior Product Designer</h2><p class="role-company">Paciolan</p><p class="role-years">2019–2020</p></div><ul class="skills" aria-label="Skills"><li>Design Systems</li><li>Product Design</li></ul><ul class="impact"><li>Led ticketing, dynamic pricing, and donor and alumni profile experiences while establishing Paciolan’s first design system.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Senior UX/UI Designer</h2><p class="role-company">Cirrus Insight</p><p class="role-years">2015–2019</p></div><ul class="skills" aria-label="Skills"><li>Design Systems</li><li>Product Design</li><li>Engineering</li><li>Branding</li></ul><ul class="impact"><li>Led a rebrand, designed Gmail-integrated UX, developed an early design system, and contributed front-end code to strengthen design and engineering collaboration.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Co-Founder &amp; Design Lead</h2><p class="role-company">SpeakUp</p><p class="role-years">2013–2017</p></div><ul class="skills" aria-label="Skills"><li>Design Systems</li><li>Product Design</li><li>Frontend Development</li><li>Branding</li></ul><ul class="impact"><li>Co-founded the company, leading design, brand, UX, and the design system while managing a distributed development team.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Sr Art Director</h2><p class="role-company">Fuse Interactive</p><p class="role-years">2013</p></div><ul class="skills" aria-label="Skills"><li>Art Direction</li><li>UX/UI Design</li></ul><ul class="impact"><li>Designed UX/UI for in-flight entertainment systems, including Korean Air, while supporting interactive advertising for Kawasaki.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Sr Art Director</h2><p class="role-company">Wunderman</p><p class="role-years">2010–2013</p></div><ul class="skills" aria-label="Skills"><li>Art Direction</li><li>UX/UI Design</li></ul><ul class="impact"><li>Created campaign experiences for Southwest, Virgin Atlantic, Disney Store, and other major brands, including early UX/UI work for in-flight entertainment.</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Art Director</h2><p class="role-company">The Buddy Group</p><p class="role-years">2010</p></div><ul class="skills" aria-label="Skills"><li>Art Direction</li><li>UI Design</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Senior Designer</h2><p class="role-company">Spohn</p><p class="role-years">2008–2010</p></div><ul class="skills" aria-label="Skills"><li>Art Direction</li></ul><ul class="impact"><li>Honda</li><li>Acura</li><li>Air New Zealand</li></ul></article>
+        <article><div class="role"><h2 class="role-title">Designer</h2><p class="role-company">Venture Commerce</p><p class="role-years">2007–2008</p></div><ul class="skills" aria-label="Skills"><li>Art Direction</li><li>Frontend Development</li></ul></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
