@@ -7,7 +7,7 @@
     "dev": "npm run build && npm run serve",
     "build": "npm run build:assets && npm run build:pages",
     "build:assets": "mkdir -p dist/css dist/fonts && cp ~/Projects/design/heavy-design-system/dist/main.css dist/css/main.css && cp src/assets/fonts/* dist/fonts/ && cd dist/css && ln -sf ../fonts fonts",
-    "build:pages": "cp resume.html index.html && cp index.html dist/index.html && cp resume.html dist/resume.html",
+    "build:pages": "cp site-nav.css dist/site-nav.css && cp index.html dist/index.html && cp resume.html dist/resume.html && cp project-template.html dist/project-template.html && cp atlas-component-docs.html dist/atlas-component-docs.html && cp history.html dist/history.html && cp atlas-branch-manager.html dist/atlas-branch-manager.html && cp atlas-annotate.html dist/atlas-annotate.html",
     "serve": "browser-sync start --config bs-config.cjs"
   },
   "engines": {

@@ -21,6 +21,10 @@
       --resume-rule: #d8d8d8;
       --resume-selection: #111111;
       --resume-selection-text: #fafafa;
+      --resume-font-size: 10px;
+      --resume-line-height: 1.5;
+      --resume-leading: calc(var(--resume-font-size) * var(--resume-line-height));
+      --resume-row-leading-multiple: 3;
     }
 
     * { box-sizing: border-box; }
@@ -32,9 +36,9 @@
       color: var(--resume-ink);
       background: var(--resume-paper);
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 10px;
+      font-size: var(--resume-font-size);
       font-weight: 400;
-      line-height: 1.5;
+      line-height: var(--resume-line-height);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -71,7 +75,7 @@
     .skip-link:focus { transform: translateY(0); }
 
     .resume {
-      --resume-row-padding: 3rem;
+      --resume-row-padding: calc(var(--resume-leading) * var(--resume-row-leading-multiple));
       width: min(100%, 1440px);
       margin-inline: auto;
       padding: clamp(1.5rem, 6vw, 6rem) clamp(1.25rem, 7vw, 6rem) 5rem;
@@ -81,7 +85,7 @@
     .experience {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      column-gap: clamp(1.5rem, 4.5vw, 5rem);
+      column-gap: clamp(1.5rem, 2.25vw, 2rem);
     }
 
     .masthead {
@@ -181,12 +185,12 @@
 
     @media (max-width: 760px) {
       body {
-        font-size: 12px;
-        line-height: 1.5;
+        --resume-font-size: 12px;
+        --resume-leading: calc(var(--resume-font-size) * var(--resume-line-height));
       }
 
       .resume {
-        --resume-row-padding: 1.5em;
+        --resume-row-leading-multiple: 1;
         display: flex;
         flex-direction: column;
         padding-bottom: 1.5em;
@@ -280,6 +284,17 @@
 
       .skills li + li,
       .impact li + li { margin-top: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .identity {
+        width: 100%;
+      }
+
+      .contact {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {

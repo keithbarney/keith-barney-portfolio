@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Atlas Component Docs case study for Experian Consumer Services, North America.">
+  <title>Atlas Component Docs — Case Study</title>
+  <style>
+    @font-face {
+      font-family: "JetBrains Mono";
+      src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2"),
+        url("src/assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+      font-display: swap;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    :root {
+      --project-paper: #fff;
+      --project-ink: #111;
+      --project-muted: #707070;
+      --project-placeholder: #f3f3f3;
+      --project-selection: #111;
+      --project-selection-text: #fafafa;
+      --project-font-size: 10px;
+      --project-line-height: 1.5;
+      --project-leading: calc(var(--project-font-size) * var(--project-line-height));
+      --project-row-leading-multiple: 3;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--project-ink);
+      background: var(--project-paper);
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: var(--project-font-size);
+      line-height: var(--project-line-height);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    ::selection { color: var(--project-selection-text); background: var(--project-selection); }
+    a { color: inherit; text-decoration: none; text-underline-offset: 0.18em; }
+    a:visited { color: inherit; }
+    a:hover, a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
+    a:focus-visible { outline: 2px solid var(--project-ink); outline-offset: 4px; }
+    .skip-link { position: absolute; top: 0; left: 1rem; z-index: 2; padding: 0.55rem 0.75rem; color: var(--project-paper); background: var(--project-ink); transform: translateY(-120%); }
+    .skip-link:focus { transform: translateY(0); }
+    .project { --project-row-padding: calc(var(--project-leading) * var(--project-row-leading-multiple)); --project-column-gap: clamp(1.5rem, 2.25vw, 2rem); width: min(100%, 1440px); margin-inline: auto; padding: clamp(1.5rem, 6vw, 6rem) clamp(1.25rem, 7vw, 6rem) 5rem; }
+    .site-nav,
+    .project-header,
+    .project-section { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--project-column-gap); }
+    .site-nav { align-items: start; margin-bottom: var(--project-row-padding); }
+    .site-identity, .site-contact, .top-row-links { min-width: 0; }
+    .site-name, .site-contact, .top-row-links { margin: 0; }
+    .site-name a { color: var(--project-muted); }
+    .site-contact, .top-row-links { color: var(--project-muted); }
+    .site-contact { display: grid; gap: 0.15rem; margin-top: 0.15rem; font-style: normal; }
+    .site-contact a, .top-row-links a { width: fit-content; }
+    .top-row-links a { color: var(--project-muted); text-decoration: none; }
+    .top-row-links a[aria-current="page"] { color: var(--project-ink); }
+    .top-row-links a:hover,
+    .top-row-links a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
+    .nav-work { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--project-column-gap); min-width: 0; }
+    .nav-heading { grid-column: 1; margin: 0 0 0.15rem; font-size: 1em; font-weight: 400; line-height: 1.5; color: var(--project-muted); }
+    .top-row-links { grid-column: 1; grid-row: 2; display: block; padding: 0; list-style: none; }
+    .top-row-links li { margin: 0; }
+    .top-row-links li + li { margin-top: 0.15rem; }
+    .nav-work-history { grid-column: 2; grid-row: 1; align-self: start; margin: 0; }
+    .top-row-links a,
+    .top-row-links span { display: block; }
+    .nav-work-history a { display: block; width: fit-content; color: var(--project-muted); text-decoration: none; }
+    .top-row-links a[aria-current="page"], .nav-work-history a[aria-current="page"] { color: var(--project-ink); }
+    .nav-work-history a:hover, .nav-work-history a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
+    .top-row-links span { color: var(--project-muted); }
+    .project-header { align-items: start; row-gap: var(--project-row-padding); }
+    h1, h2, h3, p, dl, dd { margin: 0; }
+    h1, h2, h3 { font-size: 1em; font-weight: 400; line-height: 1.5; }
+    .project-meta { display: grid; gap: 0; margin-top: 0.15rem; color: var(--project-muted); }
+    .project-meta dt { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .project-meta dd { margin: 0; }
+    .project-intro, .section-content { grid-column: 2 / -1; min-width: 0; }
+    .project-intro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--project-column-gap); }
+    .project-lead, .story-item p { color: var(--project-muted); }
+    .project-lead { margin-top: 0.15rem; }
+    .project-section { margin-top: var(--project-row-padding); align-items: start; }
+    .section-content { display: grid; }
+    .project-hero { grid-column: 2 / -1; margin: 0; }
+    .placeholder { display: grid; place-items: center; min-height: 8rem; margin: 0; color: var(--project-ink); background: var(--project-placeholder); text-align: center; }
+    .placeholder--wide { aspect-ratio: 16 / 9; }
+    .story-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--project-column-gap); }
+    .story-item { min-width: 0; }
+    .story-item p { margin-top: 0.15rem; }
+    @media (max-width: 760px) {
+      body { --project-font-size: 12px; --project-leading: calc(var(--project-font-size) * var(--project-line-height)); }
+      .project { display: block; padding-bottom: 1.5em; }
+      .project-header, .project-section, .story-grid, .site-nav { display: block; }
+      .site-nav { display: flex; flex-direction: column; align-items: stretch; width: 100%; margin-bottom: var(--project-row-padding); }
+      .site-nav > [aria-hidden="true"] { display: none; }
+      .site-identity { width: 100%; }
+      .nav-work { display: block; margin-top: var(--project-row-padding); }
+      .top-row-links { display: block; margin-top: 0.15rem; }
+      .nav-work-history { grid-column: 1; grid-row: auto; margin-top: var(--project-row-padding); }
+      .project-intro, .section-content { margin-top: var(--project-row-padding); }
+      .project-header > .project-hero { margin-top: var(--project-row-padding); }
+      .project-header > h2 { margin-top: var(--project-row-padding); }
+      .project-intro { display: block; }
+      .story-item + .story-item { margin-top: var(--project-row-padding); }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+  <link rel="stylesheet" href="site-nav.css">
+</head>
+<body>
+  <a class="skip-link" href="#project-header">Skip to project content</a>
+  <main class="project" id="project-content">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="site-identity">
+        <p class="site-name"><a href="index.html">Keith Barney</a></p>
+        <address class="site-contact">
+          <a href="tel:+17145013569" aria-label="Phone: 714-501-3569">714-501-3569</a>
+          <a href="mailto:keith@keithbarney.design">keith@keithbarney.design</a>
+        </address>
+      </div>
+      <div class="nav-work">
+        <p class="nav-heading">Selected Work</p>
+        <ul class="top-row-links" aria-label="Selected work">
+          <li><a href="project-template.html">Atlas Design System</a></li>
+          <li><a href="atlas-component-docs.html" aria-current="page">Atlas Component Docs</a></li>
+          <li><a href="atlas-branch-manager.html">Atlas Branch Manager</a></li>
+          <li><a href="atlas-annotate.html">Atlas Annotate</a></li>
+        </ul>
+        <p class="nav-work-history"><a href="history.html">Work History</a></p>
+      </div>
+      <div aria-hidden="true"></div>
+      <div aria-hidden="true"></div>
+    </nav>
+
+    <header class="project-header" id="project-header" tabindex="-1">
+      <div class="project-identity">
+        <h1>Atlas Component Docs</h1>
+        <dl class="project-meta">
+          <div><dt>Role</dt><dd>Design Systems Lead</dd></div>
+          <div><dt>Organization</dt><dd>Experian Consumer Services, North America</dd></div>
+          <div><dt>Platforms</dt><dd>Web, iOS, and Android</dd></div>
+        </dl>
+      </div>
+      <figure class="placeholder placeholder--wide project-hero" aria-label="Component documentation overview: artifact pending">
+        <figcaption>Component documentation overview — artifact pending</figcaption>
+      </figure>
+      <h2 id="context-heading">Context</h2>
+      <div class="project-intro">
+        <p class="project-lead">I regularly designed Atlas components and handed them to development, but the team needed a consistent, repeatable way to deliver both the component and its documentation. Creating that documentation manually was time-consuming and prone to inconsistencies.</p>
+        <p class="project-lead">Existing documentation plugins did not match the team’s structure or visual approach, so the workflow was a strong candidate for automation based on information already present in the component.</p>
+        <p class="project-lead">Atlas Component Docs accepts a component or component instance, analyzes its associated information, and generates structured documentation directly on the Figma page.</p>
+      </div>
+    </header>
+
+    <section class="project-section" aria-labelledby="approach-heading">
+      <h2 id="approach-heading">Approach</h2>
+      <div class="section-content story-grid">
+        <article class="story-item"><h3>Generated documentation</h3><p>Users can turn sections on or off for each run: Overview, Anatomy, Variants &amp; Properties, Breakpoints, Content Guidelines, and Accessibility. When supported, the output can include related components, sub-components, properties, variant values, do and don’t guidance, keyboard behavior, focus visibility, and name, role, and value guidance.</p></article>
+        <article class="story-item"><h3>Shared implementation language</h3><p>The documentation also captures broader patterns such as spacing, layout, forms, and feedback, turning decisions into a reusable reference. Keeping design intent near the component gives engineers richer context for behavior, content, accessibility, and responsive implementation across Atlas’s target platforms.</p></article>
+        <article class="story-item"><h3>Configurable output</h3><p>Users can change the documentation background color when a component state—such as a light-gray skeleton loading treatment—would otherwise lose clarity against the canvas. Generated instances can be arranged vertically or horizontally: wide components may read better in a vertical stack, while narrow or vertical components can be easier to compare side by side.</p></article>
+      </div>
+    </section>
+
+    <section class="project-section" aria-labelledby="adoption-heading">
+      <h2 id="adoption-heading">Adoption</h2>
+      <div class="section-content story-grid">
+        <article class="story-item"><h3>Library contribution</h3><p>Designers can create a library branch, add a proposed component, generate its documentation, and submit the contribution for review. The plugin lowers friction without removing the need for design judgment.</p></article>
+        <article class="story-item"><h3>Published for the team</h3><p>I published the plugin for the broader design team. Other designers use it and report that it saves time, while the generated structure helps contributions meet documentation expectations more consistently.</p></article>
+        <article class="story-item"><h3>Richer handoff</h3><p>By carrying usage, states, properties, variants, and accessibility guidance with the component, the workflow gives engineers more useful implementation context and reduces repetitive layout work.</p></article>
+      </div>
+    </section>
+
+    <section class="project-section" aria-labelledby="outcomes-heading">
+      <h2 id="outcomes-heading">Outcomes</h2>
+      <div class="section-content story-grid">
+        <article class="story-item"><h3>Faster documentation</h3><p>Designers can generate a structured starting point instead of rebuilding the same documentation layout by hand, reducing repetitive work during contribution.</p></article>
+        <article class="story-item"><h3>Consistent outputs</h3><p>Shared sections and visual conventions make contributed documentation easier for designers and engineers to scan, compare, and use across Atlas.</p></article>
+        <article class="story-item"><h3>Lower contribution friction</h3><p>The workflow strengthens design-to-development handoff and makes it more likely that a proposed component includes useful guidance before review.</p></article>
+      </div>
+    </section>
+
+    <section class="project-section" aria-labelledby="now-heading">
+      <h2 id="now-heading">Now</h2>
+      <div class="section-content story-grid">
+        <article class="story-item"><h3>Component maturity sets the ceiling</h3><p>Documentation quality reflects the component’s structure. A component with few properties or incomplete metadata produces a sparse result; a well-constructed component can produce richer guidance. That transparency helps designers see where a component needs more structure before handoff.</p></article>
+        <article class="story-item"><h3>Automation still needs judgment</h3><p>The plugin exposes what the component already communicates, but it does not replace designer judgment or the work of making the component complete, intentional, and ready to contribute.</p></article>
+        <article class="story-item"><h3>In active use</h3><p>Atlas Component Docs is part of the ongoing library-contribution workflow: a practical way to turn component structure into documentation that designers and engineers can use together.</p></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
