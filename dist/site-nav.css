@@ -1,19 +1,27 @@
 :root {
-  --site-mobile-column-section-gap: 1.5em;
-  --site-mobile-row-gap: 3em;
+  --site-space-1: 0.25rem;
+  --site-space-2: 0.5rem;
+  --site-space-3: 1.5rem;
+  --site-column-gap: clamp(1.5rem, 2.25vw, 2rem);
+  --site-page-top: clamp(1.5rem, 6vw, 6rem);
+  --site-page-gutter: clamp(1.25rem, 7vw, 6rem);
+  --site-page-bottom: 5rem;
+  --site-section-gap: 2.8125rem;
+  --site-inline-gap: var(--site-space-1);
 }
 
 .site-nav {
   --site-nav-ink: var(--resume-ink, var(--project-ink, #111111));
   --site-nav-muted: var(--resume-muted, var(--project-muted, #707070));
-  --site-nav-column-gap: clamp(1.5rem, 2.25vw, 2rem);
-  --site-nav-section-gap: var(--site-mobile-row-gap);
+  --site-nav-column-gap: var(--site-column-gap);
+  --site-nav-section-gap: var(--site-section-gap);
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: var(--site-nav-column-gap);
   min-width: 0;
   align-items: start;
+  margin-block-end: var(--site-nav-section-gap);
 }
 
 .site-nav .site-identity,
@@ -57,8 +65,6 @@
 
 .site-nav .site-contact {
   display: grid;
-  gap: 0.15rem;
-  margin-top: 0.15rem;
   font-style: normal;
 }
 
@@ -88,7 +94,6 @@
 
 .site-nav .nav-heading {
   grid-column: 1;
-  margin-bottom: 0.15rem;
 }
 
 .site-nav .top-row-links {
@@ -101,10 +106,6 @@
 
 .site-nav .top-row-links li {
   margin: 0;
-}
-
-.site-nav .top-row-links li + li {
-  margin-top: 0.15rem;
 }
 
 .site-nav .top-row-links a,
@@ -120,12 +121,8 @@
 }
 
 @media (max-width: 760px) {
-  .project {
-    --project-row-padding: var(--site-mobile-row-gap);
-  }
-
-  .resume {
-    --resume-row-padding: var(--site-mobile-row-gap);
+  :root {
+    --site-section-gap: 2.25rem;
   }
 
   .site-nav {
@@ -133,7 +130,6 @@
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    margin-bottom: var(--site-mobile-row-gap);
   }
 
   .site-nav > [aria-hidden="true"] {
@@ -142,28 +138,19 @@
 
   .site-nav .site-identity {
     width: 100%;
-    padding-bottom: 0;
   }
 
   .site-nav .nav-work {
     display: block;
     width: 100%;
-    margin-top: var(--site-nav-section-gap);
-    padding-bottom: 0;
+    margin-block-start: var(--site-nav-section-gap);
   }
 
   .site-nav .top-row-links {
-    margin-top: 0.15rem;
+    margin-block-start: var(--site-inline-gap);
   }
 
   .site-nav .nav-work-history {
-    margin-top: var(--site-nav-section-gap);
-  }
-
-  .project .project-lead + .project-lead,
-  .project .story-item + .story-item,
-  .history-page .current-experience > * + *,
-  .history-page .experience-list > article > * + * {
-    margin-top: var(--site-mobile-column-section-gap);
+    margin-block-start: var(--site-nav-section-gap);
   }
 }
