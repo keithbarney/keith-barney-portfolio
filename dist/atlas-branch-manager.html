@@ -24,8 +24,6 @@
       --project-selection-text: #fafafa;
       --project-font-size: 10px;
       --project-line-height: 1.5;
-      --project-leading: calc(var(--project-font-size) * var(--project-line-height));
-      --project-row-leading-multiple: 3;
     }
 
     * { box-sizing: border-box; }
@@ -47,41 +45,19 @@
     a:focus-visible { outline: 2px solid var(--project-ink); outline-offset: 4px; }
     .skip-link { position: absolute; top: 0; left: 1rem; z-index: 2; padding: 0.55rem 0.75rem; color: var(--project-paper); background: var(--project-ink); transform: translateY(-120%); }
     .skip-link:focus { transform: translateY(0); }
-    .project { --project-row-padding: calc(var(--project-leading) * var(--project-row-leading-multiple)); --project-column-gap: clamp(1.5rem, 2.25vw, 2rem); width: min(100%, 1440px); margin-inline: auto; padding: clamp(1.5rem, 6vw, 6rem) clamp(1.25rem, 7vw, 6rem) 5rem; }
-    .site-nav,
+    .project { --project-row-padding: var(--site-section-gap); --project-column-gap: var(--site-column-gap); width: min(100%, 1440px); margin-inline: auto; padding: var(--site-page-top) var(--site-page-gutter) var(--site-page-bottom); }
     .project-header,
     .project-section { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--project-column-gap); }
-    .site-nav { align-items: start; margin-bottom: var(--project-row-padding); }
-    .site-identity, .site-contact, .top-row-links { min-width: 0; }
-    .site-name, .site-contact, .top-row-links { margin: 0; }
-    .site-name a { color: var(--project-muted); }
-    .site-contact, .top-row-links { color: var(--project-muted); }
-    .site-contact { display: grid; gap: 0.15rem; margin-top: 0.15rem; font-style: normal; }
-    .site-contact a, .top-row-links a { width: fit-content; }
-    .top-row-links a { color: var(--project-muted); text-decoration: none; }
-    .top-row-links a[aria-current="page"] { color: var(--project-ink); }
-    .top-row-links a:hover, .top-row-links a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
-    .nav-work { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--project-column-gap); min-width: 0; }
-    .nav-heading { grid-column: 1; margin: 0 0 0.15rem; font-size: 1em; font-weight: 400; line-height: 1.5; color: var(--project-muted); }
-    .top-row-links { grid-column: 1; grid-row: 2; display: block; padding: 0; list-style: none; }
-    .top-row-links li { margin: 0; }
-    .top-row-links li + li { margin-top: 0.15rem; }
-    .nav-work-history { grid-column: 2; grid-row: 1; align-self: start; margin: 0; }
-    .top-row-links a, .top-row-links span { display: block; }
-    .nav-work-history a { display: block; width: fit-content; color: var(--project-muted); text-decoration: none; }
-    .top-row-links a[aria-current="page"], .nav-work-history a[aria-current="page"] { color: var(--project-ink); }
-    .nav-work-history a:hover, .nav-work-history a:focus-visible { text-decoration: underline; text-decoration-color: currentColor; }
-    .top-row-links span { color: var(--project-muted); }
     .project-header { align-items: start; row-gap: var(--project-row-padding); }
     h1, h2, h3, p, dl, dd { margin: 0; }
     h1, h2, h3 { font-size: 1em; font-weight: 400; line-height: 1.5; }
-    .project-meta { display: grid; gap: 0; margin-top: 0.15rem; color: var(--project-muted); }
+    .project-meta { display: grid; gap: 0; color: var(--project-muted); }
     .project-meta dt { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .project-meta dd { margin: 0; }
     .project-intro, .section-content { grid-column: 2 / -1; min-width: 0; }
     .project-intro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--project-column-gap); }
     .project-lead, .story-item p { color: var(--project-muted); }
-    .project-lead { margin-top: 0.15rem; }
+    .project-lead { margin-top: 0; }
     .project-section { margin-top: var(--project-row-padding); align-items: start; }
     .section-content { display: grid; }
     .project-hero { grid-column: 2 / -1; margin: 0; }
@@ -89,22 +65,13 @@
     .placeholder--wide { aspect-ratio: 16 / 9; }
     .story-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--project-column-gap); }
     .story-item { min-width: 0; }
-    .story-item p { margin-top: 0.15rem; }
+    .story-item p { margin-top: var(--site-inline-gap); }
     @media (max-width: 760px) {
-      body { --project-font-size: 12px; --project-leading: calc(var(--project-font-size) * var(--project-line-height)); }
-      .project { display: block; padding-bottom: 1.5em; }
-      .project-header, .project-section, .story-grid, .site-nav { display: block; }
-      .site-nav { display: flex; flex-direction: column; align-items: stretch; width: 100%; margin-bottom: var(--project-row-padding); }
-      .site-nav > [aria-hidden="true"] { display: none; }
-      .site-identity { width: 100%; }
-      .nav-work { display: block; margin-top: var(--project-row-padding); }
-      .top-row-links { display: block; margin-top: 0.15rem; }
-      .nav-work-history { grid-column: 1; grid-row: auto; margin-top: var(--project-row-padding); }
-      .project-intro, .section-content { margin-top: var(--project-row-padding); }
-      .project-header > .project-hero { margin-top: var(--project-row-padding); }
-      .project-header > h2 { margin-top: var(--project-row-padding); }
-      .project-intro { display: block; }
-      .story-item + .story-item { margin-top: var(--project-row-padding); }
+      body { --project-font-size: 12px; }
+      .project { display: block; padding-bottom: var(--site-space-3); }
+      .project-header, .project-section { grid-template-columns: 1fr; row-gap: var(--project-row-padding); }
+      .project-hero, .project-intro, .section-content { grid-column: 1; }
+      .project-intro, .story-grid { grid-template-columns: 1fr; gap: var(--site-space-3); }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
