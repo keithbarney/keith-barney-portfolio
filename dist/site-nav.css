@@ -146,11 +146,4 @@
     margin-block-start: var(--site-nav-section-gap);
   }
 
-  .site-nav .top-row-links {
-    margin-block-start: var(--site-inline-gap);
-  }
-
-  .site-nav .nav-work-history {
-    margin-block-start: var(--site-nav-section-gap);
-  }
 }
