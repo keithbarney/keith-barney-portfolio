@@ -1,0 +1,240 @@
+{
+  "projectName": "keith-barney-portfolio",
+  "createdAt": "2026-03-07",
+  "updatedAt": "2026-03-07",
+  "phases": {
+    "idea-vision": {
+      "steps": {
+        "problem-statement": {
+          "tasks": {
+            "ps-1": { "completed": true, "value": "Design systems leaders need a polished portfolio to showcase their work and land senior roles at top-tier companies" },
+            "ps-2": { "completed": true, "value": "Design systems designers interviewing for senior/lead positions" },
+            "ps-3": { "completed": true, "value": "Annoyance or Pain" },
+            "ps-4": { "completed": true, "value": "Without a portfolio, interesting opportunities pass by — no way to quickly prove value and get the call" },
+            "ps-5": { "completed": true, "value": "Occasionally" }
+          }
+        },
+        "vision-positioning": {
+          "tasks": {
+            "vp-1": { "completed": true, "value": "A Swiss-modernist personal portfolio that showcases Keith's design systems work, case studies, and capabilities — designed to get the interview" },
+            "vp-2": { "completed": true, "value": "Portfolio as a tease — prove value fast, show you solve problems, get the call" },
+            "vp-3": { "completed": true, "value": "Unlike generic portfolio templates, this is a custom-built site reflecting Keith's design systems craft with token-driven theming, halftone generative backgrounds, and multiple aesthetic modes" }
+          }
+        },
+        "competitive-landscape": {
+          "tasks": {
+            "cl-1": { "completed": true, "value": "Squarespace, Webflow, Notion portfolios, Readymag, personal WordPress sites" },
+            "cl-2": { "completed": true, "value": "Custom-built with the same rigor as a design system — tokens, accessibility, responsive grid, dark mode, theme variants. The portfolio itself demonstrates the craft" },
+            "cl-3": { "completed": true, "value": "None — personal project, not a product" }
+          }
+        }
+      }
+    },
+    "validation": {
+      "steps": {
+        "validation-research": {
+          "tasks": {
+            "vr-1": { "completed": true, "value": "Mentorship with Andrew Johnson (MentorCruise) — portfolio strategy, case study framing, interview prep" },
+            "vr-2": { "completed": true, "value": "Senior design systems roles at FAANG-level companies require strong portfolios showing cross-functional influence and systems thinking" },
+            "vr-3": { "completed": true, "value": "Andrew's feedback: focus on 2-3 case studies, show ownership of standards/governance/adoption, frame as problem/ownership/impact" }
+          }
+        },
+        "scope-definition": {
+          "tasks": {
+            "sd-1": { "completed": true, "value": "Hero, capabilities, 3 case studies, experience timeline, about section, contact" },
+            "sd-2": { "completed": true },
+            "sd-3": { "completed": true, "value": "Static site — Pug templates, Sass/CSS styling, halftone canvas background, theme toggle, aesthetic switcher" },
+            "sd-4": { "completed": true, "value": "No CMS, no JavaScript frameworks, no backend — pure static generation" }
+          }
+        }
+      }
+    },
+    "business-model": {
+      "steps": {
+        "revenue-and-costs": {
+          "tasks": {
+            "rc-1": { "completed": true, "value": "Free (no revenue)" },
+            "rc-2": { "completed": true, "value": "Personal project, no revenue" },
+            "rc-3": { "completed": true, "value": "None yet" },
+            "rc-4": { "completed": true, "value": "Zero or minimal hosting costs" },
+            "rc-5": { "completed": true, "value": "N/A" }
+          }
+        },
+        "legal-compliance": {
+          "tasks": {
+            "lc-1": { "completed": false },
+            "lc-2": { "completed": false },
+            "lc-3": { "completed": false },
+            "lc-4": { "completed": false }
+          }
+        }
+      }
+    },
+    "product-definition": {
+      "steps": {
+        "user-stories": {
+          "tasks": {
+            "us-1": { "completed": true, "value": "As a hiring manager, I want to quickly see Keith's design systems expertise so I can decide whether to schedule an interview" },
+            "us-2": { "completed": true, "value": "As Keith, I want a polished online presence that demonstrates my craft so interesting opportunities come to me" }
+          }
+        },
+        "ux-flows": {
+          "tasks": {
+            "ux-1": { "completed": true, "value": "Single-page scroll: Hero → Capabilities → Case Studies → Experience → About → Contact" },
+            "ux-2": { "completed": true, "value": "N/A — single-page or simple navigation" },
+            "ux-3": { "completed": true, "value": "Linear scroll with skip-link for accessibility. Secondary page: discography" },
+            "ux-4": { "completed": true, "value": "Dark-first with light mode toggle, multiple aesthetic variants (default, terminal)" },
+            "ux-5": { "completed": false }
+          }
+        }
+      }
+    },
+    "design": {
+      "steps": {
+        "visual-design": {
+          "tasks": {
+            "vd-1": { "completed": true, "value": "Swiss Modernism meets Technical Systems — black/white foundation, red accent, halftone dot grids, extreme typographic scale" },
+            "vd-2": { "completed": true, "value": "Test American Grotesk (headings/body), JetBrains Mono (code/metadata)" },
+            "vd-3": { "completed": true, "value": "Design tokens from ~/Projects/design/tokens/ — keith.ui.*, keith.gap.*, keith.font-size.* namespaced tokens" },
+            "vd-4": { "completed": true },
+            "vd-5": { "completed": true }
+          }
+        }
+      }
+    },
+    "technical-architecture": {
+      "steps": {
+        "stack-and-infrastructure": {
+          "tasks": {
+            "si-1": { "completed": true, "value": "Pug (templating) + CSS (styling) + Node.js build scripts + Browser-Sync (dev server, port 3000)" },
+            "si-2": { "completed": true, "value": "GitHub (public repo: keithbarney/keith-barney-portfolio)" },
+            "si-3": { "completed": true, "value": "Static hosting — no server required" },
+            "si-4": { "completed": true, "value": "None — static site" },
+            "si-5": { "completed": true, "value": "Shared design tokens from ~/Projects/design/tokens/, HDS CSS from heavy-design-system/dist/main.css" }
+          }
+        },
+        "data-architecture": {
+          "tasks": {
+            "da-1": { "completed": true, "value": "N/A — static site" },
+            "da-2": { "completed": true, "value": "Other" },
+            "da-3": { "completed": true, "value": "N/A — static site" },
+            "da-4": { "completed": true, "value": "N/A — no database" }
+          }
+        },
+        "auth-authorization": {
+          "tasks": {
+            "aa-1": { "completed": true, "value": "No — public/local only" },
+            "aa-2": { "completed": true, "value": "N/A" },
+            "aa-3": { "completed": true, "value": "N/A" }
+          }
+        }
+      }
+    },
+    "development": {
+      "steps": {
+        "project-setup": {
+          "tasks": {
+            "ps-setup-1": { "completed": true },
+            "ps-setup-2": { "completed": true },
+            "ps-setup-3": { "completed": true },
+            "ps-setup-4": { "completed": true },
+            "ps-setup-5": { "completed": true }
+          }
+        },
+        "core-features": {
+          "tasks": {
+            "cf-1": { "completed": true },
+            "cf-2": { "completed": true },
+            "cf-3": { "completed": true },
+            "cf-4": { "completed": true },
+            "cf-5": { "completed": true }
+          }
+        },
+        "polish-edge-cases": {
+          "tasks": {
+            "pe-1": { "completed": false },
+            "pe-2": { "completed": false },
+            "pe-3": { "completed": false },
+            "pe-4": { "completed": true },
+            "pe-5": { "completed": false }
+          }
+        }
+      }
+    },
+    "testing-qa": {
+      "steps": {
+        "testing": {
+          "tasks": {
+            "t-1": { "completed": true },
+            "t-2": { "completed": false },
+            "t-3": { "completed": false },
+            "t-4": { "completed": false },
+            "t-5": { "completed": false },
+            "t-6": { "completed": false }
+          }
+        }
+      }
+    },
+    "launch-prep": {
+      "steps": {
+        "content-and-seo": {
+          "tasks": {
+            "cs-1": { "completed": true },
+            "cs-2": { "completed": false },
+            "cs-3": { "completed": false },
+            "cs-4": { "completed": true },
+            "cs-5": { "completed": true, "value": "None yet" }
+          }
+        },
+        "pre-launch-checklist": {
+          "tasks": {
+            "plc-1": { "completed": true },
+            "plc-2": { "completed": true },
+            "plc-3": { "completed": true },
+            "plc-4": { "completed": false },
+            "plc-5": { "completed": false }
+          }
+        }
+      }
+    },
+    "marketing": {
+      "steps": {
+        "launch-marketing": {
+          "tasks": {
+            "lm-1": { "completed": false },
+            "lm-2": { "completed": false },
+            "lm-3": { "completed": false },
+            "lm-4": { "completed": false },
+            "lm-5": { "completed": false }
+          }
+        }
+      }
+    },
+    "launch": {
+      "steps": {
+        "ship-and-monitor": {
+          "tasks": {
+            "sm-1": { "completed": true },
+            "sm-2": { "completed": true },
+            "sm-3": { "completed": false },
+            "sm-4": { "completed": false },
+            "sm-5": { "completed": false }
+          }
+        }
+      }
+    },
+    "post-launch": {
+      "steps": {
+        "feedback-and-iteration": {
+          "tasks": {
+            "fi-1": { "completed": false },
+            "fi-2": { "completed": false },
+            "fi-3": { "completed": false },
+            "fi-4": { "completed": false },
+            "fi-5": { "completed": false }
+          }
+        }
+      }
+    }
+  }
+}
