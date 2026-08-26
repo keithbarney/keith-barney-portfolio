@@ -1,0 +1,655 @@
+{
+  "atlas-tools.html": {
+    "type": "positioned-grid",
+    "images": {
+      "atlas-tools-overview": {
+        "src": "images/atlas-tools/1-atlas-tools.png",
+        "alt": "Atlas Tools dashboard showing component-usage charts, library filters, and a component migration table"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "atlas-tools-overview", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 992,
+        "columns": 8,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "atlas-tools-overview", "columnStart": 3, "columnSpan": 6 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "atlas-tools-overview", "columnStart": 4, "columnSpan": 6 }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "atlas-tools-overview", "columnStart": 5, "columnSpan": 6 }
+        ]
+      },
+      {
+        "minWidth": 1600,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "atlas-tools-overview", "columnStart": 5, "columnSpan": 4 }
+        ]
+      }
+    ]
+  },
+  "atlas-branch-manager.html": {
+    "type": "positioned-grid",
+    "images": {
+      "branch-manager-cover": {
+        "src": "images/atlas-branch-manager/1-atlas-branch-manager.png",
+        "alt": "Atlas Branch Manager overview"
+      },
+      "branch-manager-detail": {
+        "src": "images/atlas-branch-manager/2-atlas-branch-manager.png",
+        "alt": "Atlas Branch Manager detail view"
+      },
+      "branch-manager-board": {
+        "src": "images/atlas-branch-manager/3-atlas-branch-manager.png",
+        "alt": "Atlas Branch Manager board view"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "branch-manager-cover", "columnStart": 1, "columnSpan": 1 },
+          { "id": "branch-manager-detail", "columnStart": 1, "columnSpan": 1 },
+          { "id": "branch-manager-board", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 576,
+        "columns": 2,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "branch-manager-cover", "columnStart": 1, "columnSpan": 2 },
+          { "id": "branch-manager-detail", "columnStart": 1, "columnSpan": 1 },
+          { "id": "branch-manager-board", "columnStart": 2, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "branch-manager-cover",
+            "columnStart": 1,
+            "columnSpan": 8,
+            "rowSpan": 2
+          },
+          { "id": "branch-manager-detail", "columnStart": 9, "columnSpan": 4 },
+          { "id": "branch-manager-board", "columnStart": 9, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "branch-manager-cover",
+            "columnStart": 1,
+            "columnSpan": 8,
+            "rowSpan": 2
+          },
+          { "id": "branch-manager-detail", "columnStart": 9, "columnSpan": 4 },
+          { "id": "branch-manager-board", "columnStart": 9, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1600,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "branch-manager-cover", "columnStart": 5, "columnSpan": 6 },
+          { "id": "branch-manager-detail", "columnStart": 5, "columnSpan": 3 },
+          { "id": "branch-manager-board", "columnStart": 8, "columnSpan": 3 }
+        ]
+      }
+    ]
+  },
+  "atlas-component-docs.html": {
+    "type": "positioned-grid",
+    "images": {
+      "component-generator": {
+        "src": "images/atlas-component-docs/1-atlas-component-docs.png",
+        "alt": "Atlas component generator interface"
+      },
+      "component-anatomy": {
+        "src": "images/atlas-component-docs/2-atlas-component-docs.png",
+        "alt": "Atlas component anatomy and properties documentation"
+      },
+      "component-overview": {
+        "src": "images/atlas-component-docs/3-atlas-component-docs.png",
+        "alt": "Atlas component documentation overview"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 1, "columnSpan": 1 },
+          { "id": "component-anatomy", "columnStart": 1, "columnSpan": 1 },
+          { "id": "component-overview", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 576,
+        "columns": 4,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 3, "columnSpan": 2 },
+          { "id": "component-anatomy", "columnStart": 1, "columnSpan": 4 },
+          { "id": "component-overview", "columnStart": 1, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 992,
+        "columns": 8,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 5, "columnSpan": 4 },
+          { "id": "component-anatomy", "columnStart": 1, "columnSpan": 8 },
+          { "id": "component-overview", "columnStart": 1, "columnSpan": 8 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 4, "columnSpan": 6 },
+          { "id": "component-anatomy", "columnStart": 1, "columnSpan": 12 },
+          { "id": "component-overview", "columnStart": 1, "columnSpan": 12 }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 5, "columnSpan": 6 },
+          { "id": "component-anatomy", "columnStart": 3, "columnSpan": 8 },
+          { "id": "component-overview", "columnStart": 1, "columnSpan": 12 }
+        ]
+      },
+      {
+        "minWidth": 1600,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "component-generator", "columnStart": 5, "columnSpan": 2 },
+          { "id": "component-anatomy", "columnStart": 5, "columnSpan": 6 },
+          { "id": "component-overview", "columnStart": 3, "columnSpan": 8 }
+        ]
+      }
+    ]
+  },
+  "atlas-design-system.html": {
+    "type": "atlas-masonry",
+    "images": {
+      "atlas-hook-large": {
+        "src": "images/atlas-design-system/1-AtlasHookLarge.png",
+        "alt": "Atlas large credit score card example"
+      },
+      "atlas-accordion": {
+        "src": "images/atlas-design-system/2-AtlasAccordion.png",
+        "alt": "Atlas identity protection accordion example"
+      },
+      "atlas-hook-small": {
+        "src": "images/atlas-design-system/3-AtlasHookSmall.png",
+        "alt": "Atlas Experian Boost promotional banner example"
+      },
+      "atlas-tile": {
+        "src": "images/atlas-design-system/4-AtlasTile.png",
+        "alt": "Atlas tile component example"
+      },
+      "atlas-tiles": {
+        "src": "images/atlas-design-system/4-tiles.png",
+        "alt": "Atlas tile group component example"
+      },
+      "atlas-hook-xsmall": {
+        "src": "images/atlas-design-system/6-AtlasHookXSmall.png",
+        "alt": "Atlas compact promotional card example"
+      },
+      "atlas-slider": {
+        "src": "images/atlas-design-system/7-AtlasSlider.png",
+        "alt": "Atlas slider component example"
+      },
+      "atlas-quick-action-group": {
+        "src": "images/atlas-design-system/8-AtlasQuickActionGroup.png",
+        "alt": "Atlas quick action group component example"
+      },
+      "atlas-chart-badges": {
+        "src": "images/atlas-design-system/9-chart-badges.png",
+        "alt": "Atlas chart and badges component example"
+      },
+      "atlas-screen-title": {
+        "src": "images/atlas-design-system/10-AtlasScreenTitle.png",
+        "alt": "Atlas screen title component example"
+      },
+      "atlas-hook-stack": {
+        "src": "images/atlas-design-system/11-AtlasHookStack.png",
+        "alt": "Atlas stacked promotional card example"
+      },
+      "atlas-list-primary": {
+        "src": "images/atlas-design-system/12-list.png",
+        "alt": "Atlas list component example"
+      },
+      "atlas-banners": {
+        "src": "images/atlas-design-system/13-banners.png",
+        "alt": "Atlas banner component examples"
+      },
+      "atlas-list-secondary": {
+        "src": "images/atlas-design-system/14-list.png",
+        "alt": "Atlas secondary list component example"
+      }
+    },
+    "layouts": {
+      "compact": [
+        [
+          "atlas-hook-large",
+          "atlas-accordion",
+          "atlas-hook-small",
+          "atlas-tile",
+          "atlas-tiles",
+          "atlas-hook-xsmall"
+        ],
+        [
+          "atlas-screen-title",
+          "atlas-list-primary",
+          "atlas-banners",
+          "atlas-quick-action-group",
+          "atlas-hook-stack",
+          "atlas-list-secondary",
+          "atlas-slider",
+          "atlas-chart-badges"
+        ]
+      ],
+      "expanded": [
+        ["atlas-hook-large", "atlas-accordion"],
+        ["atlas-hook-small", "atlas-tile", "atlas-tiles", "atlas-hook-xsmall"],
+        [
+          "atlas-screen-title",
+          "atlas-list-primary",
+          "atlas-banners",
+          "atlas-quick-action-group"
+        ],
+        [
+          "atlas-hook-stack",
+          "atlas-list-secondary",
+          "atlas-slider",
+          "atlas-chart-badges"
+        ]
+      ]
+    }
+  },
+  "atlas-annotate.html": {
+    "type": "positioned-grid",
+    "images": {
+      "annotate-overview": {
+        "src": "images/atlas-annotate/1-atlas-annotate.png",
+        "alt": "Atlas Annotate overview"
+      },
+      "annotate-detail": {
+        "src": "images/atlas-annotate/2-atlas-annotate.png",
+        "alt": "Atlas Annotate detail view"
+      },
+      "annotate-handoff": {
+        "src": "images/atlas-annotate/3-atlas-annotate.png",
+        "alt": "Atlas Annotate handoff view"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "annotate-overview", "columnStart": 1, "columnSpan": 1 },
+          { "id": "annotate-detail", "columnStart": 1, "columnSpan": 1 },
+          { "id": "annotate-handoff", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 576,
+        "columns": 4,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "annotate-overview", "columnStart": 3, "columnSpan": 2 },
+          { "id": "annotate-detail", "columnStart": 1, "columnSpan": 4 },
+          { "id": "annotate-handoff", "columnStart": 1, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 768,
+        "columns": 4,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "annotate-overview",
+            "columnStart": 1,
+            "columnSpan": 1,
+            "rowSpan": 2
+          },
+          { "id": "annotate-detail", "columnStart": 2, "columnSpan": 3 },
+          { "id": "annotate-handoff", "columnStart": 2, "columnSpan": 3 }
+        ]
+      },
+      {
+        "minWidth": 992,
+        "columns": 8,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "annotate-overview",
+            "columnStart": 3,
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          { "id": "annotate-detail", "columnStart": 5, "columnSpan": 4 },
+          { "id": "annotate-handoff", "columnStart": 5, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "annotate-overview",
+            "columnStart": 3,
+            "columnSpan": 3,
+            "rowSpan": 2
+          },
+          { "id": "annotate-detail", "columnStart": 6, "columnSpan": 6 },
+          { "id": "annotate-handoff", "columnStart": 6, "columnSpan": 6 }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "annotate-overview",
+            "columnStart": 5,
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          { "id": "annotate-detail", "columnStart": 7, "columnSpan": 4 },
+          { "id": "annotate-handoff", "columnStart": 7, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1600,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "annotate-overview",
+            "columnStart": 5,
+            "columnSpan": 2,
+            "rowSpan": 2
+          },
+          { "id": "annotate-detail", "columnStart": 7, "columnSpan": 4 },
+          { "id": "annotate-handoff", "columnStart": 7, "columnSpan": 4 }
+        ]
+      }
+    ]
+  },
+  "until-the-ink-runs-out.html": {
+    "type": "positioned-grid",
+    "images": {
+      "utiro-cover": {
+        "src": "images/utiro/1-utiro.png",
+        "alt": "Until the Ink Runs Out record artwork, image 1"
+      },
+      "utiro-back": {
+        "src": "images/utiro/2-utiro.png",
+        "alt": "Until the Ink Runs Out record artwork, image 2"
+      },
+      "utiro-record": {
+        "src": "images/utiro/3-utiro.png",
+        "alt": "Until the Ink Runs Out record artwork, image 3"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "utiro-cover", "columnStart": 1, "columnSpan": 1 },
+          { "id": "utiro-back", "columnStart": 1, "columnSpan": 1 },
+          { "id": "utiro-record", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 576,
+        "columns": 4,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "utiro-cover", "columnStart": 1, "columnSpan": 2 },
+          { "id": "utiro-back", "columnStart": 3, "columnSpan": 2 },
+          { "id": "utiro-record", "columnStart": 3, "columnSpan": 2 }
+        ]
+      },
+      {
+        "minWidth": 992,
+        "columns": 8,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "utiro-cover", "columnStart": 1, "columnSpan": 4 },
+          { "id": "utiro-back", "columnStart": 5, "columnSpan": 4 },
+          { "id": "utiro-record", "columnStart": 5, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "utiro-cover",
+            "columnStart": 4,
+            "columnSpan": 6,
+            "rowSpan": 2
+          },
+          {
+            "id": "utiro-back",
+            "columnStart": 10,
+            "columnSpan": 3,
+            "rowSpan": 1
+          },
+          {
+            "id": "utiro-record",
+            "columnStart": 10,
+            "columnSpan": 3,
+            "rowSpan": 1
+          }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "utiro-cover",
+            "columnStart": 5,
+            "columnSpan": 4,
+            "rowSpan": 2
+          },
+          {
+            "id": "utiro-back",
+            "columnStart": 9,
+            "columnSpan": 2,
+            "rowSpan": 1
+          },
+          {
+            "id": "utiro-record",
+            "columnStart": 9,
+            "columnSpan": 2,
+            "rowSpan": 1
+          }
+        ]
+      }
+    ]
+  },
+  "xviii.html": {
+    "type": "positioned-grid",
+    "images": {
+      "xviii-cover": {
+        "src": "images/xviii/1-xviii.png",
+        "alt": "XVIII personal project image 1"
+      },
+      "xviii-detail": {
+        "src": "images/xviii/2-xviii.png",
+        "alt": "XVIII personal project image 2"
+      },
+      "xviii-record": {
+        "src": "images/xviii/3-xviii.png",
+        "alt": "XVIII personal project image 3"
+      }
+    },
+    "layouts": [
+      {
+        "minWidth": 0,
+        "columns": 1,
+        "columnGap": 0,
+        "rowGap": 32,
+        "items": [
+          { "id": "xviii-cover", "columnStart": 1, "columnSpan": 1 },
+          { "id": "xviii-detail", "columnStart": 1, "columnSpan": 1 },
+          { "id": "xviii-record", "columnStart": 1, "columnSpan": 1 }
+        ]
+      },
+      {
+        "minWidth": 576,
+        "columns": 4,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "xviii-cover", "columnStart": 1, "columnSpan": 2 },
+          { "id": "xviii-detail", "columnStart": 3, "columnSpan": 2 },
+          { "id": "xviii-record", "columnStart": 3, "columnSpan": 2 }
+        ]
+      },
+      {
+        "minWidth": 992,
+        "columns": 8,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          { "id": "xviii-cover", "columnStart": 1, "columnSpan": 4 },
+          { "id": "xviii-detail", "columnStart": 5, "columnSpan": 4 },
+          { "id": "xviii-record", "columnStart": 5, "columnSpan": 4 }
+        ]
+      },
+      {
+        "minWidth": 1200,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "xviii-cover",
+            "columnStart": 4,
+            "columnSpan": 6,
+            "rowSpan": 2
+          },
+          {
+            "id": "xviii-detail",
+            "columnStart": 10,
+            "columnSpan": 3,
+            "rowSpan": 1
+          },
+          {
+            "id": "xviii-record",
+            "columnStart": 10,
+            "columnSpan": 3,
+            "rowSpan": 1
+          }
+        ]
+      },
+      {
+        "minWidth": 1440,
+        "columns": 12,
+        "columnGap": 32,
+        "rowGap": 32,
+        "items": [
+          {
+            "id": "xviii-cover",
+            "columnStart": 5,
+            "columnSpan": 4,
+            "rowSpan": 2
+          },
+          {
+            "id": "xviii-detail",
+            "columnStart": 9,
+            "columnSpan": 2,
+            "rowSpan": 1
+          },
+          {
+            "id": "xviii-record",
+            "columnStart": 9,
+            "columnSpan": 2,
+            "rowSpan": 1
+          }
+        ]
+      }
+    ]
+  }
+}

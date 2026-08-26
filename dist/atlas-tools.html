@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atlas Tools case study for Keith Barney's design-system workflow at Experian."
+    />
+    <title>Atlas Tools — Case Study</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/case-study.css" />
+    <link rel="stylesheet" href="css/site-nav.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#project-header">Skip to project content</a>
+    <main class="project" id="project-content">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-identity">
+          <p class="site-name"><a href="index.html">Keith Barney</a></p>
+          <address class="site-contact">
+            <a href="tel:+17145013569" aria-label="Phone: 714-501-3569"
+              >714-501-3569</a
+            >
+            <a href="mailto:keith@keithbarney.design"
+              >keith@keithbarney.design</a
+            >
+          </address>
+        </div>
+        <ul class="nav-work" aria-label="Selected work">
+          <li><a href="atlas-design-system.html">Atlas Design System</a></li>
+          <li>
+            <a href="atlas-tools.html" aria-current="page">Atlas Tools</a>
+          </li>
+          <li><a href="atlas-branch-manager.html">Atlas Branch Manager</a></li>
+          <li><a href="atlas-component-docs.html">Atlas Component Docs</a></li>
+          <li><a href="atlas-annotate.html">Atlas Annotate</a></li>
+        </ul>
+        <ul class="nav-personal" aria-label="Personal projects">
+          <li>
+            <a href="until-the-ink-runs-out.html">Until the Ink Runs Out</a>
+          </li>
+          <li><a href="xviii.html">XVIII</a></li>
+        </ul>
+        <p class="nav-history"><a href="history.html">Work History</a></p>
+      </nav>
+
+      <header
+        class="project-identity project-header"
+        id="project-header"
+        aria-labelledby="project-title"
+        tabindex="-1"
+      >
+        <h1 id="project-title">Atlas Tools</h1>
+        <dl class="project-meta">
+          <div>
+            <dt>Role</dt>
+            <dd>Design Systems Lead</dd>
+          </div>
+          <div>
+            <dt>Organization</dt>
+            <dd>Experian</dd>
+          </div>
+          <div>
+            <dt>Platforms</dt>
+            <dd>Web Tool</dd>
+          </div>
+        </dl>
+      </header>
+
+      <p class="project-lead">
+        As Atlas became the current design system for Experian’s web product,
+        teams still carried components, tokens, icons, CSS classes, and assets
+        from older libraries. The challenge was not simply knowing that Legacy
+        and Next needed to be retired. Teams needed to know where those items
+        were still used, what should replace them, and which migrations would
+        create the most value.
+      </p>
+      <p class="project-lead">
+        Atlas Tools is an internal analytics application built by the Atlas team
+        to make that work visible. It inventories design-system assets across
+        product repositories and shows how Atlas, Next, and Legacy are used
+        within each domain.
+      </p>
+      <p class="project-lead">
+        The tool turns an otherwise diffuse migration effort into a shared
+        source of evidence. Instead of asking teams to modernize broadly, it
+        gives them a concrete view of the work in front of them and a way to
+        decide where to begin.
+      </p>
+
+      <section class="project-gallery" aria-label="Atlas Tools overview">
+        <div class="project-media" data-case-study-media>
+          <figure class="placeholder placeholder--wide project-hero">
+            <figcaption>Designing with the system</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <h2 class="topic-title topic-title--3" id="approach-heading">
+        Making adoption visible
+      </h2>
+      <p class="topic-copy">
+        I designed the Atlas Tools interface as a real application of the system
+        it supports. Building the tool with Atlas components gave the
+        design-systems team a practical way to use, test, and evaluate our own
+        library while creating a product that could help other teams adopt it.
+      </p>
+      <p class="topic-copy">
+        That dogfooding experience largely validated the system’s flexibility:
+        we were able to build the application with the components we already
+        had, rather than needing a separate visual language or a large set of
+        one-off UI. It also surfaced a small number of bugs and opportunities
+        for more compact component variants in dense analytics views, which
+        became tickets for the team to address.
+      </p>
+
+      <h2 class="topic-title topic-title--3" id="workflow-heading">
+        Turning inventory into decisions
+      </h2>
+      <p class="topic-copy">
+        Atlas Tools lets teams filter usage by repository, asset type, library,
+        and status. They can see active items, deprecated items that still
+        require migration, and deprecated items with no remaining usage.
+      </p>
+      <p class="topic-copy">
+        A team can focus on heavily used Legacy or Next components to make a
+        high-impact migration, or start with lower-usage items to reduce
+        implementation effort and build momentum. The tool also shows the
+        appropriate Atlas replacement, helping teams migrate accurately rather
+        than treating modernization as a generic cleanup exercise.
+      </p>
+      <p class="topic-copy">
+        This makes migration planning more flexible. Teams can choose the
+        strategy that best fits their roadmap while still contributing to the
+        broader Atlas adoption goal.
+      </p>
+
+      <h2 class="topic-title topic-title--2" id="outcomes-heading">
+        Making system knowledge easier to access
+      </h2>
+      <p class="topic-copy">
+        Developers can use Atlas Tools to look up a component and see how it is
+        implemented across the product. If someone needs to understand how Atlas
+        Card is used in different contexts, the tool reveals those usages across
+        repositories and provides a path to inspect the related code.
+      </p>
+
+      <p class="topic-copy">
+        That helps teams make more informed implementation decisions. Rather
+        than relying only on documentation or creating a new pattern from
+        scratch, they can review real examples of how the component is already
+        being used.
+      </p>
+      <p class="topic-copy">
+        For the Atlas team, usage data also makes prioritization more
+        evidence-based. When several components need attention, I can identify
+        the ones with the broadest impact and focus iteration or bug-fixing work
+        accordingly.
+      </p>
+
+      <h2 class="topic-title topic-title--2" id="outcomes-heading">
+        Supporting a healthier system
+      </h2>
+      <p class="topic-copy">
+        Atlas Tools is part of Atlas adoption, but it also supports long-term
+        system maintenance. It shows which deprecated components remain in use
+        and therefore still need a migration path.
+      </p>
+      <p class="topic-copy">
+        When a deprecated component has no remaining usage, the team can remove
+        it rather than continue carrying unnecessary code and documentation. The
+        result is a clearer path from inventory to action: teams can understand
+        what they use, migrate what matters, reuse Atlas correctly, and prevent
+        deprecated components from sitting in the system indefinitely as dead
+        code and documentation debt.
+      </p>
+    </main>
+    <script src="js/case-study-media.js"></script>
+    <script src="js/grid-debug.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Atlas Component Docs case study for Experian."
+    />
+    <title>Atlas Component Docs — Case Study</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/case-study.css" />
+    <link rel="stylesheet" href="css/site-nav.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#project-header">Skip to project content</a>
+    <main class="project" id="project-content">
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-identity">
+          <p class="site-name"><a href="index.html">Keith Barney</a></p>
+          <address class="site-contact">
+            <a href="tel:+17145013569" aria-label="Phone: 714-501-3569"
+              >714-501-3569</a
+            >
+            <a href="mailto:keith@keithbarney.design"
+              >keith@keithbarney.design</a
+            >
+          </address>
+        </div>
+        <ul class="nav-work" aria-label="Selected work">
+            <li><a href="atlas-design-system.html">Atlas Design System</a></li>
+            <li><a href="atlas-tools.html">Atlas Tools</a></li>
+            <li>
+              <a href="atlas-branch-manager.html">Atlas Branch Manager</a>
+            </li>
+            <li>
+              <a href="atlas-component-docs.html" aria-current="page"
+                >Atlas Component Docs</a
+              >
+            </li>
+            <li><a href="atlas-annotate.html">Atlas Annotate</a></li>
+        </ul>
+        <ul class="nav-personal" aria-label="Personal projects">
+            <li><a href="until-the-ink-runs-out.html">Until the Ink Runs Out</a></li>
+            <li><a href="xviii.html">XVIII</a></li>
+        </ul>
+        <p class="nav-history">
+          <a href="history.html">Work History</a>
+        </p>
+      </nav>
+
+      <header
+        class="project-identity project-header"
+        id="project-header"
+        aria-labelledby="project-title"
+        tabindex="-1"
+      >
+        <h1 id="project-title">Atlas Component Docs</h1>
+        <dl class="project-meta">
+          <div><dt>Role</dt><dd>Design Systems Lead</dd></div>
+          <div><dt>Organization</dt><dd>Experian</dd></div>
+          <div><dt>Platforms</dt><dd>Figma Plugin</dd></div>
+        </dl>
+      </header>
+      <p class="project-lead">
+        Component documentation is essential to a healthy design system, but
+        it is also repetitive and expensive to create by hand. A single
+        component can have variants, properties, values, nested
+        subcomponents, slots, breakpoints, usage guidance, and accessibility
+        considerations. Documenting all of that manually made consistency
+        difficult to sustain.
+      </p>
+      <p class="project-lead">
+        I built Atlas Component Docs to turn the information already defined
+        in a Figma component into a clear, structured documentation starting
+        point.
+      </p>
+
+      <section
+        class="project-gallery"
+        aria-label="Atlas Component Docs overview"
+      >
+        <div class="project-media" data-case-study-media>
+          <figure
+            class="placeholder placeholder--wide project-hero"
+            aria-label="Component documentation overview: artifact pending"
+          >
+            <figcaption>
+              Component documentation overview — artifact pending
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <h2 class="topic-title topic-title--2" id="approach-heading">From annotation to documentation</h2>
+            <p class="topic-copy">
+              Atlas Component Docs grew directly out of Atlas Annotate, a
+              companion plugin I created to automate component handoff. Atlas
+              Annotate scans a selected component and identifies the nested
+              Atlas components, text and Boolean properties, variants, slots,
+              and other native Figma features that need to be called out for
+              developers.
+            </p>
+            <p class="topic-copy">
+              That solved the repeated annotation work, but I saw a larger
+              opportunity. I reused and extended the underlying approach to
+              create Atlas Component Docs: a tool that generates the full
+              documentation structure around those annotations.
+            </p>
+
+      <h2 class="topic-title topic-title--3" id="adoption-heading">A consistent starting point</h2>
+            <p class="topic-copy">
+              A designer selects a component and runs the plugin. In seconds,
+              Atlas Component Docs creates the structured documentation expected
+              for that component: its overview and examples, anatomy and
+              subcomponents, variants and properties, breakpoints, content
+              guidance, and accessibility.
+            </p>
+            <p class="topic-copy">
+              The plugin reads the metadata already built into the Figma
+              component—variants, properties, values, descriptions, and linked
+              documentation—and places component instances into the relevant
+              sections. For anatomy, it generates annotations and visual
+              callouts that connect properties and nested components directly to
+              the UI they affect.
+            </p>
+            <p class="topic-copy">
+              The result is not a generic template. It is component-specific
+              documentation assembled from the system’s source of truth.
+            </p>
+
+      <h2 class="topic-title topic-title--3" id="outcomes-heading">Designing for real workflows</h2>
+            <p class="topic-copy">
+              I designed the plugin around a documentation pattern my teammate
+              and I had established over time: visually polished enough to be
+              credible, but structured for designers and developers to scan
+              quickly during implementation.
+            </p>
+            <p class="topic-copy">
+              The plugin automates the repeatable work while retaining space for
+              human judgment. Content-guidance sections are generated with their
+              supporting text, but designers currently add the visual
+              do-and-don’t examples. Accessibility guidance is also an area I am
+              continuing to evolve.
+            </p>
+            <p class="topic-copy">
+              That distinction matters. The goal is not to automate
+              documentation indiscriminately; it is to remove the mechanical
+              work so teams can spend their attention on the guidance that
+              requires context and expertise.
+            </p>
+
+      <h2 class="topic-title topic-title--2" id="now-heading">Scaling better handoff</h2>
+            <p class="topic-copy">
+              Atlas Component Docs began as a tool for my own design-systems
+              workflow. It is now also used by designers who maintain
+              domain-specific component libraries.
+            </p>
+            <p class="topic-copy">
+              For those teams, thorough documentation is often difficult to
+              prioritize alongside product delivery. The plugin makes it
+              practical to create professional, consistent documentation without
+              requiring design-systems-level effort for every component. That
+              improves the quality of handoff between designers and developers,
+              reduces ambiguity around implementation, and helps teams reuse
+              existing Atlas building blocks instead of recreating them.
+            </p>
+    </main>
+    <script src="js/case-study-media.js"></script>
+    <script src="js/grid-debug.js" defer></script>
+  </body>
+</html>

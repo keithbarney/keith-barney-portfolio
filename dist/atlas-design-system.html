@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Atlas design systems case study for Experian.">
+  <title>Atlas Design System — Case Study</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/case-study.css">
+  <link rel="stylesheet" href="css/site-nav.css">
+</head>
+<body>
+  <a class="skip-link" href="#project-header">Skip to project content</a>
+
+  <main class="project" id="project-content">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <div class="nav-identity">
+        <p class="site-name"><a href="index.html">Keith Barney</a></p>
+        <address class="site-contact">
+          <a href="tel:+17145013569" aria-label="Phone: 714-501-3569">714-501-3569</a>
+          <a href="mailto:keith@keithbarney.design">keith@keithbarney.design</a>
+        </address>
+      </div>
+      <ul class="nav-work" aria-label="Selected work">
+          <li><a href="atlas-design-system.html" aria-current="page">Atlas Design System</a></li>
+          <li><a href="atlas-tools.html">Atlas Tools</a></li>
+          <li><a href="atlas-branch-manager.html">Atlas Branch Manager</a></li>
+          <li><a href="atlas-component-docs.html">Atlas Component Docs</a></li>
+          <li><a href="atlas-annotate.html">Atlas Annotate</a></li>
+      </ul>
+      <ul class="nav-personal" aria-label="Personal projects">
+            <li><a href="until-the-ink-runs-out.html">Until the Ink Runs Out</a></li>
+            <li><a href="xviii.html">XVIII</a></li>
+      </ul>
+      <p class="nav-history"><a href="history.html">Work History</a></p>
+    </nav>
+    <header class="project-identity project-header" id="project-header" aria-labelledby="project-title" tabindex="-1">
+        <h1 id="project-title">Atlas Design System</h1>
+        <dl class="project-meta">
+          <div><dt>Role</dt><dd>Design Systems Lead</dd></div>
+          <div><dt>Organization</dt><dd>Experian</dd></div>
+          <div><dt>Platforms</dt><dd>Web, iOS, and Android</dd></div>
+        </dl>
+    </header>
+    <p class="project-lead">When I joined Experian as a product designer, there was a style guide but no shared design system. Each product team interpreted the guide independently, which meant that common patterns, typography, and visual language diverged across web, iOS, and Android.</p>
+    <p class="project-lead">I had seen the value of design systems in previous roles, so I proposed creating Experian’s first one. My goal was not simply to standardize UI. I wanted to give teams a shared foundation for designing, building, and evolving the product together.</p>
+    <p class="project-lead">I also created a set of internal Figma tools to support that work at scale. Atlas Annotate made component handoff more explicit, Atlas Component Docs turned component metadata into structured guidance, and Atlas Branch Manager connected design branches to the delivery work behind them. Together, these tools helped make Atlas easier to build, document, hand off, and release.</p>
+
+    <section class="project-gallery" aria-label="Atlas Design System concept">
+      <div class="project-media project-media--plain project-media--atlas-masonry" data-case-study-media>
+        <figure class="placeholder placeholder--wide project-hero">
+          <figcaption>Project image — add a numbered image to images/atlas-design-system/</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <h2 class="topic-title topic-title--3" id="approach-heading">Establishing Atlas</h2>
+    <p class="topic-copy">Atlas began with separate web and native Figma libraries. I created and maintained them, gathered feedback, resolved issues, and worked with designers and engineers across the organization to establish a more consistent starting point.</p>
+    <p class="topic-copy">Over time, I led the shift from platform-specific component variants toward one platform-agnostic library. Instead of maintaining separate visual expressions for web, iOS, and Android, teams could work from a common product language while engineering continued to implement for each platform’s technical needs.</p>
+    <p class="topic-copy">I also developed the token architecture that made the system scalable: base tokens for colors, typography, and spacing; semantic tokens for shared design decisions; and component-level tokens for the Atlas components. Atlas moved from a collection of libraries toward a durable source of truth.</p>
+
+    <h2 class="topic-title topic-title--3" id="adoption-heading">Building shared ownership</h2>
+    <p class="topic-copy">The hardest early challenge was not creating components. It was changing how design teams thought about creative ownership.</p>
+    <p class="topic-copy">Designers had been used to interpreting the style guide independently, often treating each product area as an opportunity to establish its own visual direction. That created inconsistency, but it also reflected a genuine desire to do thoughtful, expressive design work.</p>
+    <p class="topic-copy">I helped shift the conversation from individual interpretation to collective authorship. Rather than asking teams to give up creativity, I brought designers together to define a shared creative language—one that could make product experiences feel coherent while leaving room to solve the right user problems. Creating that shared ownership made adoption more durable: Atlas became something teams could contribute to and rely on, not a library imposed on them.</p>
+
+    <h2 class="topic-title topic-title--3" id="outcomes-heading">Creating an operating model</h2>
+    <p class="topic-copy">The work became as much about alignment as craft. I brought design and engineering leaders together, established channels for support and feedback, developed documentation, and helped build the dedicated Atlas team.</p>
+    <p class="topic-copy">Today, the team includes design and platform engineering partners across web and native. I lead system strategy, component and token architecture, governance, documentation, stakeholder alignment, and the communication channels that intake questions, bugs, feedback, and contribution needs from teams across the organization.</p>
+    <p class="topic-copy">Atlas has become a cross-functional touchpoint for decisions that affect multiple products—from new features and technology choices to system-wide experience changes.</p>
+
+    <h2 class="topic-title topic-title--3" id="now-heading">Making the system ready for change</h2>
+    <p class="topic-copy">The continuing challenge is adoption in the codebase. Years of legacy implementation and custom UI create technical debt, and product teams must balance modernization against near-term roadmap and revenue commitments.</p>
+    <p class="topic-copy">My work now includes helping product and engineering leaders see technical-debt reduction as an enabler of product strategy. Migrating to Atlas brings consistency, accessible defaults, shared interaction patterns, and a faster path to larger changes.</p>
+    <p class="topic-copy">The goal is not migration for its own sake. It is to make future change—such as dark mode, a new design language, or new product experiences—faster, safer, and more consistent across the product.</p>
+
+    <h2 class="topic-title topic-title--3" id="impact-heading">Impact</h2>
+    <p class="topic-copy">Atlas has achieved near-universal adoption for new product work across Experian’s web, iOS, and Android experiences. For the past several years, every new initiative has started with the system. That does not mean Atlas contains every possible solution. New product work will always introduce new components and patterns. But those additions are built from the same foundations: Atlas tokens, typography, layout, interaction principles, and reusable building blocks. The system provides the common language even when teams need to extend it.</p>
+    <p class="topic-copy">This has changed the default for design and engineering. Teams no longer begin by recreating shared UI; they begin with an established, accessible, platform-agnostic foundation and direct more of their energy toward the product problem. Engineers can build and iterate more quickly, while experiences remain coherent as the product grows.</p>
+    <p class="topic-copy">The remaining adoption work is primarily legacy modernization: bringing older pages and custom implementations into alignment so future system-wide changes can reach the entire product.</p>
+  </main>
+  <script src="js/case-study-media.js"></script>
+  <script src="js/grid-debug.js" defer></script>
+</body>
+</html>
